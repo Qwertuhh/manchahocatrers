@@ -14,7 +14,7 @@ const links: Links[] = [
   },
   {
     name: "menu",
-    link: "#menu",
+    link: "/manchaho_catrers_menu.pdf",
     icon: <SquareMenu />,
   },
   {

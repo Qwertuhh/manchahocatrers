@@ -11,66 +11,171 @@ interface GalleryImage {
 // Replace these with your actual image URLs.
 const images: GalleryImage[] = [
   {
-    src: "https://placehold.co/400x300/E0F2F7/000000?text=Image+1",
-    alt: "Abstract image 1",
+    src: "gallery/IMG-20250621-WA0021.jpg",
+    alt: "IMG-20250621-WA0021",
   },
   {
-    src: "https://placehold.co/400x300/CFE2F3/000000?text=Image+2",
-    alt: "Abstract image 2",
+    src: "gallery/IMG-20250621-WA0022.jpg",
+    alt: "IMG-20250621-WA0022",
   },
   {
-    src: "https://placehold.co/400x300/B3D9FF/000000?text=Image+3",
-    alt: "Abstract image 3",
+    src: "gallery/IMG-20250621-WA0023.jpg",
+    alt: "IMG-20250621-WA0023",
   },
   {
-    src: "https://placehold.co/400x300/8ECDFC/000000?text=Image+4",
-    alt: "Abstract image 4",
+    src: "gallery/IMG-20250621-WA0024.jpg",
+    alt: "IMG-20250621-WA0024",
   },
   {
-    src: "https://placehold.co/400x300/6BB8FF/000000?text=Image+5",
-    alt: "Abstract image 5",
+    src: "gallery/IMG-20250621-WA0025.jpg",
+    alt: "IMG-20250621-WA0025",
   },
   {
-    src: "https://placehold.co/400x300/4993E0/000000?text=Image+6",
-    alt: "Abstract image 6",
+    src: "gallery/IMG-20250621-WA0026.jpg",
+    alt: "IMG-20250621-WA0026",
   },
   {
-    src: "https://placehold.co/400x300/276DC1/000000?text=Image+7",
-    alt: "Abstract image 7",
+    src: "gallery/IMG-20250621-WA0027.jpg",
+    alt: "IMG-20250621-WA0027",
   },
   {
-    src: "https://placehold.co/400x300/0547A1/000000?text=Image+8",
-    alt: "Abstract image 8",
+    src: "gallery/IMG-20250621-WA0028.jpg",
+    alt: "IMG-20250621-WA0028",
   },
-];
+  {
+    src: "gallery/IMG-20250621-WA0029.jpg",
+    alt: "IMG-20250621-WA0029",
+  },
+  {
+    src: "gallery/IMG-20250621-WA0030.jpg",
+    alt: "IMG-20250621-WA0030",
+  },
+  {
+    src: "gallery/IMG-20250621-WA0031.jpg",
+    alt: "IMG-20250621-WA0031",
+  },
+  {
+    src: "gallery/IMG-20250621-WA0032.jpg",
+    alt: "IMG-20250621-WA0032",
+  },
+  {
+    src: "gallery/IMG-20250621-WA0033.jpg",
+    alt: "IMG-20250621-WA0033",
+  },
+  {
+    src: "gallery/IMG-20250621-WA0034.jpg",
+    alt: "IMG-20250621-WA0034",
+  },
+  {
+    src: "gallery/IMG-20250621-WA0035.jpg",
+    alt: "IMG-20250621-WA0035",
+  },
+  {
+    src: "gallery/IMG-20250621-WA0036.jpg",
+    alt: "IMG-20250621-WA0036",
+  },
+  {
+    src: "gallery/IMG-20250621-WA0037.jpg",
+    alt: "IMG-20250621-WA0037",
+  },
+  {
+    src: "gallery/IMG-20250621-WA0038.jpg",
+    alt: "IMG-20250621-WA0038",
+  },
+  {
+    src: "gallery/IMG-20250621-WA0039.jpg",
+    alt: "IMG-20250621-WA0039",
+  },
+  {
+    src: "gallery/IMG-20250621-WA0040.jpg",
+    alt: "IMG-20250621-WA0040",
+  },
+  {
+    src: "gallery/IMG-20250621-WA0041.jpg",
+    alt: "IMG-20250621-WA0041",
+  },
+  {
+    src: "gallery/IMG-20250621-WA0043.jpg",
+    alt: "IMG-20250621-WA0043",
+  },
+  {
+    src: "gallery/IMG_20250623_204409.jpg",
+    alt: "IMG_20250623_204409",
+  },
+  {
+    src: "gallery/IMG_20250623_204501.jpg",
+    alt: "IMG_20250623_204501",
+  },
+  {
+    src: "gallery/IMG_20250623_204555.jpg",
+    alt: "IMG_20250623_204555",
+  },
+  {
+    src: "gallery/IMG_20250623_204647.jpg",
+    alt: "IMG_20250623_204647",
+  },
+  {
+    src: "gallery/Screenshot_20250623_204242.jpg",
+    alt: "Screenshot_20250623_204242",
+  },
+]
 
 function Gallery() {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollRef1 = useRef<HTMLDivElement>(null);
+  const scrollRef2 = useRef<HTMLDivElement>(null);
 
+  // Effect for the first scrolling row
   useEffect(() => {
-    const container = scrollRef.current;
+    const container = scrollRef1.current;
+    if (!container) return; // Exit if ref is not set
+
     let animationFrameId: number;
 
     const animateScroll = () => {
-      if (container) {
-        // Adjust scroll speed here. A slightly slower speed might look better for images.
-        container.scrollLeft += 0.5;
-
-        // If we've scrolled past the first set of duplicated images (half the total width)
-        // reset to the beginning to create a seamless loop
-        if (container.scrollLeft >= container.scrollWidth / 2) {
-          container.scrollLeft = 0;
-        }
+      container.scrollLeft += 0.5; // Scroll right
+      if (container.scrollLeft >= container.scrollWidth / 2) {
+        container.scrollLeft = 0;
       }
       animationFrameId = requestAnimationFrame(animateScroll);
     };
 
-    // Start the scrolling animation when the component mounts
+    animationFrameId = requestAnimationFrame(animateScroll);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, []);
+
+  // Effect for the second scrolling row
+  useEffect(() => {
+    const container = scrollRef2.current;
+    if (!container) return; // Exit if ref is not set
+
+    let animationFrameId: number;
+
+    const animateScroll = () => {
+      container.scrollLeft -= 0.7; // Scroll left (slightly faster for variety)
+      // If we've scrolled past the beginning of the duplicated images (which is 0 initially)
+      // reset to the middle (where the duplication starts)
+      if (container.scrollLeft <= 0) {
+        container.scrollLeft = container.scrollWidth / 2;
+      }
+      animationFrameId = requestAnimationFrame(animateScroll);
+    };
+
+    // Initialize scroll position for the second row to start from the middle
+    // so it can scroll left effectively from the duplicate section.
+    // Use a setTimeout to ensure layout is calculated before setting scrollLeft
+    const initialScrollTimeout = setTimeout(() => {
+      if (container) {
+        container.scrollLeft = container.scrollWidth / 2;
+      }
+    }, 50); // A small delay to ensure DOM is rendered
+
     animationFrameId = requestAnimationFrame(animateScroll);
 
-    // Cleanup function: Cancel the animation when the component unmounts
-    return () => cancelAnimationFrame(animationFrameId);
-  }, []); // Empty dependency array ensures this effect runs only once on mount
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      clearTimeout(initialScrollTimeout); // Clear the timeout as well
+    };
+  }, []);
 
   return (
     <section className="py-16 px-4 md:px-8 bg-white overflow-hidden relative isolate">
@@ -87,42 +192,87 @@ function Gallery() {
         Our <span className="text-stone-600">Gallery</span>
       </h2>
 
-      <div
-        ref={scrollRef}
-        // Tailwind classes for the scrolling container
-        className="relative z-10 flex w-full overflow-x-scroll no-scrollbar whitespace-nowrap space-x-6 md:space-x-8 py-6 cursor-grab active:cursor-grabbing"
-        // Applying a linear gradient mask to fade out images at the edges
-        style={{
-          maskImage:
-            "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-          WebkitMaskImage:
-            "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-        }}
-      >
-        {/* Duplicate images to create the infinite loop effect */}
-        {[...images, ...images].map((image: GalleryImage, index: number) => (
-          <div
-            key={index} // Using index as key is acceptable here since the list is static and not reordered
-            className="flex-shrink-0 w-[300px] h-[225px] sm:w-[350px] sm:h-[262px] md:w-[400px] md:h-[300px] 
-                       rounded-xl shadow-lg border border-gray-200 overflow-hidden 
-                       transform hover:scale-[1.03] transition-transform duration-300 ease-out group"
-          >
-            <img
-              src={image.src}
-              alt={image.alt}
-              className="w-full h-full object-cover group-hover:brightness-110 transition-all duration-300"
-              // Optional: Add onerror to handle broken image links gracefully
-              onError={(e) => {
-                e.currentTarget.src =
-                  "https://placehold.co/400x300/cccccc/000000?text=Image+Error";
-                e.currentTarget.alt = "Image failed to load";
-              }}
-            />
-          </div>
-        ))}
+      {/* Gallery Rows Container */}
+      <div className="flex flex-col gap-8">
+        {" "}
+        {/* Added gap between rows */}
+        {/* First Scrolling Row */}
+        <div
+          ref={scrollRef1}
+          className="relative z-10 flex w-full overflow-x-scroll no-scrollbar whitespace-nowrap space-x-6 md:space-x-8 py-6 cursor-grab active:cursor-grabbing"
+          style={{
+            maskImage:
+              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+          }}
+        >
+          {/* Duplicate images for the infinite loop effect.
+              Splitting the `images` array for clarity,
+              but you could use `[...images, ...images]` for both if you prefer identical content.
+          */}
+          {[...images, ...images]
+            .slice(0, (images.length / 2) * 2)
+            .map((image: GalleryImage, index: number) => (
+              <div
+                key={`row1-${index}`} // Unique key for each item in this row
+                className="flex-shrink-0 w-[300px] h-[225px] sm:w-[350px] sm:h-[262px] md:w-[400px] md:h-[300px] 
+                         rounded-xl shadow-lg border border-gray-200 overflow-hidden 
+                         transform hover:scale-[1.03] transition-transform duration-300 ease-out group"
+              >
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-full object-cover group-hover:brightness-110 transition-all duration-300"
+                  onError={(e) => {
+                    e.currentTarget.src =
+                      "https://placehold.co/400x300/cccccc/000000?text=Image+Error";
+                    e.currentTarget.alt = "Image failed to load";
+                  }}
+                />
+              </div>
+            ))}
+        </div>
+        {/* Second Scrolling Row */}
+        <div
+          ref={scrollRef2}
+          className="relative z-10 flex w-full overflow-x-scroll no-scrollbar whitespace-nowrap space-x-6 md:space-x-8 py-6 cursor-grab active:cursor-grabbing"
+          style={{
+            maskImage:
+              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+          }}
+        >
+          {/* Duplicate images for the infinite loop effect.
+              Using the same `images` array but perhaps a different slice or order
+              if you want different images in each row.
+              For simplicity, I'm just duplicating the full array here too.
+          */}
+          {[...images, ...images].map((image: GalleryImage, index: number) => (
+            <div
+              key={`row2-${index}`} // Unique key for each item in this row
+              className="flex-shrink-0 w-[300px] h-[225px] sm:w-[350px] sm:h-[262px] md:w-[400px] md:h-[300px] 
+                         rounded-xl shadow-lg border border-gray-200 overflow-hidden 
+                         transform hover:scale-[1.03] transition-transform duration-300 ease-out group"
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="w-full h-full object-cover group-hover:brightness-110 transition-all duration-300"
+                onError={(e) => {
+                  e.currentTarget.src =
+                    "https://placehold.co/400x300/cccccc/000000?text=Image+Error";
+                  e.currentTarget.alt = "Image failed to load";
+                }}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
 export default Gallery;
+
