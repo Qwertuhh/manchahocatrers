@@ -15,7 +15,7 @@ function App() {
         <Gallery />
       </div>
       <div id="contact">
-        <ContactArea email="Fb9wz@example.com" phoneNumber="+1234567890" />
+        <ContactArea email="manchahocatrers@gmail.com" phoneNumber="+91 9024319241" />
       </div>
       <Footer />
     </>
