@@ -2,6 +2,6 @@
 
 A Simple site for this weeding service
 
->  [!ALERT]
+>  [ALERT]
 >
 > Images are not fully optimized.
