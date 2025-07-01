@@ -11,7 +11,7 @@ function SocialMediaFollow() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src="src/assets/facebook.svg" alt="Facebook" className="w-10 h-10" />
+          <img src="assets/facebook.svg" alt="Facebook" className="w-10 h-10" />
         </a>
         <a
           href="https://www.instagram.com/manchahocatrers/"
@@ -19,7 +19,7 @@ function SocialMediaFollow() {
           rel="noopener noreferrer"
         >
           <img
-            src="src/assets/instagram.svg"
+            src="assets/instagram.svg"
             alt="Instagram"
             className="w-10 h-10"
           />
