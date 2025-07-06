@@ -11,111 +11,111 @@ interface GalleryImage {
 // Replace these with your actual image URLs.
 const images: GalleryImage[] = [
   {
-    src: "gallery/IMG-20250621-WA0021.jpg",
+    src: "gallery/IMG-20250621-WA0021.webp",
     alt: "IMG-20250621-WA0021",
   },
   {
-    src: "gallery/IMG-20250621-WA0022.jpg",
+    src: "gallery/IMG-20250621-WA0022.webp",
     alt: "IMG-20250621-WA0022",
   },
   {
-    src: "gallery/IMG-20250621-WA0023.jpg",
+    src: "gallery/IMG-20250621-WA0023.webp",
     alt: "IMG-20250621-WA0023",
   },
   {
-    src: "gallery/IMG-20250621-WA0024.jpg",
+    src: "gallery/IMG-20250621-WA0024.webp",
     alt: "IMG-20250621-WA0024",
   },
   {
-    src: "gallery/IMG-20250621-WA0025.jpg",
+    src: "gallery/IMG-20250621-WA0025.webp",
     alt: "IMG-20250621-WA0025",
   },
   {
-    src: "gallery/IMG-20250621-WA0026.jpg",
+    src: "gallery/IMG-20250621-WA0026.webp",
     alt: "IMG-20250621-WA0026",
   },
   {
-    src: "gallery/IMG-20250621-WA0027.jpg",
+    src: "gallery/IMG-20250621-WA0027.webp",
     alt: "IMG-20250621-WA0027",
   },
   {
-    src: "gallery/IMG-20250621-WA0028.jpg",
+    src: "gallery/IMG-20250621-WA0028.webp",
     alt: "IMG-20250621-WA0028",
   },
   {
-    src: "gallery/IMG-20250621-WA0029.jpg",
+    src: "gallery/IMG-20250621-WA0029.webp",
     alt: "IMG-20250621-WA0029",
   },
   {
-    src: "gallery/IMG-20250621-WA0030.jpg",
+    src: "gallery/IMG-20250621-WA0030.webp",
     alt: "IMG-20250621-WA0030",
   },
   {
-    src: "gallery/IMG-20250621-WA0031.jpg",
+    src: "gallery/IMG-20250621-WA0031.webp",
     alt: "IMG-20250621-WA0031",
   },
   {
-    src: "gallery/IMG-20250621-WA0032.jpg",
+    src: "gallery/IMG-20250621-WA0032.webp",
     alt: "IMG-20250621-WA0032",
   },
   {
-    src: "gallery/IMG-20250621-WA0033.jpg",
+    src: "gallery/IMG-20250621-WA0033.webp",
     alt: "IMG-20250621-WA0033",
   },
   {
-    src: "gallery/IMG-20250621-WA0034.jpg",
+    src: "gallery/IMG-20250621-WA0034.webp",
     alt: "IMG-20250621-WA0034",
   },
   {
-    src: "gallery/IMG-20250621-WA0035.jpg",
+    src: "gallery/IMG-20250621-WA0035.webp",
     alt: "IMG-20250621-WA0035",
   },
   {
-    src: "gallery/IMG-20250621-WA0036.jpg",
+    src: "gallery/IMG-20250621-WA0036.webp",
     alt: "IMG-20250621-WA0036",
   },
   {
-    src: "gallery/IMG-20250621-WA0037.jpg",
+    src: "gallery/IMG-20250621-WA0037.webp",
     alt: "IMG-20250621-WA0037",
   },
   {
-    src: "gallery/IMG-20250621-WA0038.jpg",
+    src: "gallery/IMG-20250621-WA0038.webp",
     alt: "IMG-20250621-WA0038",
   },
   {
-    src: "gallery/IMG-20250621-WA0039.jpg",
+    src: "gallery/IMG-20250621-WA0039.webp",
     alt: "IMG-20250621-WA0039",
   },
   {
-    src: "gallery/IMG-20250621-WA0040.jpg",
+    src: "gallery/IMG-20250621-WA0040.webp",
     alt: "IMG-20250621-WA0040",
   },
   {
-    src: "gallery/IMG-20250621-WA0041.jpg",
+    src: "gallery/IMG-20250621-WA0041.webp",
     alt: "IMG-20250621-WA0041",
   },
   {
-    src: "gallery/IMG-20250621-WA0043.jpg",
+    src: "gallery/IMG-20250621-WA0043.webp",
     alt: "IMG-20250621-WA0043",
   },
   {
-    src: "gallery/IMG_20250623_204409.jpg",
+    src: "gallery/IMG_20250623_204409.webp",
     alt: "IMG_20250623_204409",
   },
   {
-    src: "gallery/IMG_20250623_204501.jpg",
+    src: "gallery/IMG_20250623_204501.webp",
     alt: "IMG_20250623_204501",
   },
   {
-    src: "gallery/IMG_20250623_204555.jpg",
+    src: "gallery/IMG_20250623_204555.webp",
     alt: "IMG_20250623_204555",
   },
   {
-    src: "gallery/IMG_20250623_204647.jpg",
+    src: "gallery/IMG_20250623_204647.webp",
     alt: "IMG_20250623_204647",
   },
   {
-    src: "gallery/Screenshot_20250623_204242.jpg",
+    src: "gallery/Screenshot_20250623_204242.webp",
     alt: "Screenshot_20250623_204242",
   },
 ]

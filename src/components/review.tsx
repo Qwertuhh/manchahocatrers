@@ -7,44 +7,24 @@ interface Review {
 
 const reviews: Review[] = [
   {
-    name: "Arihant",
-    content:
-      "Amazing food and prompt service! A true delight, every dish was perfectly prepared. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    name: "Sofia P.",
+    content: "I couldn't recommend Manchaho Catrers more highly. The food was delicious and the service was impeccable. They helped make my wedding day truly unforgettable.",
   },
   {
-    name: "Riya",
-    content:
-      "Loved the variety and quality of dishes. The presentation was stunning too, making the meal an experience! Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    name: "John D.",
+    content: "I hired Manchaho Catrers for my corporate event and they exceeded all of my expectations. The food was amazing and the staff was so friendly and attentive. I would definitely use them again.",
   },
   {
-    name: "Akash",
-    content:
-      "Delicious food and incredibly quick delivery! My go-to place for a satisfying meal anytime. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    name: "Emily G.",
+    content: "I recently used Manchaho Catrers for my baby shower and they were absolutely fantastic. The food was delicious and the presentation was beautiful. The staff was also very friendly and helpful. I would highly recommend them.",
   },
   {
-    name: "Sana",
-    content:
-      "Every dish was perfection! An unforgettable culinary experience that truly exceeded my expectations. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    name: "Michael T.",
+    content: "I was blown away by the quality of the food and service provided by Manchaho Catrers. They truly went above and beyond to make my event special. I would definitely use them again in the future.",
   },
   {
-    name: "Priya",
-    content:
-      "Fantastic ambiance and exceptional service. A must-visit for anyone looking for a memorable dining experience! Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
-  {
-    name: "Rahul",
-    content:
-      "The flavors were incredible, a truly gourmet experience that left me wanting more. Highly recommended! Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-  {
-    name: "Meera",
-    content:
-      "Consistently excellent food and friendly staff. Always a pleasure! Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  },
-  {
-    name: "Vikram",
-    content:
-      "Impressed by the fresh ingredients and unique taste combinations. Superb! Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    name: "Sarah K.",
+    content: "I recently used Manchaho Catrers for my birthday party and they were amazing. The food was delicious and the staff was so friendly and attentive. The presentation of the food was also beautiful. I would highly recommend them.",
   },
 ];
 
@@ -98,11 +78,9 @@ function ReviewList() {
         {[...reviews, ...reviews].map((review: Review, index: number) => (
           <div
             key={index}
-            className="flex-shrink-0 w-[280px] sm:w-[320px] md:w-[360px] h-full flex flex-col justify-between p-6 bg-white bg-opacity-5 border border-gray-700 rounded-2xl shadow-xl backdrop-blur-md transform hover:scale-[1.02] transition-transform duration-300 ease-out group"
+            className="flex-shrink-0 w-[280px] sm:w-[320px] md:w-[360px] h-full flex flex-col justify-between p-6 bg-stone-700 bg-opacity-5 border border-gray-700 rounded-2xl shadow-xl backdrop-blur-md transform hover:scale-[1.02] transition-transform duration-300 ease-out group"
           >
-            {/* FIX: Removed 'whitespace-nowrap' and changed text color for readability */}
-            {/* Added 'break-words' to ensure long words wrap */}
-            <p className="italic text-lg md:text-xl leading-relaxed h-full text-black mb-4 group-hover:text-amber-300 transition-colors duration-300 break-words overflow-hidden text-ellipsis max-h-[7.5rem]">
+            <p className="italic text-lg md:text-xl leading-relaxed h-full text-white mb-4 group-hover:text-amber-300 transition-colors duration-300 break-words overflow-hidden text-ellipsis max-h-[7.5rem]">
               "{review.content}"
             </p>
             <p className="text-right text-sm md:text-base font-medium text-gray-400">
