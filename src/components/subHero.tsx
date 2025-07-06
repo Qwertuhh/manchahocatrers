@@ -1,7 +1,7 @@
 
 function SubHeroSection() {
   return (
-    <section className="relative bg-stone-700 bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-xl p-8 md:p-12 shadow-2xl border border-gray-700 border-opacity-30 flex flex-col items-center justify-center text-center space-y-6 animate-fade-in">
+    <section className="relative bg-stone-700 w-full bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-xl p-8 md:p-12 shadow-2xl border border-gray-700 border-opacity-30 flex flex-col items-center justify-center text-center space-y-6 animate-fade-in">
       {/* Custom CSS for animation */}
       <style>{`
         @keyframes fadeIn {
@@ -25,7 +25,7 @@ function SubHeroSection() {
       </h2>
 
       {/* Description */}
-      <p className="text-base md:text-lg text-gray-300 max-w-2xl">
+      <p className="text-base md:text-lg text-gray-300 max-w-4xl">
         Explore a world of culinary delights and savor the flavors of our exquisite dishes. From traditional favorites to modern twists, our menu is crafted to tantalize your taste buds and elevate your dining experience.
       </p>
 
