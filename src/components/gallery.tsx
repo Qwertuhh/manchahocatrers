@@ -223,7 +223,8 @@ function Gallery() {
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-full object-cover group-hover:brightness-110 transition-all duration-300"
+                  className="w-full h-full object-cover group-hover:brightness-110 transition-all duration-300 "
+                  loading="lazy"
                   onError={(e) => {
                     e.currentTarget.src =
                       "https://placehold.co/400x300/cccccc/000000?text=Image+Error";
