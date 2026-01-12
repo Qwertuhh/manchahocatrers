@@ -190,7 +190,7 @@ function Gallery() {
       ></div>
 
       <h2 className="raleway-bold relative z-10 text-4xl md:text-5xl font-extrabold text-center text-neutral-900 mb-12 tracking-tight">
-        Our <span className="text-neutral-700 underline underline-offset-4 decoration-4 hover:underline-offset-6 hover:decoration-5 transition-all duration-300 ease-in-out">Gallery</span>
+        Our <span className="text-(--accent-color) underline underline-offset-4 decoration-4 hover:underline-offset-6 hover:decoration-5 transition-all duration-300 ease-in-out">Gallery</span>
       </h2>
 
       {/* Gallery Rows Container */}

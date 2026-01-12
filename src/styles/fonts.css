@@ -27,6 +27,8 @@
   font-optical-sizing: auto;
   font-weight: 900;
   font-style: normal;
+  letter-spacing: 0.0045em;
+  word-spacing: 0.045em;
 }
 
 /* * Serif Fonts */

@@ -1,6 +1,10 @@
 @import "./styles/fonts.css";
 @import "./styles/tailwind.css";
 
+:root {
+  --accent-color: #9b8340;
+}
+
 /* In your global CSS file, e.g., globals.css or index.css */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
@@ -8,6 +12,7 @@
 .no-scrollbar {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+  -webkit-scrollbar: none; /* Chrome, Safari, Opera */
 }
 
 html {
