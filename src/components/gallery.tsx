@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useEffect, useRef } from "react";
 
 // Define a type for your image data (just the URL in this case)
@@ -118,7 +119,7 @@ const images: GalleryImage[] = [
     src: "gallery/Screenshot_20250623_204242.webp",
     alt: "Screenshot_20250623_204242",
   },
-]
+];
 
 function Gallery() {
   const scrollRef1 = useRef<HTMLDivElement>(null);
@@ -181,15 +182,15 @@ function Gallery() {
     <section className="py-16 px-4 md:px-8 bg-white overflow-hidden relative isolate">
       {/* Optional: Subtle background pattern for visual interest on white */}
       <div
-        className="absolute inset-0 opacity-10 pointer-events-none"
-        style={{
-          backgroundImage: "radial-gradient(#00000011 1px, transparent 1px)",
-          backgroundSize: "20px 20px",
-        }}
+        className={clsx(
+          "absolute inset-0 opacity-10 pointer-events-none ",
+          "[background-image:radial-gradient(#00000011_1px,transparent_1px)] ",
+          "[background-size:20px_20px]"
+        )}
       ></div>
 
-      <h2 className="relative z-10 text-4xl md:text-5xl font-extrabold text-center text-stone-800 mb-12 drop-shadow-sm tracking-tight">
-        Our <span className="text-stone-600">Gallery</span>
+      <h2 className="raleway-bold relative z-10 text-4xl md:text-5xl font-extrabold text-center text-neutral-900 mb-12 tracking-tight">
+        Our <span className="text-neutral-700 underline underline-offset-4 decoration-4 hover:underline-offset-6 hover:decoration-5 transition-all duration-300 ease-in-out">Gallery</span>
       </h2>
 
       {/* Gallery Rows Container */}
@@ -199,13 +200,11 @@ function Gallery() {
         {/* First Scrolling Row */}
         <div
           ref={scrollRef1}
-          className="relative z-10 flex w-full overflow-x-scroll no-scrollbar whitespace-nowrap space-x-6 md:space-x-8 py-6 cursor-grab active:cursor-grabbing"
-          style={{
-            maskImage:
-              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-            WebkitMaskImage:
-              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-          }}
+          className={clsx(
+            "relative z-10 flex w-full overflow-x-scroll no-scrollbar whitespace-nowrap space-x-6 md:space-x-8 py-6 cursor-grab active:cursor-grabbing",
+            "[mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]",
+            "[--webkit-mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]"
+          )}
         >
           {/* Duplicate images for the infinite loop effect.
               Splitting the `images` array for clarity,
@@ -236,14 +235,12 @@ function Gallery() {
         </div>
         {/* Second Scrolling Row */}
         <div
-          ref={scrollRef2}
-          className="relative z-10 flex w-full overflow-x-scroll no-scrollbar whitespace-nowrap space-x-6 md:space-x-8 py-6 cursor-grab active:cursor-grabbing"
-          style={{
-            maskImage:
-              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-            WebkitMaskImage:
-              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-          }}
+          ref={scrollRef1}
+          className={clsx(
+            "relative z-10 flex w-full overflow-x-scroll no-scrollbar whitespace-nowrap space-x-6 md:space-x-8 py-6 cursor-grab active:cursor-grabbing",
+            "[mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]",
+            "[--webkit-mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]"
+          )}
         >
           {/* Duplicate images for the infinite loop effect.
               Using the same `images` array but perhaps a different slice or order
@@ -276,4 +273,3 @@ function Gallery() {
 }
 
 export default Gallery;
-
