@@ -1,34 +1,17 @@
-
 function SubHeroSection() {
   return (
-    <section className="relative bg-stone-700 w-full bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-xl p-8 md:p-12 shadow-2xl border border-gray-700 border-opacity-30 flex flex-col items-center justify-center text-center space-y-6 animate-fade-in">
-      {/* Custom CSS for animation */}
-      <style>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fade-in {
-          animation: fadeIn 1s ease-out forwards;
-        }
-      `}</style>
-
+    <section className="relative bg-neutral-100 bg-opacity-80 max-w-4xl text-neutral-900 backdrop-blur-lg rounded-md p-8 md:p-12 flex flex-col items-center justify-center text-center space-y-6 border-2 border-neutral-200">
       {/* Section Title */}
-      <h2 className="text-3xl md:text-4xl font-extrabold text-white leading-tight">
+      <h2 className="text-3xl md:text-4xl font-extrabold text-neutral-900 leading-tight raleway-bold">
         Discover Our Menu
       </h2>
-
       {/* Description */}
-      <p className="text-base md:text-lg text-gray-300 max-w-4xl">
-        Explore a world of culinary delights and savor the flavors of our exquisite dishes. From traditional favorites to modern twists, our menu is crafted to tantalize your taste buds and elevate your dining experience.
+      <p className="ibm-plex-serif-regular text-base md:text-lg text-neutral-900 max-w-4xl ">
+        Explore a world of culinary delights and savor the flavors of our
+        exquisite dishes. From traditional favorites to modern twists, our menu
+        is crafted to tantalize your taste buds and elevate your dining
+        experience.
       </p>
-
       {/* Stars Section */}
       <div className="flex space-x-2 sm:space-x-2 text-yellow-400">
         {[...Array(5)].map((_, i) => (
@@ -42,7 +25,6 @@ function SubHeroSection() {
           </svg>
         ))}
       </div>
-
       {/* Menu Button */}
       <a
         href="/manchaho_catrers_menu.pdf" // Link to the menu section
