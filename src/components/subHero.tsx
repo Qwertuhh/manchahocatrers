@@ -1,9 +1,9 @@
 function SubHeroSection() {
   return (
-    <section className="relative bg-neutral-100 bg-opacity-80 max-w-4xl text-neutral-900 backdrop-blur-lg rounded-md p-8 md:p-12 flex flex-col items-center justify-center text-center space-y-6 border-2 border-neutral-200">
+    <section className="relative bg-neutral-100/40 bg-opacity-80 m-4 md:max-w-5xl text-neutral-900 backdrop-blur-lg rounded-md p-8 md:p-12 flex flex-col items-center justify-center text-center space-y-6 border-2 border-neutral-200">
       {/* Section Title */}
       <h2 className="text-3xl md:text-4xl font-extrabold text-neutral-900 leading-tight raleway-bold">
-        Discover Our Menu
+        Discover Our <span className="text-(--accent-color)">Menu</span>
       </h2>
       {/* Description */}
       <p className="ibm-plex-serif-regular text-base md:text-lg text-neutral-900 max-w-4xl ">
