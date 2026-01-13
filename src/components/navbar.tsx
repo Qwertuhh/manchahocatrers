@@ -22,7 +22,7 @@
 
 import clsx from "clsx";
 import { Menu, X } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 interface Links {
   name: string;
@@ -49,6 +49,86 @@ function Navbar() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isHoveringTop, setIsHoveringTop] = useState(false);
+  const navbarRef = useRef<HTMLElement>(null);
+
+  const scrollToSection = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    targetId: string
+  ) => {
+    e.preventDefault();
+
+    const targetElement = document.getElementById(targetId.replace("#", ""));
+    if (!targetElement) return;
+
+    const navbarHeight = navbarRef.current?.offsetHeight || 0;
+    const viewportHeight = window.innerHeight;
+    const targetHeight = targetElement.offsetHeight;
+
+    // Calculate scroll position to center the element
+    const targetRect = targetElement.getBoundingClientRect();
+    const currentScrollY = window.pageYOffset;
+    const targetCenterPosition =
+      targetRect.top + currentScrollY + targetHeight / 2 - viewportHeight / 2;
+
+    // Add navbar offset to ensure it's not covered
+    const finalScrollPosition = Math.max(
+      0,
+      targetCenterPosition - navbarHeight
+    );
+
+    window.scrollTo({
+      top: finalScrollPosition,
+      behavior: "smooth",
+    });
+
+    // Close mobile menu after navigation
+    setMenuOpen(false);
+  };
+
+  // Handle initial hash-based scrolling on page load
+  useEffect(() => {
+    const handleHashScroll = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        // Small delay to ensure DOM is ready
+        setTimeout(() => {
+          const targetElement = document.getElementById(hash.replace("#", ""));
+          if (targetElement) {
+            const navbarHeight = navbarRef.current?.offsetHeight || 0;
+            const viewportHeight = window.innerHeight;
+            const targetHeight = targetElement.offsetHeight;
+
+            const targetRect = targetElement.getBoundingClientRect();
+            const currentScrollY = window.pageYOffset;
+            const targetCenterPosition =
+              targetRect.top +
+              currentScrollY +
+              targetHeight / 2 -
+              viewportHeight / 2;
+            const finalScrollPosition = Math.max(
+              0,
+              targetCenterPosition - navbarHeight
+            );
+
+            window.scrollTo({
+              top: finalScrollPosition,
+              behavior: "smooth",
+            });
+          }
+        }, 100);
+      }
+    };
+
+    // Handle initial load
+    handleHashScroll();
+
+    // Handle hash changes
+    window.addEventListener("hashchange", handleHashScroll);
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -81,12 +161,6 @@ function Navbar() {
       window.removeEventListener("mousemove", handleMouseMove);
     };
   }, [lastScrollY]);
-
-  // Hide navbar when clicking anchor links
-  const handleLinkClick = () => {
-    setIsVisible(false);
-    setMenuOpen(false);
-  };
 
   const shouldShow = isVisible || isHoveringTop || lastScrollY <= 100;
 
@@ -128,7 +202,11 @@ function Navbar() {
               <a
                 href={link}
                 className="capitalize hover:underline underline-offset-2 hover:underline-offset-4 transition-all duration-300"
-                onClick={link.startsWith("#") ? handleLinkClick : undefined}
+                onClick={
+                  link.startsWith("#")
+                    ? (e) => scrollToSection(e, link)
+                    : undefined
+                }
               >
                 {name}
               </a>
