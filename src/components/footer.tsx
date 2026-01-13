@@ -2,14 +2,14 @@ import { FacebookNeutral, InstagramNeutral } from "@/assets";
 
 function Footer() {
   return (
-    <footer className="bg-neutral-800 text-stone-300 py-12 px-4 sm:px-6 lg:px-8 border-t border-neutral-400/40">
+    <footer className="bg-neutral-800 text-stone-300 py-12 px-6 lg:px-10 border-t border-neutral-400/40">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 border-b border-stone-700 pb-8 mb-8">
         {/* Company Info / Brand */}
         <div className="text-center md:text-left">
           <h3 className="wix-madefor-display-semibold text-2xl font-bold text-stone-100 mb-4 tracking-wide">
             Manchaho Catrers
           </h3>
-          <p className="ibm-plex-serif-regular text-stone-400 text-sm leading-relaxed">
+          <p className="noto-serif-regular text-stone-400 text-sm leading-relaxed">
             Make your special day more special and beautiful with our exquisite
             wedding and engagement services.
           </p>
@@ -70,36 +70,45 @@ function Footer() {
               aria-label="Facebook"
               className="text-stone-400 hover:text-stone-100 transition-colors duration-200"
             >
-              <img src={FacebookNeutral} alt="Facebook" className="h-8 w-8 bg-neutral-50 p-1 rounded" />
+              <img
+                src={FacebookNeutral}
+                alt="Facebook"
+                className="h-8 w-8 bg-neutral-50 p-1 rounded"
+              />
             </a>
             <a
               href="#"
               aria-label="Instagram"
               className="text-stone-400 hover:text-stone-100 transition-colors duration-200"
             >
-              <img src={InstagramNeutral} alt="Instagram" className="h-8 w-8 bg-neutral-50 p-1 rounded" />
+              <img
+                src={InstagramNeutral}
+                alt="Instagram"
+                className="h-8 w-8 bg-neutral-50 p-1 rounded"
+              />
             </a>
           </div>
-          <p className="ibm-plex-mono-regular text-stone-400 text-sm">Jaipur, Rajasthan, India</p>
+          <p className="ibm-plex-mono-regular text-stone-400 text-sm">
+            Jaipur, Rajasthan, India
+          </p>
         </div>
       </div>
 
       {/* Copyright */}
-      <div className="ibm-plex-mono-regular text-center text-stone-500 mt-8">
-       <p className="text-justify mx-4 lg:mx-6 cursor-pointer text-sm lg:text-base ">
-                    <p>Copyright © 2025 Arihant Jain,Qwertuhh</p>
-                    <p>
-                        Distributed under the{' '}
-                        <a
-                            href="https://opensource.org/licenses/MIT"
-                            className="underline underline-offset-2 hover:underline-offset-4"
-                        >
-                            MIT License
-                        </a>
-                        . THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
-                        ANY KIND.
-                    </p>
-                </p>
+      <div className="ibm-plex-mono-regular text-center text-stone-500 mt-8 mx-0">
+        <p className="text-justify cursor-pointer text-sm lg:text-base ">
+          <p>Copyright © 2025 Arihant Jain,Qwertuhh</p>
+          <p>
+            Distributed under the{" "}
+            <a
+              href="https://opensource.org/licenses/MIT"
+              className="underline underline-offset-2 hover:underline-offset-4"
+            >
+              MIT License
+            </a>
+            . THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+          </p>
+        </p>
       </div>
     </footer>
   );

@@ -21,7 +21,7 @@ function HeroSection() {
         <h1 className="wix-madefor-display-bold text-4xl md:text-6xl font-extrabold tracking-tight text-neutral-900 text-center z-10">
           Manchaho Catrers
         </h1>
-        <p className="ibm-plex-serif-regular mt-4 text-lg md:text-xl font-light mx-4 md:mx-10 text-center max-w-2xl text-gray-700 z-10">
+        <p className="noto-serif-regular mt-4 text-lg md:text-xl font-light mx-4 md:mx-10 text-center max-w-2xl text-gray-700 z-10">
           Make your special day more special and beautiful with our exquisite
           wedding and engagement services.
         </p>

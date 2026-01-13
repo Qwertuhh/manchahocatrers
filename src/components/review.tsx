@@ -73,7 +73,7 @@ function ReviewList() {
         {[...reviews, ...reviews].map((review: Review, index: number) => (
           <div key={index} className="bg-neutral-200 p-4 m-2 rounded-lg">
             <div className="flex flex-col gap-2 content-left items-end">
-              <p className="break-words w-[20rem] h-[20rem] ibm-plex-serif-regular text-neutral-900">
+              <p className="break-words w-[20rem] h-[20rem] noto-serif-regular text-neutral-900">
                 {review.content}
               </p>
               <p className="ibm-plex-mono-bold text-neutral-900">

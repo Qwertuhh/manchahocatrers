@@ -14,7 +14,7 @@ const ContactArea: React.FC<ContactAreaProps> = ({ email, phoneNumber }) => {
         <h2 className="wix-madefor-display-bold text-3xl font-extrabold text-neutral-100 sm:text-4xl">
           Get In <span className="text-(--accent-color)">Touch</span>
         </h2>
-        <p className="ibm-plex-serif-regular mt-4 text-lg text-neutral-200">
+        <p className="noto-serif-regular mt-4 text-lg text-neutral-200">
           We'd love to hear from you! Reach out to us via email or phone.
         </p>
 

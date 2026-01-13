@@ -6,7 +6,7 @@ function SubHeroSection() {
         Discover Our <span className="text-(--accent-color)">Menu</span>
       </h2>
       {/* Description */}
-      <p className="ibm-plex-serif-regular text-base md:text-lg text-neutral-900 max-w-4xl ">
+      <p className="noto-serif-regular text-base md:text-lg text-neutral-900 max-w-4xl ">
         Explore a world of culinary delights and savor the flavors of our
         exquisite dishes. From traditional favorites to modern twists, our menu
         is crafted to tantalize your taste buds and elevate your dining
