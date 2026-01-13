@@ -1,6 +1,5 @@
 import clsx from "clsx";
-import { Contact, Menu, Sparkle, SquareMenu, X } from "lucide-react";
-import type React from "react";
+import { Menu, X } from "lucide-react";
 
 interface Links {
   name: string;
@@ -29,7 +28,7 @@ function Navbar() {
   return (
     <nav className="bg-stone-800/80 py-4 questrial-regular px-4 rounded-2xl fixed top-0 left-0 right-0 z-50 m-4">
       <div className="flex justify-between items-center">
-        <div className="text-white text-xl font-bold raleway-semibold">
+        <div className="text-white text-xl font-bold wix-madefor-display-semibold">
           Manchaho Catrers
         </div>
 

@@ -56,7 +56,7 @@ function ReviewList() {
     <section className="py-16 px-4 md:px-8 bg-neutral-900 overflow-hidden relative isolate">
       <div className="absolute inset-0 opacity-5 pointer-events-none"></div>
 
-      <h2 className="raleway-bold relative z-10 text-4xl md:text-5xl font-extrabold text-center text-white mb-12 drop-shadow-md">
+      <h2 className="wix-madefor-display-bold relative z-10 text-4xl md:text-5xl font-extrabold text-center text-white mb-12 drop-shadow-md">
         What Our <span className="text-(--accent-color)">Customers</span> Say
       </h2>
 

@@ -17,7 +17,7 @@ function HeroSection() {
           alt="Manchaho Catrers Logo"
           className="mb-6 w-32 h-32 md:w-40 md:h-40 rounded-full shadow-xl object-cover z-10" // Increased size, added shadow, z-index
         />
-        <h1 className="raleway-bold text-4xl md:text-6xl font-extrabold tracking-tight text-neutral-900 text-center z-10">
+        <h1 className="wix-madefor-display-bold text-4xl md:text-6xl font-extrabold tracking-tight text-neutral-900 text-center z-10">
           Manchaho Catrers
         </h1>
         <p className="ibm-plex-serif-regular mt-4 text-lg md:text-xl font-light mx-4 md:mx-10 text-center max-w-2xl text-gray-700 z-10">
