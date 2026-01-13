@@ -72,7 +72,9 @@ function Navbar() {
     <nav
       className={clsx(
         "bg-stone-800/80 py-4 questrial-regular px-4 rounded-2xl fixed top-0 left-0 right-0 z-50 m-4 transition-transform duration-300 ease-in-out",
-        shouldShow ? "translate-y-0" : "-translate-y-full border border-neutral-100/40"
+        shouldShow
+          ? "translate-y-0"
+          : "-translate-y-full border border-neutral-100/40"
       )}
     >
       <div className="flex justify-between items-center">
