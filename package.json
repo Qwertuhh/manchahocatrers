@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "optimize-images": "bun scripts/optimize-images.ts"
+    "optimize-images": "bun scripts/optimize-images.ts",
+    "add-license": "addlicense -c \"Arihant Jain, Qwertuhh\" -l mit ./src ./scripts ./public ./"
   },
   "dependencies": {
     "@radix-ui/react-navigation-menu": "^1.2.13",
