@@ -18,7 +18,7 @@ function App() {
           "flex flex-col items-center justify-center py-12"
         )}
       >
-        <HeroSection />
+        <HeroSection/>
         <SubHeroSection />
       </div>
       <div id="highlights">

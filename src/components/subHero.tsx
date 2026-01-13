@@ -1,6 +1,6 @@
 function SubHeroSection() {
   return (
-    <section className="relative bg-neutral-100/40 bg-opacity-80 m-4 md:max-w-5xl text-neutral-900 backdrop-blur-lg rounded-md p-8 md:p-12 flex flex-col items-center justify-center text-center space-y-6 border-2 border-neutral-200">
+    <section id="subhero" className="relative bg-neutral-100/40 bg-opacity-80 m-4 md:max-w-5xl text-neutral-900 backdrop-blur-lg rounded-md p-8 md:p-12 flex flex-col items-center justify-center text-center space-y-6 border-2 border-neutral-200">
       {/* Section Title */}
       <h2 className="text-3xl md:text-4xl font-extrabold text-neutral-900 leading-tight wix-madefor-display-bold">
         Discover Our <span className="text-(--accent-color)">Menu</span>
@@ -13,7 +13,7 @@ function SubHeroSection() {
         experience.
       </p>
       {/* Stars Section */}
-      <div className="flex space-x-2 sm:space-x-2 text-yellow-400 hover:scale-110 transition-all duration-300 ease-in-out cursor-pointer">
+      <div className="flex space-x-2 sm:space-x-2 text-yellow-400 transition-all duration-300 ease-in-out cursor-pointer">
         {[...Array(5)].map((_, i) => (
           <svg
             key={i}
@@ -28,9 +28,9 @@ function SubHeroSection() {
       {/* Menu Button */}
       <a
         href="/manchaho_catrers_menu.pdf" // Link to the menu section
-        className="ibm-plex-mono-bold inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 shadow-lg transform transition-all duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 focus:ring-offset-gray-900"
+        className="ibm-plex-mono-bold inline-flex items-center justify-center px-8 py-3 text-base font-medium rounded-full text-neutral-950 hover:text-neutral-50 bg-gradient-to-r from-neutral-200 to-(--accent-color) hover:from-neutral-700 hover:to-(--accent-color) shadow-lg transform transition-all duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-500 focus:ring-offset-gray-900 border border-(--accent-color)"
       >
-        View Our Menu
+        c View Our Menu
         <svg
           className="ml-2 -mr-1 w-5 h-5"
           fill="none"

@@ -179,7 +179,7 @@ function Gallery() {
   }, []);
 
   return (
-    <section className="py-16 px-4 md:px-8 bg-white overflow-hidden relative isolate">
+    <section id="gallery" className="py-16 px-4 md:px-8 bg-white overflow-hidden relative isolate">
       {/* Optional: Subtle background pattern for visual interest on white */}
       <div
         className={clsx(
@@ -190,7 +190,10 @@ function Gallery() {
       ></div>
 
       <h2 className="wix-madefor-display-bold relative z-10 text-4xl md:text-5xl font-extrabold text-center text-neutral-900 mb-12 tracking-tight">
-        Our <span className="text-(--accent-color) underline underline-offset-4 decoration-4 hover:underline-offset-6 hover:decoration-5 transition-all duration-300 ease-in-out">Gallery</span>
+        Our{" "}
+        <span className="text-(--accent-color) underline underline-offset-4 decoration-4 hover:underline-offset-6 hover:decoration-5 transition-all duration-300 ease-in-out">
+          Gallery
+        </span>
       </h2>
 
       {/* Gallery Rows Container */}
@@ -210,32 +213,30 @@ function Gallery() {
               Splitting the `images` array for clarity,
               but you could use `[...images, ...images]` for both if you prefer identical content.
           */}
-          {[...images, ...images]
-            .slice(0, (images.length / 2) * 2)
-            .map((image: GalleryImage, index: number) => (
-              <div
-                key={`row1-${index}`} // Unique key for each item in this row
-                className="flex-shrink-0 w-[300px] h-[225px] sm:w-[350px] sm:h-[262px] md:w-[400px] md:h-[300px] 
+          {[...images, ...images].map((image: GalleryImage, index: number) => (
+            <div
+              key={`row1-${index}`} // Unique key for each item in this row
+              className="flex-shrink-0 w-[300px] h-[225px] sm:w-[350px] sm:h-[262px] md:w-[400px] md:h-[300px] 
                          rounded-xl shadow-lg border border-gray-200 overflow-hidden 
                          transform hover:scale-[1.03] transition-transform duration-300 ease-out group"
-              >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-full object-cover group-hover:brightness-110 transition-all duration-300 "
-                  loading="lazy"
-                  onError={(e) => {
-                    e.currentTarget.src =
-                      "https://placehold.co/400x300/cccccc/000000?text=Image+Error";
-                    e.currentTarget.alt = "Image failed to load";
-                  }}
-                />
-              </div>
-            ))}
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="w-full h-full object-cover group-hover:brightness-110 transition-all duration-300 "
+                loading="lazy"
+                onError={(e) => {
+                  e.currentTarget.src =
+                    "https://placehold.co/400x300/cccccc/000000?text=Image+Error";
+                  e.currentTarget.alt = "Image failed to load";
+                }}
+              />
+            </div>
+          ))}
         </div>
         {/* Second Scrolling Row */}
         <div
-          ref={scrollRef1}
+          ref={scrollRef2}
           className={clsx(
             "relative z-10 flex w-full overflow-x-scroll no-scrollbar whitespace-nowrap space-x-6 md:space-x-8 py-6 cursor-grab active:cursor-grabbing",
             "[mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]",

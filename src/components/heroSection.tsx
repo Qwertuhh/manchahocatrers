@@ -5,7 +5,8 @@ function HeroSection() {
   // Define your social media links here, as the SocialMediaFollow component expects them
 
   return (
-    <div
+    <section
+      id="hero"
       className={clsx(
         "flex min-h-[90vh] flex-col items-center justify-center relative overflow-hidden",
       )}
@@ -32,7 +33,7 @@ function HeroSection() {
           <SocialMediaFollow />
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
