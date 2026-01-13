@@ -66,7 +66,7 @@ function Footer() {
           <div className="flex justify-center md:justify-start space-x-6 mb-4">
             {/* Replace with actual SVG icons or icon library */}
             <a
-              href="#"
+              href="https://www.facebook.com/share/1D4yS2JEHM"
               aria-label="Facebook"
               className="text-stone-400 hover:text-stone-100 transition-colors duration-200"
             >
@@ -77,7 +77,7 @@ function Footer() {
               />
             </a>
             <a
-              href="#"
+              href="https://www.instagram.com/manchahocatrers"
               aria-label="Instagram"
               className="text-stone-400 hover:text-stone-100 transition-colors duration-200"
             >

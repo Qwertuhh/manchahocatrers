@@ -3,6 +3,7 @@
 
 :root {
   --accent-color: #9b8340;
+  --acent-hover: #7a6938;
 }
 
 /* In your global CSS file, e.g., globals.css or index.css */

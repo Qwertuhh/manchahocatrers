@@ -28,7 +28,6 @@ function HeroSection() {
 
         {/* Social Media Follow Component */}
         <div className="mt-8 z-10">
-          {" "}
           {/* Added margin top and z-index */}
           <SocialMediaFollow />
         </div>

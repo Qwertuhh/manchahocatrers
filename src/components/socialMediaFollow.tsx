@@ -6,7 +6,7 @@ function SocialMediaFollow() {
       Follow Us
       <div className="inline-flex items-center space-x-4">
         <a
-          href="https://www.facebook.com/share/1D4yS2JEHM/"
+          href="https://www.facebook.com/share/1D4yS2JEHM"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -17,7 +17,7 @@ function SocialMediaFollow() {
           />
         </a>
         <a
-          href="https://www.instagram.com/manchahocatrers/"
+          href="https://www.instagram.com/manchahocatrers"
           target="_blank"
           rel="noopener noreferrer"
         >

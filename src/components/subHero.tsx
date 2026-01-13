@@ -1,6 +1,11 @@
+import clsx from "clsx";
+
 function SubHeroSection() {
   return (
-    <section id="subhero" className="relative bg-neutral-100/40 bg-opacity-80 m-4 md:max-w-5xl text-neutral-900 backdrop-blur-lg rounded-md p-8 md:p-12 flex flex-col items-center justify-center text-center space-y-6 border-2 border-neutral-200">
+    <section
+      id="subhero"
+      className="relative bg-neutral-100/40 bg-opacity-80 m-4 md:max-w-5xl text-neutral-900 backdrop-blur-lg rounded-md p-8 md:p-12 flex flex-col items-center justify-center text-center space-y-6 border-2 border-neutral-200"
+    >
       {/* Section Title */}
       <h2 className="text-3xl md:text-4xl font-extrabold text-neutral-900 leading-tight wix-madefor-display-bold">
         Discover Our <span className="text-(--accent-color)">Menu</span>
@@ -27,10 +32,22 @@ function SubHeroSection() {
       </div>
       {/* Menu Button */}
       <a
-        href="/manchaho_catrers_menu.pdf" // Link to the menu section
-        className="ibm-plex-mono-bold inline-flex items-center justify-center px-8 py-3 text-base font-medium rounded-full text-neutral-950 hover:text-neutral-50 bg-gradient-to-r from-neutral-200 to-(--accent-color) hover:from-neutral-700 hover:to-(--accent-color) shadow-lg transform transition-all duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-500 focus:ring-offset-gray-900 border border-(--accent-color)"
+        href="/manchaho_catrers_menu.pdf"
+        className={clsx(
+          "ibm-plex-mono-bold inline-flex items-center justify-center px-8 py-3",
+          "text-base font-medium rounded-full shadow-lg transform transition-all duration-300 ease-in-out",
+          "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-500 focus:ring-offset-gray-900",
+          "hover:scale-105",
+          // Gradient + text colors
+          "text-neutral-900",
+          "bg-gradient-to-r from-yellow-200 to-(--accent-color)",
+          // ? Little darker version of yelow-200 has been set
+          "hover:from-[#f5d96c] hover:to-(--acent-hover)",
+          // Border accent
+          "border border-(--accent-color) hover:border-(--acent-hover)"
+        )}
       >
-        c View Our Menu
+        View Our Menu
         <svg
           className="ml-2 -mr-1 w-5 h-5"
           fill="none"
