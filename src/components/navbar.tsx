@@ -23,6 +23,7 @@
 import clsx from "clsx";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 interface Links {
   name: string;
@@ -36,7 +37,7 @@ const links: Links[] = [
   },
   {
     name: "menu",
-    link: "/manchaho_catrers_menu.pdf",
+    link: "/menu",
   },
   {
     name: "contact",
@@ -199,17 +200,32 @@ function Navbar() {
               key={name}
               className="flex items-center gap-2 text-white py-2 md:py-0 cursor-selectable"
             >
-              <a
-                href={link}
-                className="capitalize hover:underline underline-offset-2 hover:underline-offset-4 transition-all duration-300"
-                onClick={
-                  link.startsWith("#")
-                    ? (e) => scrollToSection(e, link)
-                    : undefined
-                }
-              >
-                {name}
-              </a>
+              {link.startsWith("#") ? (
+                <a
+                  href={link}
+                  className="capitalize hover:underline underline-offset-2 hover:underline-offset-4 transition-all duration-300"
+                  onClick={(e) => scrollToSection(e, link)}
+                >
+                  {name}
+                </a>
+              ) : link.startsWith("http") || link.endsWith(".pdf") ? (
+                <a
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="capitalize hover:underline underline-offset-2 hover:underline-offset-4 transition-all duration-300"
+                >
+                  {name}
+                </a>
+              ) : (
+                <Link
+                  to={link}
+                  className="capitalize hover:underline underline-offset-2 hover:underline-offset-4 transition-all duration-300"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {name}
+                </Link>
+              )}
             </li>
           ))}
         </ul>

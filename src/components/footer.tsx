@@ -46,7 +46,7 @@ function Footer() {
             <ul className="space-y-2 ibm-plex-mono-regular">
               <li>
                 <a
-                  href="#hero"
+                  href="/#hero"
                   className="hover:text-stone-100 transition-colors duration-200"
                 >
                   About Us
@@ -54,7 +54,7 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href="#subhero"
+                  href="/#subhero"
                   className="hover:text-stone-100 transition-colors duration-200"
                 >
                   Services
@@ -62,7 +62,7 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href="#gallery"
+                  href="/#gallery"
                   className="hover:text-stone-100 transition-colors duration-200"
                 >
                   Gallery
@@ -70,7 +70,7 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href="#contact"
+                  href="/#contact"
                   className="hover:text-stone-100 transition-colors duration-200"
                 >
                   Contact
