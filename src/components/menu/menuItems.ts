@@ -12,10 +12,9 @@ const menuCategoriesItems: MenuCategoryItem[] = [
   { name: "Sweets", hindiName: "मिठाई" },
   { name: "Namkeen", hindiName: "नमकीन" },
   { name: "Vegetables", hindiName: "सब्ज़ी" },
-  { name: "Tandoor and Roti", hindiName: "तंदूर और रोटी" },
+  { name: "Breads, Rice & Dal", hindiName: "रोटी, चावल और दाल" },
   { name: "Rajasthani Cuisine", hindiName: "राजस्थानी व्यंजन" },
-  { name: "Floating/Snacks", hindiName: "फ्लोटिंग/स्नैक्स" },
-  { name: "Stalls", hindiName: "स्टॉल" },
+  { name: "Floating/Snacks & Stalls", hindiName: "फ्लोटिंग/स्नैक्स और स्टॉल" },
   { name: "Accompaniments", hindiName: "साथ में दिए जाने वाले खाने" },
 ];
 
@@ -34,150 +33,158 @@ const menuSubCategoriesItems: MenuSubCategoryItem[] = [
   {
     name: "Popular Sweets",
     hindiName: "लोकप्रिय मिठाइयाँ",
-    parentCategory:menuCategories[1],
+    parentCategory: menuCategories[1],
   },
   {
     name: "Rabri and Kheer",
     hindiName: "रबड़ी और खीर",
-    parentCategory:menuCategories[1],
+    parentCategory: menuCategories[1],
   },
   {
     name: "Seasonal Dishes",
     hindiName: "मौसमी व्यंजन",
-    parentCategory:menuCategories[1],
+    parentCategory: menuCategories[1],
   },
   {
     name: "Hot Sweets and Halwa",
     hindiName: "गरम मिठाइयाँ और हलवा",
-    parentCategory:menuCategories[1],
+    parentCategory: menuCategories[1],
   },
   {
     name: "Makhana Special",
     hindiName: "मक्खन स्पेशल",
-    parentCategory:menuCategories[1],
+    parentCategory: menuCategories[1],
   },
   {
     name: "Badam and Kaju Special",
     hindiName: "बादाम और काजू स्पेशल",
-    parentCategory:menuCategories[1],
+    parentCategory: menuCategories[1],
   },
   {
     name: "Pista Special",
     hindiName: "पिस्ता स्पेशल",
-    parentCategory:menuCategories[1],
+    parentCategory: menuCategories[1],
   },
   {
     name: "Petha and Gilori",
     hindiName: "पेठा और गिलोरी",
-    parentCategory:menuCategories[1],
+    parentCategory: menuCategories[1],
   },
   {
     name: "Traditional and Other Sweets",
     hindiName: "परंपरागत और अन्य मिठाइयाँ",
-    parentCategory:menuCategories[1],
+    parentCategory: menuCategories[1],
   },
 
   // Namkeen Subcategories
   {
     name: "Hot Namkeen",
     hindiName: "गरम नमकीन",
-    parentCategory:menuCategories[2],
+    parentCategory: menuCategories[2],
   },
   {
     name: "Dry Namkeen",
     hindiName: "ड्राई नमकीन",
-    parentCategory:menuCategories[2],
+    parentCategory: menuCategories[2],
   },
 
   // Vegetable Subcategories
   {
     name: "Paneer Dishes",
     hindiName: "पनीर की सब्जियाँ",
-    parentCategory:menuCategories[3],
+    parentCategory: menuCategories[3],
   },
   {
     name: "Potato Dishes",
     hindiName: "आलू की सब्जियाँ",
-    parentCategory:menuCategories[3],
+    parentCategory: menuCategories[3],
   },
   {
     name: "Other Vegetables",
     hindiName: "अन्य सब्जियाँ",
-    parentCategory:menuCategories[3],
+    parentCategory: menuCategories[3],
   },
   {
     name: "Seasonal Vegetables",
     hindiName: "मौसमी सब्जियाँ",
-    parentCategory:menuCategories[3],
+    parentCategory: menuCategories[3],
   },
   {
     name: "Dry Vegetables",
     hindiName: "ड्राई सब्जियाँ",
-    parentCategory:menuCategories[3],
+    parentCategory: menuCategories[3],
   },
   {
     name: "Special Vegetables",
     hindiName: "स्पेशल सब्जियाँ",
-    parentCategory:menuCategories[3],
+    parentCategory: menuCategories[3],
   },
   {
     name: "Baked Dishes",
     hindiName: "बेक्ड डिश",
-    parentCategory:menuCategories[3],
+    parentCategory: menuCategories[3],
   },
   {
     name: "Rajasthani Vegetables",
     hindiName: "राजस्थानी सब्जियाँ",
-    parentCategory:menuCategories[3],
+    parentCategory: menuCategories[3],
   },
-  { name: "Dal", hindiName: "दाल", parentCategory: menuCategories[2] },
 
-  // Rajasthani Cuisine Subcategories
+  // * Breads, Rice & Dal Subcategories
+  {
+    name: "Tandoor & Roti",
+    hindiName: "तंदूर और रोटी",
+    parentCategory: menuCategories[4],
+  },
+  { name: "Breads", hindiName: "रोटी", parentCategory: menuCategories[4] },
+  { name: "Dal", hindiName: "दाल", parentCategory: menuCategories[4] },
+
+  // * Rajasthani Cuisine Subcategories
   {
     name: "Kachhi Rasoi",
     hindiName: "कच्ची रसोई (राजस्थानी)",
-    parentCategory: menuCategories[4],
+    parentCategory: menuCategories[5],
   },
-  { name: "Churma", hindiName: "चूरमा", parentCategory: menuCategories[4] },
-  { name: "Bati", hindiName: "बाटी", parentCategory: menuCategories[4] },
+  { name: "Churma", hindiName: "चूरमा", parentCategory: menuCategories[5] },
+  { name: "Bati", hindiName: "बाटी", parentCategory: menuCategories[5] },
   {
     name: "Other Rajasthani Accompaniments",
     hindiName: "अन्य राजस्थानी संगत",
-    parentCategory: menuCategories[4],
+    parentCategory: menuCategories[5],
   },
 
-  // Stalls Subcategories
+  // * Stalls Subcategories
   {
     name: "South Indian",
     hindiName: "साउथ इंडियन",
-    parentCategory: menuCategories[5],
+    parentCategory: menuCategories[6],
   },
   {
     name: "Chaat/Stalls",
     hindiName: "चाट/स्टॉल्स",
-    parentCategory: menuCategories[5],
+    parentCategory: menuCategories[6],
   },
 
-  // Accompaniments
+  // * Accompaniments
   {
     name: "Raita",
     hindiName: "रेता",
-    parentCategory: menuCategories[5],
+    parentCategory: menuCategories[7],
   },
   {
     name: "Salad",
     hindiName: "सलाड",
-    parentCategory: menuCategories[5],
+    parentCategory: menuCategories[7],
   },
   {
     name: "Papad",
     hindiName: "पपड़",
-    parentCategory: menuCategories[5],
+    parentCategory: menuCategories[7],
   },
   {
     name: "Chutney & Achar",
     hindiName: "चटनी और अचार",
-    parentCategory: menuCategories[5],
+    parentCategory: menuCategories[7],
   },
 ];
 
@@ -188,8 +195,8 @@ const menuSubCategories: MenuSubCategory[] = menuSubCategoriesItems.map(
   })
 );
 
-const menuItems: MenuItem[] = [
-  // लोकप्रिय मिठाइयाँ (Popular Sweets) [cite: 1]
+const sweetsItems: MenuItem[] = [
+  // * लोकप्रिय मिठाइयाँ (Popular Sweets)
   {
     name: "Stuff Rasgulla",
     hindiName: "स्टफ रसगुल्ला",
@@ -464,7 +471,7 @@ const menuItems: MenuItem[] = [
     popular: false,
   },
 
-  // रबड़ी और खीर (Rabdi and Kheer) [cite: 1]
+  // * रबड़ी और खीर (Rabdi and Kheer)
   {
     name: "Rabdi",
     hindiName: "रवडी",
@@ -496,7 +503,7 @@ const menuItems: MenuItem[] = [
     hindiCategory: "रबड़ी और खीर",
   },
 
-  // मौसमी व्यंजन (Seasonal Dishes) [cite: 1]
+  // * मौसमी व्यंजन (Seasonal Dishes)
   {
     name: "Aag Khadi (Seasonal)",
     hindiName: "आग खड़ी (सीजनल)",
@@ -510,7 +517,7 @@ const menuItems: MenuItem[] = [
     hindiCategory: "मौसमी व्यंजन",
   },
 
-  // गरम मिठाइयाँ और हलवा (Hot Sweets and Halwa) [cite: 1]
+  // * गरम मिठाइयाँ और हलवा (Hot Sweets and Halwa)
   {
     name: "Baked Gulab Jamun",
     hindiName: "बेक्ड गुलाब जामुन",
@@ -602,7 +609,7 @@ const menuItems: MenuItem[] = [
     hindiCategory: "गरम मिठाइयाँ और हलवा",
   },
 
-  // मक्खन स्पेशल (Makkhan Special) [cite: 1]
+  // * मक्खन स्पेशल (Makkhan Special)
   {
     name: "Makkhan Samosa",
     hindiName: "मक्खन समोसा",
@@ -646,7 +653,7 @@ const menuItems: MenuItem[] = [
     hindiCategory: "मक्खन स्पेशल",
   },
 
-  // बादाम और काजू स्पेशल (Badam and Kaju Special) [cite: 1]
+  // * बादाम और काजू स्पेशल (Badam and Kaju Special)
   {
     name: "Phirni",
     hindiName: "फिरनी",
@@ -732,7 +739,7 @@ const menuItems: MenuItem[] = [
     hindiCategory: "बादाम और काजू स्पेशल",
   },
 
-  // पिस्ता स्पेशल (Pista Special) [cite: 1]
+  // * पिस्ता स्पेशल (Pista Special)
   {
     name: "Pista Loch",
     hindiName: "पिस्ता लोच",
@@ -764,7 +771,7 @@ const menuItems: MenuItem[] = [
     hindiCategory: "पिस्ता स्पेशल",
   },
 
-  // पेठा और गिलोरी (Petha and Gilori) [cite: 1]
+  // * पेठा और गिलोरी (Petha and Gilori)
   {
     name: "Mango Gilori",
     hindiName: "मैंगो गिलोरी",
@@ -802,7 +809,7 @@ const menuItems: MenuItem[] = [
     hindiCategory: "पेठा और गिलोरी",
   },
 
-  // परंपरागत और अन्य मिठाइयाँ (Traditional and Other Sweets) [cite: 1]
+  // * परंपरागत और अन्य मिठाइयाँ (Traditional and Other Sweets)
   {
     name: "Mawa Kachori",
     hindiName: "मावा कचौरी",
@@ -870,6 +877,80 @@ const menuItems: MenuItem[] = [
     hindiCategory: "परंपरागत और अन्य मिठाइयाँ",
   },
 ];
+
+const  namkeenItems: MenuItem[] = [
+  // * --- नमकीन (Namkeen) ---
+  
+  // * गरम नमकीन (Hot Namkeen)
+  { name: "Matar Kachori", hindiName: "मटर कचौरी", category: menuSubCategories[9], hindiCategory: "गरम नमकीन", popular: false },
+  { name: "Dal Pakodi", hindiName: "दाल पकौड़ी", category: menuSubCategories[9], hindiCategory: "गरम नमकीन", popular: false },
+  { name: "Matar Potli", hindiName: "मटर पोटली", category: menuSubCategories[9], hindiCategory: "गरम नमकीन", popular: false },
+  { name: "Jhar ki Bhujia", hindiName: "झर की भुजिया", category: menuSubCategories[9], hindiCategory: "गरम नमकीन", popular: false },
+  { name: "Kaju Matar Samosa", hindiName: "काजू मटर समोसा", category: menuSubCategories[9], hindiCategory: "गरम नमकीन", popular: false },
+  { name: "Aloo Matar Kofta", hindiName: "आलू मटर कोफ्ता", category: menuSubCategories[9], hindiCategory: "गरम नमकीन", popular: false },
+  { name: "Mix Pakoda", hindiName: "मिक्स पकौड़ा", category: menuSubCategories[9], hindiCategory: "गरम नमकीन", popular: false },
+  { name: "Prem Prakash Samosa", hindiName: "प्रेम प्रकाश समोसा", category: menuSubCategories[9], hindiCategory: "गरम नमकीन", popular: false },
+  { name: "Nargisi Kofta", hindiName: "नर्गिसी कोफ्ता", category: menuSubCategories[9], hindiCategory: "गरम नमकीन", popular: false },
+  { name: "Paneer Pakoda", hindiName: "पनीर पकौड़ा", category: menuSubCategories[9], hindiCategory: "गरम नमकीन", popular: false },
+  { name: "Chinese Samosa", hindiName: "चाईनीज समोसा", category: menuSubCategories[9], hindiCategory: "गरम नमकीन", popular: false },
+  { name: "Kalmi Bada", hindiName: "कलमी बड़ा", category: menuSubCategories[9], hindiCategory: "गरम नमकीन", popular: false },
+  { name: "Dahi Samosa", hindiName: "दही समोसा", category: menuSubCategories[9], hindiCategory: "गरम नमकीन", popular: false },
+  { name: "Dal Kachori", hindiName: "दाल कचारी", category: menuSubCategories[9], hindiCategory: "गरम नमकीन", popular: false },
+
+  // * ड्राई नमकीन (Dry Namkeen)
+  { name: "Dalmoth", hindiName: "दालमोठ", category: menuSubCategories[10], hindiCategory: "ड्राई नमकीन", popular: false },
+  { name: "Chola Mogar", hindiName: "चौला मोगर", category: menuSubCategories[10], hindiCategory: "ड्राई नमकीन", popular: false },
+  { name: "Pudina Chana Dal", hindiName: "पोदीना चना दाल", category: menuSubCategories[10], hindiCategory: "ड्राई नमकीन", popular: false },
+  { name: "Aloo Lachha with Dry Fruits", hindiName: "आलू लच्छा विद् ड्राई फ्रूट्स", category: menuSubCategories[10], hindiCategory: "ड्राई नमकीन", popular: false },
+  { name: "Malka Masur with Dry Fruits", hindiName: "मलका मसूर विद ड्राई फ्रूट्स", category: menuSubCategories[10], hindiCategory: "ड्राई नमकीन", popular: false },
+  { name: "Corn Flakes with Dry Fruits", hindiName: "कॉर्न फ्लेक्स विद् ड्राई फ्रूट्स", category: menuSubCategories[10], hindiCategory: "ड्राई नमकीन", popular: false },
+
+]
+
+const vegetableItems: MenuItem[] = [
+  // * --- सब्ज़ी (Vegetables) ---
+
+  // * पनीर की सब्जियाँ (Paneer Dishes)
+  { name: "Butter Paneer Masala", hindiName: "बटर पनीर मसाला", category: menuSubCategories[11], hindiCategory: "पनीर की सब्जियाँ", popular: true },
+  { name: "Matar Paneer", hindiName: "मटर पनीर", category: menuSubCategories[11], hindiCategory: "पनीर की सब्जियाँ", popular: false },
+  { name: "Kadhai Paneer", hindiName: "कढ़ाई पनीर", category: menuSubCategories[11], hindiCategory: "पनीर की सब्जियाँ", popular: false },
+  { name: "Shahi Paneer", hindiName: "शाही पनीर", category: menuSubCategories[11], hindiCategory: "पनीर की सब्जियाँ", popular: false },
+  { name: "Palak Paneer", hindiName: "पालक पनीर", category: menuSubCategories[11], hindiCategory: "पनीर की सब्जियाँ", popular: false },
+  { name: "Pudina Paneer", hindiName: "पोदीना पनीर", category: menuSubCategories[11], hindiCategory: "पनीर की सब्जियाँ", popular: false },
+  { name: "Paneer Pasanda", hindiName: "पनीर पसंदा", category: menuSubCategories[11], hindiCategory: "पनीर की सब्जियाँ", popular: false },
+  { name: "Paneer Katran", hindiName: "पनीर कतरन", category: menuSubCategories[11], hindiCategory: "पनीर की सब्जियाँ", popular: false },
+  { name: "Paneer Bhurji", hindiName: "पनीर भुर्जी", category: menuSubCategories[11], hindiCategory: "पनीर की सब्जियाँ", popular: false },
+  { name: "Tiranga Paneer", hindiName: "तिरंगा पनीर", category: menuSubCategories[11], hindiCategory: "पनीर की सब्जियाँ", popular: false },
+  { name: "Paneer Zafrani", hindiName: "पनीर जाफरानी (केसर)", category: menuSubCategories[11], hindiCategory: "पनीर की सब्जियाँ", popular: false },
+  { name: "Lachha Paneer", hindiName: "लच्छा पनीर", category: menuSubCategories[11], hindiCategory: "पनीर की सब्जियाँ", popular: false },
+  { name: "Paneer Do Pyaza", hindiName: "पनीर दो प्याजा", category: menuSubCategories[11], hindiCategory: "पनीर की सब्जियाँ", popular: false },
+  { name: "Paneer Tikka Lababdar", hindiName: "पनीर टिक्का लबाबदार", category: menuSubCategories[11], hindiCategory: "पनीर की सब्जियाँ", popular: false },
+  { name: "Kashmiri Paneer", hindiName: "कश्मीरी पनीर (सफेद)", category: menuSubCategories[11], hindiCategory: "पनीर की सब्जियाँ", popular: false },
+  { name: "Paneer Takatak", hindiName: "पनीर टकाटक", category: menuSubCategories[11], hindiCategory: "पनीर की सब्जियाँ", popular: false },
+
+  // आलू की सब्जियाँ (Potato Dishes)
+  { name: "Dum Aloo", hindiName: "दम आलू", category: menuSubCategories[12], hindiCategory: "आलू की सब्जियाँ", popular: false },
+  { name: "Stuff Aloo", hindiName: "स्टफ आलू", category: menuSubCategories[12], hindiCategory: "आलू की सब्जियाँ", popular: false },
+  { name: "Chutney wala Aloo", hindiName: "चटनी वाला आलू", category: menuSubCategories[12], hindiCategory: "आलू की सब्जियाँ", popular: false },
+  { name: "Achari Aloo", hindiName: "अचारी आलू", category: menuSubCategories[12], hindiCategory: "आलू की सब्जियाँ", popular: false },
+  { name: "Aloo Zafrani", hindiName: "आलू जाफरानी (केसर)", category: menuSubCategories[12], hindiCategory: "आलू की सब्जियाँ", popular: false },
+  { name: "Aloo Pyaz", hindiName: "आलू प्याज", category: menuSubCategories[12], hindiCategory: "आलू की सब्जियाँ", popular: false },
+
+  // राजस्थानी सब्जियाँ (Rajasthani Vegetables)
+  { name: "Phali Fry", hindiName: "फली फ्राई", category: menuSubCategories[18], hindiCategory: "राजस्थानी सब्जियाँ", popular: false },
+  { name: "Hare Chane ki Sabzi", hindiName: "हरे चने की सब्जी", category: menuSubCategories[18], hindiCategory: "राजस्थानी सब्जियाँ", popular: false },
+  { name: "Ker Sangri", hindiName: "कैर सांगरी", category: menuSubCategories[18], hindiCategory: "राजस्थानी सब्जियाँ", popular: true },
+  { name: "Jodhpuri Mirchi Sabzi", hindiName: "जोधपुरी मिर्ची की सब्जी", category: menuSubCategories[18], hindiCategory: "राजस्थानी सब्जियाँ", popular: false },
+  { name: "Rajasthani Kadhi", hindiName: "राजस्थानी कढ़ी", category: menuSubCategories[18], hindiCategory: "राजस्थानी सब्जियाँ", popular: false },
+
+  // दाल (Dal)
+  { name: "Dal Fry Jeera", hindiName: "दाल फ्राई (जीरा)", category: menuSubCategories[19], hindiCategory: "दाल", popular: false },
+  { name: "Dal Panchmel", hindiName: "दाल पंचमेल", category: menuSubCategories[19], hindiCategory: "दाल", popular: false },
+  { name: "Dal Bukhara", hindiName: "दाल बुखारा", category: menuSubCategories[19], hindiCategory: "दाल", popular: false },
+  { name: "Dal Makhani", hindiName: "दाल मखानी", category: menuSubCategories[19], hindiCategory: "दाल", popular: true },
+];
+
+const menuItems: MenuItem[] = [...sweetsItems, ...namkeenItems, ...vegetableItems];
 
 const menuItemsWithId: MenuItemWithId[] = menuItems.map((item, index) => ({
   ...item,
