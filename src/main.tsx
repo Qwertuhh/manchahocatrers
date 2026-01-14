@@ -25,7 +25,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "@/index.css";
 import App from "@/App.tsx";
-import MenuPage from "@/components/menu";
+import { MenuPage } from "@/components/menu";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

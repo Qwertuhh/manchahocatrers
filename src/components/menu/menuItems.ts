@@ -1,0 +1,856 @@
+import type {
+  MenuCategoryItem,
+  MenuSubCategoryItem,
+  MenuCategory,
+  MenuSubCategory,
+  MenuItem,
+  MenuItemWithId,
+} from "@/types";
+
+const menuCategoriesItems: MenuCategoryItem[] = [
+  { name: "All", hindiName: "सभी" },
+  { name: "Sweets", hindiName: "मिठाई" },
+  { name: "Namkeen", hindiName: "नमकीन" },
+  { name: "Vegetables", hindiName: "सब्ज़ी" },
+  { name: "Tandoor and Roti", hindiName: "तंदूर और रोटी" },
+  { name: "Rajasthani Cuisine", hindiName: "राजस्थानी व्यंजन" },
+  { name: "Floating/Snacks", hindiName: "फ्लोटिंग/स्नैक्स" },
+  { name: "Stalls", hindiName: "स्टॉल" },
+];
+
+const menuCategories: MenuCategory[] = menuCategoriesItems.map(
+  (category, index) => ({
+    ...category,
+    id: `category-${index}`,
+  })
+);
+
+// Define Categories
+
+// Define Sub-Categories
+const menuSubCategoriesItems: MenuSubCategoryItem[] = [
+  // Sweets Subcategories
+  {
+    name: "Popular Sweets",
+    hindiName: "लोकप्रिय मिठाइयाँ",
+    parentCategory: menuCategories[0],
+  },
+  {
+    name: "Rabri and Kheer",
+    hindiName: "रबड़ी और खीर",
+    parentCategory: menuCategories[0],
+  },
+  {
+    name: "Seasonal Dishes",
+    hindiName: "मौसमी व्यंजन",
+    parentCategory: menuCategories[0],
+  },
+  {
+    name: "Hot Sweets and Halwa",
+    hindiName: "गरम मिठाइयाँ और हलवा",
+    parentCategory: menuCategories[0],
+  },
+  {
+    name: "Makkhan Special",
+    hindiName: "मक्खन स्पेशल",
+    parentCategory: menuCategories[0],
+  },
+  {
+    name: "Badam and Kaju Special",
+    hindiName: "बादाम और काजू स्पेशल",
+    parentCategory: menuCategories[0],
+  },
+  {
+    name: "Pista Special",
+    hindiName: "पिस्ता स्पेशल",
+    parentCategory: menuCategories[0],
+  },
+  {
+    name: "Petha and Gilori",
+    hindiName: "पेठा और गिलोरी",
+    parentCategory: menuCategories[0],
+  },
+  {
+    name: "Traditional and Other Sweets",
+    hindiName: "परंपरागत और अन्य मिठाइयाँ",
+    parentCategory: menuCategories[0],
+  },
+
+  // Namkeen Subcategories
+  {
+    name: "Hot Namkeen",
+    hindiName: "गरम नमकीन",
+    parentCategory: menuCategories[1],
+  },
+  {
+    name: "Dry Namkeen",
+    hindiName: "ड्राई नमकीन",
+    parentCategory: menuCategories[1],
+  },
+
+  // Vegetable Subcategories
+  {
+    name: "Paneer Dishes",
+    hindiName: "पनीर की सब्जियाँ",
+    parentCategory: menuCategories[2],
+  },
+  {
+    name: "Potato Dishes",
+    hindiName: "आलू की सब्जियाँ",
+    parentCategory: menuCategories[2],
+  },
+  {
+    name: "Other Vegetables",
+    hindiName: "अन्य सब्जियाँ",
+    parentCategory: menuCategories[2],
+  },
+  {
+    name: "Seasonal Vegetables",
+    hindiName: "मौसमी सब्जियाँ",
+    parentCategory: menuCategories[2],
+  },
+  {
+    name: "Dry Vegetables",
+    hindiName: "ड्राई सब्जियाँ",
+    parentCategory: menuCategories[2],
+  },
+  {
+    name: "Special Vegetables",
+    hindiName: "स्पेशल सब्जियाँ",
+    parentCategory: menuCategories[2],
+  },
+  {
+    name: "Baked Dishes",
+    hindiName: "बेक्ड डिश",
+    parentCategory: menuCategories[2],
+  },
+  {
+    name: "Rajasthani Vegetables",
+    hindiName: "राजस्थानी सब्जियाँ",
+    parentCategory: menuCategories[2],
+  },
+  { name: "Dal", hindiName: "दाल", parentCategory: menuCategories[2] },
+
+  // Rajasthani Cuisine Subcategories
+  {
+    name: "Kachhi Rasoi",
+    hindiName: "कच्ची रसोई (राजस्थानी)",
+    parentCategory: menuCategories[3],
+  },
+  { name: "Churma", hindiName: "चूरमा", parentCategory: menuCategories[3] },
+  { name: "Bati", hindiName: "बाटी", parentCategory: menuCategories[3] },
+  {
+    name: "Other Rajasthani Accompaniments",
+    hindiName: "अन्य राजस्थानी संगत",
+    parentCategory: menuCategories[3],
+  },
+
+  // Stalls Subcategories
+  {
+    name: "South Indian",
+    hindiName: "साउथ इंडियन",
+    parentCategory: menuCategories[4],
+  },
+  {
+    name: "Chaat/Stalls",
+    hindiName: "चाट/स्टॉल्स",
+    parentCategory: menuCategories[4],
+  },
+];
+
+const menuSubCategories: MenuSubCategory[] = menuSubCategoriesItems.map(
+  (subCategory, index) => ({
+    ...subCategory,
+    id: `subcategory-${index}`,
+  })
+);
+
+const menuItems: MenuItem[] = [
+  // लोकप्रिय मिठाइयाँ (Popular Sweets) [cite: 1]
+  {
+    name: "Stuff Rasgulla",
+    hindiName: "स्टफ रसगुल्ला",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Byneeze Rasgulla",
+    hindiName: "बाईनीज रसगुल्ला",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Rajbhog",
+    hindiName: "राजमोग",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Berry Cream Rajbhog",
+    hindiName: "बैरी क्रीम राजमोग",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Malai Chap",
+    hindiName: "मलाई चाप",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Bengali Sweets (Undi)",
+    hindiName: "बंगाली मिठाईयाँ (उण्डी)",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Fruit Rainbow",
+    hindiName: "फूट रेनको",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Diamond Rasgulla",
+    hindiName: "डायमण्ड रसगुल्ला",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Gudka Rasgulla",
+    hindiName: "गुडका रसगुल्ला",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Malai Paan",
+    hindiName: "मलाई पान",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Neelam Badam",
+    hindiName: "नीलम बादाम",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Pakeeza",
+    hindiName: "पाकीजा",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Malai Gori",
+    hindiName: "मलाई गोरी",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Anarkali",
+    hindiName: "अनारकली",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Fancy Shiromani",
+    hindiName: "फेन्सी शिरोमणी",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Badam Bhog",
+    hindiName: "बादाम भोग",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Chenna Poyas",
+    hindiName: "छेना पॉयस",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Mango Pakeeza",
+    hindiName: "आमपाकिजा",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Kesar Rasmalai",
+    hindiName: "केसर ररामालाई",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Chenna Paan",
+    hindiName: "छैना पान",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Mango Kalakand",
+    hindiName: "आम कलाकन्द",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Strawberry Rasmalai",
+    hindiName: "स्ट्रविरी रसमलाई",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Chenna Toast",
+    hindiName: "छना टोस्ट",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Lychee Rabdi",
+    hindiName: "लीच्ची खरडी",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Indrani",
+    hindiName: "इन्वाणी",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Sheer Sagar",
+    hindiName: "सीर सागर",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Rasbhari",
+    hindiName: "रसमरी",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Pantua",
+    hindiName: "पन्तुआ",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Gulab Jamun",
+    hindiName: "गुलाब जामुन",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Kala Jamun",
+    hindiName: "काता जामुन",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Malpua",
+    hindiName: "मालपुआ",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Kesar Jalebi",
+    hindiName: "केसर जलेबी",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Kesar Kangan",
+    hindiName: "केसर कंगन",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Chenna Jalebi",
+    hindiName: "छैना जलेबी (असोरटेड सिरप)",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Shahi Jalebi",
+    hindiName: "स्वही जलेबी",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Tiranga Halwa",
+    hindiName: "तिरंगा हलवा",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Live Gulabsakri",
+    hindiName: "लाईव गुलाबसकरी",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Gondpak",
+    hindiName: "गोन्दपाक",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Amrit Bhog",
+    hindiName: "अमृत भोग",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+
+  // रबड़ी और खीर (Rabdi and Kheer) [cite: 1]
+  {
+    name: "Rabdi",
+    hindiName: "रवडी",
+    category: "Rabdi and Kheer",
+    hindiCategory: "रबड़ी और खीर",
+  },
+  {
+    name: "Sitaphal Rabdi",
+    hindiName: "सीताफल रबडी",
+    category: "Rabdi and Kheer",
+    hindiCategory: "रबड़ी और खीर",
+  },
+  {
+    name: "Sabudana Kheer",
+    hindiName: "साबुदाना खीर",
+    category: "Rabdi and Kheer",
+    hindiCategory: "रबड़ी और खीर",
+  },
+  {
+    name: "Paneer Kheer",
+    hindiName: "पनीर खीर",
+    category: "Rabdi and Kheer",
+    hindiCategory: "रबड़ी और खीर",
+  },
+  {
+    name: "Kheer",
+    hindiName: "खीर",
+    category: "Rabdi and Kheer",
+    hindiCategory: "रबड़ी और खीर",
+  },
+
+  // मौसमी व्यंजन (Seasonal Dishes) [cite: 1]
+  {
+    name: "Aag Khadi (Seasonal)",
+    hindiName: "आग खड़ी (सीजनल)",
+    category: "Seasonal Dishes",
+    hindiCategory: "मौसमी व्यंजन",
+  },
+  {
+    name: "Gajar Halwa (Seasonal)",
+    hindiName: "गाजर हलवा (सीजनल)",
+    category: "Seasonal Dishes",
+    hindiCategory: "मौसमी व्यंजन",
+  },
+
+  // गरम मिठाइयाँ और हलवा (Hot Sweets and Halwa) [cite: 1]
+  {
+    name: "Baked Gulab Jamun",
+    hindiName: "बेक्ड गुलाब जामुन",
+    category: "Hot Sweets and Halwa",
+    hindiCategory: "गरम मिठाइयाँ और हलवा",
+  },
+  {
+    name: "Baked Malpua",
+    hindiName: "बेक्ड मालपुआ",
+    category: "Hot Sweets and Halwa",
+    hindiCategory: "गरम मिठाइयाँ और हलवा",
+  },
+  {
+    name: "Moong Dal Halwa",
+    hindiName: "मुंग दाल हलवा",
+    category: "Hot Sweets and Halwa",
+    hindiCategory: "गरम मिठाइयाँ और हलवा",
+  },
+  {
+    name: "Moong Badam Halwa",
+    hindiName: "मुंग बादाम हलवा",
+    category: "Hot Sweets and Halwa",
+    hindiCategory: "गरम मिठाइयाँ और हलवा",
+  },
+  {
+    name: "Akhrot Halwa",
+    hindiName: "अखरोट हलया",
+    category: "Hot Sweets and Halwa",
+    hindiCategory: "गरम मिठाइयाँ और हलवा",
+  },
+  {
+    name: "Kesar Badam Mishri Mawa",
+    hindiName: "केसर बादाम मिश्री मावा",
+    category: "Hot Sweets and Halwa",
+    hindiCategory: "गरम मिठाइयाँ और हलवा",
+  },
+  {
+    name: "Mishri Mawa",
+    hindiName: "मिश्री मावा",
+    category: "Hot Sweets and Halwa",
+    hindiCategory: "गरम मिठाइयाँ और हलवा",
+  },
+  {
+    name: "Khadi Ghevar",
+    hindiName: "खड़ी घेवर",
+    category: "Hot Sweets and Halwa",
+    hindiCategory: "गरम मिठाइयाँ और हलवा",
+  },
+  {
+    name: "Mango Halwa",
+    hindiName: "मैंगो हलवा",
+    category: "Hot Sweets and Halwa",
+    hindiCategory: "गरम मिठाइयाँ और हलवा",
+  },
+  {
+    name: "Mango Mishri Mawa",
+    hindiName: "मैंगो मिश्री मावा",
+    category: "Hot Sweets and Halwa",
+    hindiCategory: "गरम मिठाइयाँ और हलवा",
+  },
+  {
+    name: "Suji Halwa",
+    hindiName: "सुजी हलया",
+    category: "Hot Sweets and Halwa",
+    hindiCategory: "गरम मिठाइयाँ और हलवा",
+  },
+  {
+    name: "Fruit Halwa",
+    hindiName: "फूट हलवा",
+    category: "Hot Sweets and Halwa",
+    hindiCategory: "गरम मिठाइयाँ और हलवा",
+  },
+  {
+    name: "Matar Halwa",
+    hindiName: "मटर हलवा",
+    category: "Hot Sweets and Halwa",
+    hindiCategory: "गरम मिठाइयाँ और हलवा",
+  },
+  {
+    name: "Pineapple Halwa",
+    hindiName: "पाईनएप्पल हलवा",
+    category: "Hot Sweets and Halwa",
+    hindiCategory: "गरम मिठाइयाँ और हलवा",
+  },
+  {
+    name: "Badam Halwa",
+    hindiName: "बादाम हलवा",
+    category: "Hot Sweets and Halwa",
+    hindiCategory: "गरम मिठाइयाँ और हलवा",
+  },
+
+  // मक्खन स्पेशल (Makkhan Special) [cite: 1]
+  {
+    name: "Makkhan Samosa",
+    hindiName: "मक्खन समोसा",
+    category: "Makkhan Special",
+    hindiCategory: "मक्खन स्पेशल",
+  },
+  {
+    name: "Makkhan Rainbow",
+    hindiName: "मक्खन रेनबो",
+    category: "Makkhan Special",
+    hindiCategory: "मक्खन स्पेशल",
+  },
+  {
+    name: "Makkhan Tarbooj",
+    hindiName: "मक्खन तरबूज",
+    category: "Makkhan Special",
+    hindiCategory: "मक्खन स्पेशल",
+  },
+  {
+    name: "Makkhan Sev",
+    hindiName: "मक्खन सेव",
+    category: "Makkhan Special",
+    hindiCategory: "मक्खन स्पेशल",
+  },
+  {
+    name: "Makkhan Anar",
+    hindiName: "मक्खन अनार",
+    category: "Makkhan Special",
+    hindiCategory: "मक्खन स्पेशल",
+  },
+  {
+    name: "Makkhan Mewa Bati",
+    hindiName: "मक्खन मेवा बाटी",
+    category: "Makkhan Special",
+    hindiCategory: "मक्खन स्पेशल",
+  },
+  {
+    name: "Makkhan Fruit Sandwich",
+    hindiName: "मक्खन फ्रूट संण्डविध",
+    category: "Makkhan Special",
+    hindiCategory: "मक्खन स्पेशल",
+  },
+
+  // बादाम और काजू स्पेशल (Badam and Kaju Special) [cite: 1]
+  {
+    name: "Phirni",
+    hindiName: "फिरनी",
+    category: "Badam and Kaju Special",
+    hindiCategory: "बादाम और काजू स्पेशल",
+  },
+  {
+    name: "Kiwi Malai Gori",
+    hindiName: "कीवी मलाई गोरी",
+    category: "Badam and Kaju Special",
+    hindiCategory: "बादाम और काजू स्पेशल",
+  },
+  {
+    name: "Badam Pista Halwa",
+    hindiName: "बादाम पिस्ता हलवा",
+    category: "Badam and Kaju Special",
+    hindiCategory: "बादाम और काजू स्पेशल",
+  },
+  {
+    name: "Kaju Pista Badam Katli",
+    hindiName: "काजू पिस्ता बादाम कतली",
+    category: "Badam and Kaju Special",
+    hindiCategory: "बादाम और काजू स्पेशल",
+  },
+  {
+    name: "Baked Badam Katli",
+    hindiName: "बेक्ड बादाम कतली",
+    category: "Badam and Kaju Special",
+    hindiCategory: "बादाम और काजू स्पेशल",
+  },
+  {
+    name: "Badam Katli",
+    hindiName: "बादाम कतली",
+    category: "Badam and Kaju Special",
+    hindiCategory: "बादाम और काजू स्पेशल",
+  },
+  {
+    name: "Tirangi Katli",
+    hindiName: "तिरंगी कतली",
+    category: "Badam and Kaju Special",
+    hindiCategory: "बादाम और काजू स्पेशल",
+  },
+  {
+    name: "Badam Pista Roll",
+    hindiName: "बादाम पिस्ता रोल",
+    category: "Badam and Kaju Special",
+    hindiCategory: "बादाम और काजू स्पेशल",
+  },
+  {
+    name: "Badam Pista Sandwich",
+    hindiName: "बादाम पिस्ता संण्डविच",
+    category: "Badam and Kaju Special",
+    hindiCategory: "बादाम और काजू स्पेशल",
+  },
+  {
+    name: "Kaju Jalebi",
+    hindiName: "काजू जलेबी",
+    category: "Badam and Kaju Special",
+    hindiCategory: "बादाम और काजू स्पेशल",
+  },
+  {
+    name: "Kaju Kalash",
+    hindiName: "काजू कलश",
+    category: "Badam and Kaju Special",
+    hindiCategory: "बादाम और काजू स्पेशल",
+  },
+  {
+    name: "Kaju Pista Paan",
+    hindiName: "काजू पिस्ता पान",
+    category: "Badam and Kaju Special",
+    hindiCategory: "बादाम और काजू स्पेशल",
+  },
+  {
+    name: "Badam Softy",
+    hindiName: "बादाम सॉफ्टी",
+    category: "Badam and Kaju Special",
+    hindiCategory: "बादाम और काजू स्पेशल",
+  },
+  {
+    name: "Badam Bati",
+    hindiName: "बादाम बाटी",
+    category: "Badam and Kaju Special",
+    hindiCategory: "बादाम और काजू स्पेशल",
+  },
+
+  // पिस्ता स्पेशल (Pista Special) [cite: 1]
+  {
+    name: "Pista Loch",
+    hindiName: "पिस्ता लोच",
+    category: "Pista Special",
+    hindiCategory: "पिस्ता स्पेशल",
+  },
+  {
+    name: "Pista Kamal",
+    hindiName: "पिस्ता कमल",
+    category: "Pista Special",
+    hindiCategory: "पिस्ता स्पेशल",
+  },
+  {
+    name: "Pista Paan",
+    hindiName: "पिस्ता पान",
+    category: "Pista Special",
+    hindiCategory: "पिस्ता स्पेशल",
+  },
+  {
+    name: "Pista Katli",
+    hindiName: "पिस्ता कतली",
+    category: "Pista Special",
+    hindiCategory: "पिस्ता स्पेशल",
+  },
+  {
+    name: "Pista Stuff Angoor Roll",
+    hindiName: "पिस्ता स्टफ अंगूर रोल",
+    category: "Pista Special",
+    hindiCategory: "पिस्ता स्पेशल",
+  },
+
+  // पेठा और गिलोरी (Petha and Gilori) [cite: 1]
+  {
+    name: "Mango Gilori",
+    hindiName: "मैंगो गिलोरी",
+    category: "Petha and Gilori",
+    hindiCategory: "पेठा और गिलोरी",
+  },
+  {
+    name: "Angoori Petha",
+    hindiName: "अंगूरी पेठा",
+    category: "Petha and Gilori",
+    hindiCategory: "पेठा और गिलोरी",
+  },
+  {
+    name: "Kesar Angoori Petha",
+    hindiName: "कंसर अंगूरी पेठा",
+    category: "Petha and Gilori",
+    hindiCategory: "पेठा और गिलोरी",
+  },
+  {
+    name: "Pineapple Petha Sandesh",
+    hindiName: "पाईनेपन पेठा सदेश",
+    category: "Petha and Gilori",
+    hindiCategory: "पेठा और गिलोरी",
+  },
+  {
+    name: "Paan Gilori",
+    hindiName: "पान गिलोरी",
+    category: "Petha and Gilori",
+    hindiCategory: "पेठा और गिलोरी",
+  },
+  {
+    name: "Mango Petha Sandwich",
+    hindiName: "मंगो पेठा संण्डविच",
+    category: "Petha and Gilori",
+    hindiCategory: "पेठा और गिलोरी",
+  },
+
+  // परंपरागत और अन्य मिठाइयाँ (Traditional and Other Sweets) [cite: 1]
+  {
+    name: "Mawa Kachori",
+    hindiName: "मावा कचौरी",
+    category: "Traditional Sweets",
+    hindiCategory: "परंपरागत और अन्य मिठाइयाँ",
+  },
+  {
+    name: "Diljani",
+    hindiName: "दिलजानी",
+    category: "Traditional Sweets",
+    hindiCategory: "परंपरागत और अन्य मिठाइयाँ",
+  },
+  {
+    name: "Mohanthal",
+    hindiName: "मोहनथाल",
+    category: "Traditional Sweets",
+    hindiCategory: "परंपरागत और अन्य मिठाइयाँ",
+  },
+  {
+    name: "Sohan Papdi",
+    hindiName: "सोहन पपडी",
+    category: "Traditional Sweets",
+    hindiCategory: "परंपरागत और अन्य मिठाइयाँ",
+  },
+  {
+    name: "Chandragala",
+    hindiName: "चन्द्रगला",
+    category: "Traditional Sweets",
+    hindiCategory: "परंपरागत और अन्य मिठाइयाँ",
+  },
+  {
+    name: "Barik Boondi Laddu",
+    hindiName: "बारीक बूदी लड्डू",
+    category: "Traditional Sweets",
+    hindiCategory: "परंपरागत और अन्य मिठाइयाँ",
+  },
+  {
+    name: "Mini Ghevar Rabdi",
+    hindiName: "मिनी घेवर रवडी",
+    category: "Traditional Sweets",
+    hindiCategory: "परंपरागत और अन्य मिठाइयाँ",
+  },
+  {
+    name: "Moti Pak",
+    hindiName: "मोती पाक",
+    category: "Traditional Sweets",
+    hindiCategory: "परंपरागत और अन्य मिठाइयाँ",
+  },
+  {
+    name: "Mysore Pak",
+    hindiName: "मैसर पाक",
+    category: "Traditional Sweets",
+    hindiCategory: "परंपरागत और अन्य मिठाइयाँ",
+  },
+  {
+    name: "Chougni Ka Laddu",
+    hindiName: "चौगनी का लड्डू",
+    category: "Traditional Sweets",
+    hindiCategory: "परंपरागत और अन्य मिठाइयाँ",
+  },
+  {
+    name: "Dry Fruit Dessert",
+    hindiName: "ड्राई फ्रूट डेजर्ट",
+    category: "Traditional Sweets",
+    hindiCategory: "परंपरागत और अन्य मिठाइयाँ",
+  },
+];
+
+const menuItemsWithId: MenuItemWithId[] = menuItems.map((item, index) => ({
+  ...item,
+  id: index.toString(),
+}));
+
+export { menuCategories, menuSubCategories, menuItems, menuItemsWithId };

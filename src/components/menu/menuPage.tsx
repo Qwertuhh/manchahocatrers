@@ -22,108 +22,9 @@
 
 import { useState } from "react";
 import { Search, Star } from "lucide-react";
-import Footer from "./footer";
-
-interface MenuItem {
-  name: string;
-  hindiName?: string;
-  imageSrc?: string;
-  description?: string;
-  hindiDescription?: string;
-  category: string;
-  popular?: boolean;
-  hindiCategory?: string;
-}
-interface MenuItemWithId extends MenuItem {
-  id: string;
-}
-
-const menuItems: MenuItem[] = [
-  {
-    name: "Paneer Tikka",
-    hindiName: "पनीर टिक्का",
-    imageSrc: "/menu/paneer-tikka.png",
-    description: "Marinated cottage cheese grilled with vegetables and spices",
-    hindiDescription:
-      "पनीर के टुकड़े जिसमें आलू, मटर और अन्य सब्जियाँ मिलाकर गरम दूध में डालकर बनाया जाता है",
-    category: "Starters",
-    hindiCategory: "स्टार्टर्स",
-    popular: true,
-  },
-  {
-    name: "Chicken Seekh Kebab",
-    hindiName: "चिकन सीख केबाब",
-    description: "Minced chicken skewers with aromatic spices and herbs",
-    hindiDescription: "मिलाकर गरम दूध में डालकर बनाया जाता है",
-    category: "Starters",
-    popular: true,
-  },
-  {
-    name: "Dal Makhani",
-    hindiName: "दाल मखनी",
-    description: "Creamy black lentils slow-cooked with butter and spices",
-    hindiDescription: "मिलाकर गरम दूध में डालकर बनाया जाता है",
-    category: "Main Course",
-    popular: true,
-  },
-  {
-    name: "Butter Chicken",
-    hindiName: "बटर चिकन",
-    description: "Tender chicken in rich tomato-cream gravy with butter",
-    hindiDescription: "मिलाकर गरम दूध में डालकर बनाया जाता है",
-    category: "Main Course",
-    popular: true,
-  },
-  {
-    name: "Vegetable Biryani",
-    hindiName: "सब्जी बिरयानी",
-    description: "Fragrant rice with mixed vegetables and aromatic spices",
-    category: "Rice & Biryani",
-  },
-  {
-    name: "Chicken Dum Biryani",
-    hindiName: "चिकन डम बिरयानी",
-    description: "Traditional dum-cooked biryani with tender chicken pieces",
-    category: "Rice & Biryani",
-    popular: true,
-  },
-  {
-    name: "Garlic Naan",
-    hindiName: "गार्लिक नान",
-    description: "Freshly baked bread with garlic and butter",
-    category: "Breads",
-  },
-  {
-    name: "Butter Roti",
-    description: "Traditional Indian flatbread with butter",
-    category: "Breads",
-  },
-  {
-    name: "Gulab Jamun",
-    description: "Soft milk dumplings in sugar syrup",
-    category: "Desserts",
-    popular: true,
-  },
-  {
-    name: "Rasmalai",
-    description: "Soft cottage cheese patties in saffron-flavored milk",
-    category: "Desserts",
-  },
-];
-
-const menuItemsWithId: MenuItemWithId[] = menuItems.map((item, index) => ({
-  ...item,
-  id: index.toString(),
-}));
-
-const categories = [
-  "All",
-  "Starters",
-  "Main Course",
-  "Rice & Biryani",
-  "Breads",
-  "Desserts",
-];
+import Footer from "@/components/footer";
+import { menuItemsWithId, menuCategories } from "@/components/menu";
+import clsx from "clsx";
 
 function MenuPage() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -168,17 +69,18 @@ function MenuPage() {
 
             {/* Category Filter */}
             <div className="flex flex-wrap justify-center gap-2">
-              {categories.map((category) => (
+              {menuCategories.map((category) => (
                 <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-4 py-2 rounded-md transition-colors duration-200 ${
-                    selectedCategory === category
+                  key={category.id}
+                  onClick={() => setSelectedCategory(category.name)}
+                  className={clsx(
+                    "px-4 py-2 rounded-md transition-colors duration-200 cursor-pointer",
+                    selectedCategory === category.name
                       ? "bg-stone-800 text-white"
                       : "bg-white text-stone-700 border border-stone-300 hover:bg-stone-50"
-                  }`}
+                  )}
                 >
-                  {category}
+                  {category.name}
                 </button>
               ))}
             </div>
@@ -189,10 +91,10 @@ function MenuPage() {
             {filteredItems.map((item) => (
               <div
                 key={item.id}
-                className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-200 p-6 relative"
+                className="bg-white rounded-md shadow-sm hover:shadow-lg transition-shadow duration-200 p-6 relative"
               >
                 {item.popular && (
-                  <div className="absolute -top-2 -right-2 bg-orange-500 text-white px-3 py-1 rounded-full text-sm flex items-center gap-1">
+                  <div className="absolute -top-2 -right-2 bg-orange-500 text-white px-3 py-1 rounded-lg text-sm flex items-center gap-1">
                     <Star className="w-4 h-4" />
                     Popular
                   </div>
@@ -227,7 +129,7 @@ function MenuPage() {
                   <div className="flex items-center gap-4 text-sm text-stone-500 pt-2 border-t border-stone-100"></div>
 
                   <div className="pt-2">
-                    <span className="capitalize inline-block bg-stone-100 text-stone-700 px-3 py-1 rounded-full text-sm">
+                    <span className="capitalize inline-block bg-stone-100 text-stone-700 px-3 py-1 rounded-md text-sm">
                       {item.category}
                     </span>
                   </div>
@@ -272,4 +174,4 @@ function MenuPage() {
   );
 }
 
-export default MenuPage;
+export { MenuPage };
