@@ -1,14 +1,5 @@
-interface MenuItem {
-  name: string;
-  hindiName?: string;
-  imageSrc?: string;
-  description?: string;
-  hindiDescription?: string;
-  category: string;
-  popular?: boolean;
-  hindiCategory?: string;
-}
-
+// * Base interfaces
+// ? User can easily enter the details then indexed with Id by computer
 interface MenuCategoryItem {
   name: string;
   hindiName?: string;
@@ -20,6 +11,7 @@ interface MenuSubCategoryItem {
   parentCategory: MenuCategory;
 }
 
+// * Indexing by Id
 interface MenuItemWithId extends MenuItem {
   id: string;
 }
@@ -29,6 +21,19 @@ interface MenuCategory extends MenuCategoryItem {
 
 interface MenuSubCategory extends MenuSubCategoryItem {
   id: string;
+}
+
+interface MenuItem {
+  name: string;
+  hindiName?: string;
+  imageSrc?: string;
+  description?: string;
+  hindiDescription?: string;
+  // ? For filtering and grouping
+  // ? By subcategory primary category can be easily accessed
+  category: MenuSubCategory;
+  popular?: boolean;
+  hindiCategory?: string;
 }
 
 export type {

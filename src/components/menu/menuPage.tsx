@@ -35,7 +35,7 @@ function MenuPage() {
       item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.description?.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory =
-      selectedCategory === "All" || item.category === selectedCategory;
+      selectedCategory === "All" || item.category.name === selectedCategory;
     return matchesSearch && matchesCategory;
   });
 
@@ -130,7 +130,7 @@ function MenuPage() {
 
                   <div className="pt-2">
                     <span className="capitalize inline-block bg-stone-100 text-stone-700 px-3 py-1 rounded-md text-sm">
-                      {item.category}
+                      {item.category.name}
                     </span>
                   </div>
                 </div>
