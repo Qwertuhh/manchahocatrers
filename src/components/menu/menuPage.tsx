@@ -20,7 +20,7 @@
  * SOFTWARE.
  */
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Search, Star } from "lucide-react";
 import Footer from "@/components/footer";
 import {
@@ -30,6 +30,30 @@ import {
 } from "@/components/menu";
 import type { MenuSubCategory } from "@/types";
 import clsx from "clsx";
+
+// Custom fuzzy search function for better Hindi text matching
+const fuzzySearch = (text: string, query: string): boolean => {
+  if (!query) return true;
+
+  const lowerText = text.toLowerCase();
+  const lowerQuery = query.toLowerCase();
+
+  // Exact match
+  if (lowerText.includes(lowerQuery)) return true;
+
+  // Fuzzy match - check if all characters from query exist in text in order
+  let textIndex = 0;
+  let queryIndex = 0;
+
+  while (textIndex < lowerText.length && queryIndex < lowerQuery.length) {
+    if (lowerText[textIndex] === lowerQuery[queryIndex]) {
+      queryIndex++;
+    }
+    textIndex++;
+  }
+
+  return queryIndex === lowerQuery.length;
+};
 
 function MenuPage() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -50,21 +74,25 @@ function MenuPage() {
 
   const availableSubCategories = getSubCategoriesForCategory(selectedCategory);
 
-  const filteredItems = menuItemsWithId.filter((item) => {
-    const matchesSearch =
-      item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.description?.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory =
-      selectedCategory === "All" ||
-      item.category.parentCategory.name === selectedCategory;
-    const matchesSubCategory =
-      !selectedSubCategory || item.category.id === selectedSubCategory;
-    return matchesSearch && matchesCategory && matchesSubCategory;
-  });
+  const filteredItems = useMemo(() => {
+    return menuItemsWithId.filter((item) => {
+      const matchesSearch =
+        fuzzySearch(item.name, searchTerm) ||
+        fuzzySearch(item.description || "", searchTerm) ||
+        fuzzySearch(item.hindiName || "", searchTerm) ||
+        fuzzySearch(item.hindiDescription || "", searchTerm);
+      const matchesCategory =
+        selectedCategory === "All" ||
+        item.category.parentCategory.name === selectedCategory;
+      const matchesSubCategory =
+        !selectedSubCategory || item.category.id === selectedSubCategory;
+      return matchesSearch && matchesCategory && matchesSubCategory;
+    });
+  }, [searchTerm, selectedCategory, selectedSubCategory]);
 
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-br from-neutral-50 to-neutral-100 py-20">
+      <div className="min-h-screen bg-neutral-100/60 py-20">
         <div className="max-w-6xl mx-auto px-4">
           {/* Header */}
           <div className="text-center mb-12">
@@ -228,7 +256,8 @@ function MenuPage() {
                 href="mailto:manchahocatrers@gmail.com"
                 className="inline-flex items-center font-mono justify-left gap-2 bg-neutral-50 text-neutral-800 px-6 py-3 rounded-lg hover:bg-neutral-100 transition-colors duration-200"
               >
-                <span className="ibm-plex-mono-bold">Email</span> manchahocatrers@gmail.com
+                <span className="ibm-plex-mono-bold">Email</span>{" "}
+                manchahocatrers@gmail.com
               </a>
             </div>
           </div>
