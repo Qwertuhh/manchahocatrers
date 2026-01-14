@@ -23,32 +23,55 @@
 import { useState } from "react";
 import { Search, Star } from "lucide-react";
 import Footer from "@/components/footer";
-import { menuItemsWithId, menuCategories } from "@/components/menu";
+import {
+  menuItemsWithId,
+  menuCategories,
+  menuSubCategories,
+} from "@/components/menu";
+import type { MenuSubCategory } from "@/types";
 import clsx from "clsx";
 
 function MenuPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(
+    null
+  );
+
+  // Get subcategories for the selected main category
+  const getSubCategoriesForCategory = (
+    categoryName: string
+  ): MenuSubCategory[] => {
+    if (categoryName === "All") return [];
+    return menuSubCategories.filter(
+      (sub) => sub.parentCategory.name === categoryName
+    );
+  };
+
+  const availableSubCategories = getSubCategoriesForCategory(selectedCategory);
 
   const filteredItems = menuItemsWithId.filter((item) => {
     const matchesSearch =
       item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.description?.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory =
-      selectedCategory === "All" || item.category.name === selectedCategory;
-    return matchesSearch && matchesCategory;
+      selectedCategory === "All" ||
+      item.category.parentCategory.name === selectedCategory;
+    const matchesSubCategory =
+      !selectedSubCategory || item.category.id === selectedSubCategory;
+    return matchesSearch && matchesCategory && matchesSubCategory;
   });
 
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-br from-stone-50 to-stone-100 py-20">
+      <div className="min-h-screen bg-gradient-to-br from-neutral-50 to-neutral-100 py-20">
         <div className="max-w-6xl mx-auto px-4">
           {/* Header */}
           <div className="text-center mb-12">
-            <h1 className="wix-madefor-display-bold text-5xl font-bold text-stone-800 mb-4">
+            <h1 className="wix-madefor-display-bold text-5xl font-bold text-neutral-800 mb-4">
               Our Menu
             </h1>
-            <p className="tangerine-regular text-4xl text-stone-600 mb-8 questrial-regular">
+            <p className="tangerine-regular text-4xl text-neutral-600 mb-8 questrial-regular">
               Discover our authentic flavors and culinary delights
             </p>
           </div>
@@ -57,13 +80,13 @@ function MenuPage() {
           <div className="mb-8 space-y-4">
             {/* Search Bar */}
             <div className="relative max-w-md mx-auto">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-stone-400 w-5 h-5" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-5 h-5" />
               <input
                 type="text"
                 placeholder="Search menu items..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-3 rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:border-transparent"
               />
             </div>
 
@@ -72,18 +95,52 @@ function MenuPage() {
               {menuCategories.map((category) => (
                 <button
                   key={category.id}
-                  onClick={() => setSelectedCategory(category.name)}
+                  onClick={() => {
+                    setSelectedCategory(category.name);
+                    setSelectedSubCategory(null); // Reset subcategory when main category changes
+                  }}
                   className={clsx(
-                    "px-4 py-2 rounded-md transition-colors duration-200 cursor-pointer",
+                    "ibm-plex-mono-bold px-4 py-2 rounded-md transition-colors duration-200 cursor-pointer",
                     selectedCategory === category.name
-                      ? "bg-stone-800 text-white"
-                      : "bg-white text-stone-700 border border-stone-300 hover:bg-stone-50"
+                      ? "bg-neutral-800 text-white"
+                      : "bg-white text-neutral-700 border border-neutral-300 hover:bg-neutral-50"
                   )}
                 >
                   {category.name}
                 </button>
               ))}
             </div>
+
+            {/* Subcategory Filter */}
+            {availableSubCategories.length > 0 && (
+              <div className="flex flex-wrap justify-center gap-2 mt-4">
+                <button
+                  onClick={() => setSelectedSubCategory(null)}
+                  className={clsx(
+                    "ibm-plex-mono-regular px-3 py-1 rounded-md text-sm transition-colors duration-200 cursor-pointer",
+                    !selectedSubCategory
+                      ? "bg-neutral-600 text-white"
+                      : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
+                  )}
+                >
+                  All Subcategories
+                </button>
+                {availableSubCategories.map((subCategory) => (
+                  <button
+                    key={subCategory.id}
+                    onClick={() => setSelectedSubCategory(subCategory.id)}
+                    className={clsx(
+                      "px-3 py-1 rounded-md text-sm transition-colors duration-200 cursor-pointer",
+                      selectedSubCategory === subCategory.id
+                        ? "bg-neutral-600 text-white"
+                        : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
+                    )}
+                  >
+                    {subCategory.name}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Menu Items Grid */}
@@ -109,27 +166,30 @@ function MenuPage() {
                     />
                   )}
                   <div className="space-y-2">
-                    <h3 className="wix-madefor-display-bold text-xl font-semibold text-stone-800">
+                    <h3 className="wix-madefor-display-bold text-xl font-semibold text-neutral-800">
                       {item.name}
                     </h3>
                     {item.hindiName && (
-                      <h4 className="hind-bold text-xl font-semibold text-stone-800">
+                      <h4 className="hind-bold text-xl font-semibold text-neutral-800">
                         {item.hindiName}
                       </h4>
                     )}
                   </div>
 
-                  <p className="roboto text-stone-600 text-sm leading-relaxed">
+                  <p className="roboto text-neutral-600 text-sm leading-relaxed">
                     {item.description}
                   </p>
-                  <p className="hind-regular text-stone-600 text-sm leading-relaxed">
+                  <p className="hind-regular text-neutral-600 text-sm leading-relaxed">
                     {item.hindiDescription}
                   </p>
 
-                  <div className="flex items-center gap-4 text-sm text-stone-500 pt-2 border-t border-stone-100"></div>
+                  <div className="flex items-center gap-4 text-sm text-neutral-500 pt-2 border-t border-neutral-100"></div>
 
-                  <div className="pt-2">
-                    <span className="capitalize inline-block bg-stone-100 text-stone-700 px-3 py-1 rounded-md text-sm">
+                  <div className="pt-2 font-mono">
+                    <span className="capitalize inline-block bg-neutral-100 text-neutral-700 px-3 py-1 rounded-md text-sm mr-2">
+                      {item.category.parentCategory.name}
+                    </span>
+                    <span className="capitalize inline-block bg-neutral-200 text-neutral-700 px-3 py-1 rounded-md text-sm">
                       {item.category.name}
                     </span>
                   </div>
@@ -140,7 +200,7 @@ function MenuPage() {
 
           {filteredItems.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-stone-500 text-lg">
+              <p className="text-neutral-500 text-lg">
                 No menu items found matching your criteria.
               </p>
             </div>
@@ -155,13 +215,13 @@ function MenuPage() {
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <a
                 href="tel:+919024319241"
-                className="inline-flex items-center justify-center gap-2 bg-white text-stone-800 px-6 py-3 rounded-lg hover:bg-stone-100 transition-colors duration-200"
+                className="inline-flex items-center justify-center gap-2 bg-white text-neutral-800 px-6 py-3 rounded-lg hover:bg-neutral-100 transition-colors duration-200"
               >
                 Call: +91 9024319241
               </a>
               <a
                 href="mailto:manchahocatrers@gmail.com"
-                className="inline-flex items-center justify-center gap-2 bg-stone-700 text-white px-6 py-3 rounded-lg hover:bg-stone-600 transition-colors duration-200"
+                className="inline-flex items-center justify-center gap-2 bg-neutral-700 text-white px-6 py-3 rounded-lg hover:bg-neutral-600 transition-colors duration-200"
               >
                 Email: manchahocatrers@gmail.com
               </a>
