@@ -30,6 +30,7 @@ import {
 } from "@/components/menu";
 import type { MenuSubCategory } from "@/types";
 import clsx from "clsx";
+import SectionMarker from "../ui/sectionMarker";
 
 // Custom fuzzy search function for better Hindi text matching
 const fuzzySearch = (text: string, query: string): boolean => {
@@ -99,7 +100,7 @@ function MenuPage() {
             <h1 className="wix-madefor-display-bold text-5xl font-bold text-neutral-800 mb-4">
               Our Menu
             </h1>
-            <p className="tangerine-regular text-4xl md:text-6xl text-neutral-600 mb-8 questrial-regular">
+            <p className="tangerine-regular text-4xl md:text-6xl text-neutral-600 my-8 questrial-regular">
               Discover our authentic flavors and culinary delights
             </p>
           </div>
@@ -119,7 +120,8 @@ function MenuPage() {
             </div>
 
             {/* Category Filter */}
-            <div className="flex flex-wrap justify-left gap-2 border-t border-neutral-300 pt-4">
+            <SectionMarker name="Categories" />
+            <div className="flex flex-wrap justify-left gap-2">
               {menuCategories.map((category) => (
                 <button
                   key={category.id}
@@ -141,38 +143,41 @@ function MenuPage() {
 
             {/* Subcategory Filter */}
             {availableSubCategories.length > 0 && (
-              <div className="flex flex-wrap justify-item gap-2 mt-4 border-t border-neutral-300 pt-4">
-                <button
-                  onClick={() => setSelectedSubCategory(null)}
-                  className={clsx(
-                    "ibm-plex-mono-regular px-3 py-1 rounded-md text-sm transition-colors duration-200 cursor-pointer",
-                    !selectedSubCategory
-                      ? "bg-neutral-700 hover:bg-neutral-800 text-white"
-                      : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200 border border-neutral-700/40"
-                  )}
-                >
-                  All Subcategories
-                </button>
-                {availableSubCategories.map((subCategory) => (
+              <>
+                <SectionMarker name="Subcategories" />
+                <div className="flex flex-wrap justify-item gap-2 mt-4">
                   <button
-                    key={subCategory.id}
-                    onClick={() => setSelectedSubCategory(subCategory.id)}
+                    onClick={() => setSelectedSubCategory(null)}
                     className={clsx(
-                      "px-3 py-1 rounded-md text-sm transition-colors duration-200 cursor-pointer",
-                      selectedSubCategory === subCategory.id
-                        ? "bg-neutral-600 text-white"
-                        : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200 border border-neutral-500/40"
+                      "ibm-plex-mono-regular px-3 py-1 rounded-md text-sm transition-colors duration-200 cursor-pointer",
+                      !selectedSubCategory
+                        ? "bg-neutral-700 hover:bg-neutral-800 text-white"
+                        : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200 border border-neutral-700/40"
                     )}
                   >
-                    {subCategory.name}
+                    All Subcategories
                   </button>
-                ))}
-              </div>
+                  {availableSubCategories.map((subCategory) => (
+                    <button
+                      key={subCategory.id}
+                      onClick={() => setSelectedSubCategory(subCategory.id)}
+                      className={clsx(
+                        "px-3 py-1 rounded-md text-sm transition-colors duration-200 cursor-pointer",
+                        selectedSubCategory === subCategory.id
+                          ? "bg-neutral-600 text-white"
+                          : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200 border border-neutral-500/40"
+                      )}
+                    >
+                      {subCategory.name}
+                    </button>
+                  ))}
+                </div>
+              </>
             )}
           </div>
 
           {/* Menu Items Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 border-t border-neutral-300 pt-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4 border-t border-neutral-300 pt-6">
             {filteredItems.map((item) => (
               <div
                 key={item.id}
@@ -211,13 +216,13 @@ function MenuPage() {
                     {item.hindiDescription}
                   </p>
 
-                  <div className="flex items-center gap-4 text-sm text-neutral-500 pt-2 border-t border-neutral-100"></div>
+                  <div className="flex items-center gap-4 text-sm text-neutral-500 pt-2 border-t border-neutral-200"></div>
 
-                  <div className="pt-2 font-mono">
-                    <span className="capitalize inline-block bg-neutral-100 text-neutral-700 px-3 py-1 rounded-md text-sm mr-2">
+                  <div className="pt-2 font-mono flex justify-between">
+                    <span className="capitalize inline-block bg-neutral-100 text-neutral-700 px-3 my-1 py-1 rounded-md text-sm mr-2">
                       {item.category.parentCategory.name}
                     </span>
-                    <span className="capitalize inline-block bg-neutral-200 text-neutral-700 px-3 py-1 rounded-md text-sm">
+                    <span className="capitalize inline-block bg-neutral-200 text-neutral-700 px-3 my-1 py-1 rounded-md text-sm">
                       {item.category.name}
                     </span>
                   </div>
@@ -227,7 +232,7 @@ function MenuPage() {
           </div>
 
           {filteredItems.length === 0 && (
-            <div className="text-center py-12">
+            <div className="text-center pb-16 pt-12 border-b border-neutral-300">
               <p className="font-mono text-neutral-500 text-lg">
                 No menu items found matching your criteria.
               </p>
