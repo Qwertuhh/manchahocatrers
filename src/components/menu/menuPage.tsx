@@ -71,7 +71,7 @@ function MenuPage() {
             <h1 className="wix-madefor-display-bold text-5xl font-bold text-neutral-800 mb-4">
               Our Menu
             </h1>
-            <p className="tangerine-regular text-4xl text-neutral-600 mb-8 questrial-regular">
+            <p className="tangerine-regular text-4xl md:text-6xl text-neutral-600 mb-8 questrial-regular">
               Discover our authentic flavors and culinary delights
             </p>
           </div>
@@ -91,7 +91,7 @@ function MenuPage() {
             </div>
 
             {/* Category Filter */}
-            <div className="flex flex-wrap justify-center gap-2">
+            <div className="flex flex-wrap justify-left gap-2 border-t border-neutral-300 pt-4">
               {menuCategories.map((category) => (
                 <button
                   key={category.id}
@@ -102,8 +102,8 @@ function MenuPage() {
                   className={clsx(
                     "ibm-plex-mono-bold px-4 py-2 rounded-md transition-colors duration-200 cursor-pointer",
                     selectedCategory === category.name
-                      ? "bg-neutral-800 text-white"
-                      : "bg-white text-neutral-700 border border-neutral-300 hover:bg-neutral-50"
+                      ? "bg-neutral-800 hover:bg-neutral-700 text-white"
+                      : "bg-white text-neutral-800 border border-neutral-300 hover:bg-neutral-50"
                   )}
                 >
                   {category.name}
@@ -113,14 +113,14 @@ function MenuPage() {
 
             {/* Subcategory Filter */}
             {availableSubCategories.length > 0 && (
-              <div className="flex flex-wrap justify-center gap-2 mt-4">
+              <div className="flex flex-wrap justify-item gap-2 mt-4 border-t border-neutral-300 pt-4">
                 <button
                   onClick={() => setSelectedSubCategory(null)}
                   className={clsx(
                     "ibm-plex-mono-regular px-3 py-1 rounded-md text-sm transition-colors duration-200 cursor-pointer",
                     !selectedSubCategory
-                      ? "bg-neutral-600 text-white"
-                      : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
+                      ? "bg-neutral-700 hover:bg-neutral-800 text-white"
+                      : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200 border border-neutral-700/40"
                   )}
                 >
                   All Subcategories
@@ -133,7 +133,7 @@ function MenuPage() {
                       "px-3 py-1 rounded-md text-sm transition-colors duration-200 cursor-pointer",
                       selectedSubCategory === subCategory.id
                         ? "bg-neutral-600 text-white"
-                        : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
+                        : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200 border border-neutral-500/40"
                     )}
                   >
                     {subCategory.name}
@@ -144,7 +144,7 @@ function MenuPage() {
           </div>
 
           {/* Menu Items Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 border-t border-neutral-300 pt-6">
             {filteredItems.map((item) => (
               <div
                 key={item.id}
@@ -200,30 +200,35 @@ function MenuPage() {
 
           {filteredItems.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-neutral-500 text-lg">
+              <p className="font-mono text-neutral-500 text-lg">
                 No menu items found matching your criteria.
               </p>
             </div>
           )}
 
           {/* Contact Info */}
-          <div className="mt-16 text-center bg-neutral-800 text-white rounded-md p-8">
-            <h2 className="text-2xl font-bold mb-4">Ready to Order?</h2>
-            <p className="mb-6">
-              Call us to place your order or inquire about our catering services
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <div className="mt-16 text-center bg-neutral-800 text-white rounded-md p-8 flex flex-col sm:flex-row justify-around items-center gap-4 sm:gap-8">
+            <div className="text-left">
+              <h2 className="wix-madefor-display-bold text-2xl font-bold mb-4">
+                Ready to Order?
+              </h2>
+              <p className="noto-serif-regular mb-6">
+                Call us to place your order or inquire about our catering
+                services
+              </p>
+            </div>
+            <div className="flex flex-col justify-center gap-4">
               <a
                 href="tel:+919024319241"
-                className="inline-flex items-center justify-center gap-2 bg-white text-neutral-800 px-6 py-3 rounded-lg hover:bg-neutral-100 transition-colors duration-200"
+                className="inline-flex items-center font-mono justify-left gap-2 bg-neutral-50 text-neutral-800 px-6 py-3 rounded-lg hover:bg-neutral-100 transition-colors duration-200"
               >
-                Call: +91 9024319241
+                <span className="ibm-plex-mono-bold">Call</span> +91 9024319241
               </a>
               <a
                 href="mailto:manchahocatrers@gmail.com"
-                className="inline-flex items-center justify-center gap-2 bg-neutral-700 text-white px-6 py-3 rounded-lg hover:bg-neutral-600 transition-colors duration-200"
+                className="inline-flex items-center font-mono justify-left gap-2 bg-neutral-50 text-neutral-800 px-6 py-3 rounded-lg hover:bg-neutral-100 transition-colors duration-200"
               >
-                Email: manchahocatrers@gmail.com
+                <span className="ibm-plex-mono-bold">Email</span> manchahocatrers@gmail.com
               </a>
             </div>
           </div>
