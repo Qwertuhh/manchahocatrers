@@ -25,7 +25,7 @@ import { FacebookNeutral, InstagramNeutral } from "@/assets";
 function Footer() {
   return (
     <footer className="bg-neutral-800 text-stone-300 py-12 px-6 lg:px-10 border-t border-neutral-400/40">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 border-b border-stone-700 pb-8 mb-8">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 border-b border-neutral-700 pb-8 mb-8">
         {/* Company Info / Brand */}
         <div className="text-center md:text-left">
           <h3 className="wix-madefor-display-semibold text-2xl font-bold text-stone-100 mb-4 tracking-wide">
@@ -58,6 +58,14 @@ function Footer() {
                   className="hover:text-stone-100 transition-colors duration-200"
                 >
                   Services
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/menu"
+                  className="hover:text-stone-100 transition-colors duration-200"
+                >
+                  Menu
                 </a>
               </li>
               <li>
@@ -117,7 +125,7 @@ function Footer() {
       </div>
 
       {/* Copyright */}
-      <div className="ibm-plex-mono-regular text-center text-stone-500 mt-8 mx-0">
+      <div className="ibm-plex-mono-regular text-center text-neutral-300 mt-8 mx-0 w-full flex justify-center">
         <p className="text-justify cursor-pointer text-sm lg:text-base ">
           <p>Copyright © 2025 Arihant Jain,Qwertuhh</p>
           <p>

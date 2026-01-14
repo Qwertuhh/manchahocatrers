@@ -25,7 +25,6 @@ import { Search, Star } from "lucide-react";
 import Footer from "./footer";
 
 interface MenuItem {
-  id: string;
   name: string;
   hindiName?: string;
   imageSrc?: string;
@@ -33,11 +32,14 @@ interface MenuItem {
   hindiDescription?: string;
   category: string;
   popular?: boolean;
+  hindiCategory?: string;
+}
+interface MenuItemWithId extends MenuItem {
+  id: string;
 }
 
 const menuItems: MenuItem[] = [
   {
-    id: "1",
     name: "Paneer Tikka",
     hindiName: "पनीर टिक्का",
     imageSrc: "/menu/paneer-tikka.png",
@@ -45,10 +47,10 @@ const menuItems: MenuItem[] = [
     hindiDescription:
       "पनीर के टुकड़े जिसमें आलू, मटर और अन्य सब्जियाँ मिलाकर गरम दूध में डालकर बनाया जाता है",
     category: "Starters",
+    hindiCategory: "स्टार्टर्स",
     popular: true,
   },
   {
-    id: "2",
     name: "Chicken Seekh Kebab",
     hindiName: "चिकन सीख केबाब",
     description: "Minced chicken skewers with aromatic spices and herbs",
@@ -57,7 +59,6 @@ const menuItems: MenuItem[] = [
     popular: true,
   },
   {
-    id: "3",
     name: "Dal Makhani",
     hindiName: "दाल मखनी",
     description: "Creamy black lentils slow-cooked with butter and spices",
@@ -66,7 +67,6 @@ const menuItems: MenuItem[] = [
     popular: true,
   },
   {
-    id: "4",
     name: "Butter Chicken",
     hindiName: "बटर चिकन",
     description: "Tender chicken in rich tomato-cream gravy with butter",
@@ -75,14 +75,12 @@ const menuItems: MenuItem[] = [
     popular: true,
   },
   {
-    id: "5",
     name: "Vegetable Biryani",
     hindiName: "सब्जी बिरयानी",
     description: "Fragrant rice with mixed vegetables and aromatic spices",
     category: "Rice & Biryani",
   },
   {
-    id: "6",
     name: "Chicken Dum Biryani",
     hindiName: "चिकन डम बिरयानी",
     description: "Traditional dum-cooked biryani with tender chicken pieces",
@@ -90,32 +88,33 @@ const menuItems: MenuItem[] = [
     popular: true,
   },
   {
-    id: "7",
     name: "Garlic Naan",
     hindiName: "गार्लिक नान",
     description: "Freshly baked bread with garlic and butter",
     category: "Breads",
   },
   {
-    id: "8",
     name: "Butter Roti",
     description: "Traditional Indian flatbread with butter",
     category: "Breads",
   },
   {
-    id: "9",
     name: "Gulab Jamun",
     description: "Soft milk dumplings in sugar syrup",
     category: "Desserts",
     popular: true,
   },
   {
-    id: "10",
     name: "Rasmalai",
     description: "Soft cottage cheese patties in saffron-flavored milk",
     category: "Desserts",
   },
 ];
+
+const menuItemsWithId: MenuItemWithId[] = menuItems.map((item, index) => ({
+  ...item,
+  id: index.toString(),
+}));
 
 const categories = [
   "All",
@@ -130,7 +129,7 @@ function MenuPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  const filteredItems = menuItems.filter((item) => {
+  const filteredItems = menuItemsWithId.filter((item) => {
     const matchesSearch =
       item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.description?.toLowerCase().includes(searchTerm.toLowerCase());
@@ -173,7 +172,7 @@ function MenuPage() {
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
-                  className={`px-4 py-2 rounded-full transition-colors duration-200 ${
+                  className={`px-4 py-2 rounded-md transition-colors duration-200 ${
                     selectedCategory === category
                       ? "bg-stone-800 text-white"
                       : "bg-white text-stone-700 border border-stone-300 hover:bg-stone-50"
@@ -228,7 +227,7 @@ function MenuPage() {
                   <div className="flex items-center gap-4 text-sm text-stone-500 pt-2 border-t border-stone-100"></div>
 
                   <div className="pt-2">
-                    <span className="inline-block bg-stone-100 text-stone-700 px-3 py-1 rounded-full text-sm">
+                    <span className="capitalize inline-block bg-stone-100 text-stone-700 px-3 py-1 rounded-full text-sm">
                       {item.category}
                     </span>
                   </div>
@@ -246,7 +245,7 @@ function MenuPage() {
           )}
 
           {/* Contact Info */}
-          <div className="mt-16 text-center bg-stone-800 text-white rounded-2xl p-8">
+          <div className="mt-16 text-center bg-neutral-800 text-white rounded-md p-8">
             <h2 className="text-2xl font-bold mb-4">Ready to Order?</h2>
             <p className="mb-6">
               Call us to place your order or inquire about our catering services
