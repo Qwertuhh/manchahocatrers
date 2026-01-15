@@ -25,6 +25,7 @@ function MenuItemCard({
           <img
             src={item.imageSrc}
             alt={item.name}
+            loading="lazy"
             className="w-full h-48 object-cover rounded-lg"
           />
         )}

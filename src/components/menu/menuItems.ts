@@ -217,6 +217,7 @@ const sweetsItems: MenuItem[] = [
   {
     name: "Stuff Rasgulla",
     hindiName: "स्टफ रसगुल्ला",
+    imageSrc:"https://indian.community/wp-content/uploads/2025/09/Blog-Ic-2025-09-11T105325.628.png",
     category: "Popular Sweets",
     hindiCategory: "लोकप्रिय मिठाइयाँ",
     popular: false,

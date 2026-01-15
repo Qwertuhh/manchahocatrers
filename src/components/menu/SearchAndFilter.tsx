@@ -26,15 +26,20 @@ function SearchAndFilter({
   return (
     <div className="mb-8 space-y-4">
       {/* Search Bar */}
-      <div className="relative max-w-md mx-auto">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-5 h-5" />
-        <input
-          type="text"
-          placeholder="Search menu items..."
-          value={searchTerm}
-          onChange={(e) => onSearchChange(e.target.value)}
-          className="w-full pl-10 pr-4 py-3 rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:border-transparent"
-        />
+      <div className="flex flex-col md:flex-row justify-between w-full items-center">
+        <div className="relative max-w-md">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-5 h-5" />
+          <input
+            type="text"
+            placeholder="Search menu items..."
+            value={searchTerm}
+            onChange={(e) => onSearchChange(e.target.value)}
+            className="w-full pl-10 pr-4 py-3 rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:border-transparent"
+          />
+        </div>
+        <a href="/menu/single" className="text-md ibm-plex-mono-bold text-neutral-800 my-2 md:my-0 not-md:underline">
+          Single Page Menu
+        </a>
       </div>
 
       {/* Category Filter */}
@@ -61,11 +66,9 @@ function SearchAndFilter({
       </div>
 
       {/* Subcategory Filter */}
-      {
-        availableSubCategories.length > 0 && (
-          <SectionMarker name="Subcategories" />
-        )
-      }
+      {availableSubCategories.length > 0 && (
+        <SectionMarker name="Subcategories" />
+      )}
       {availableSubCategories.length > 0 && (
         <div className="flex flex-wrap justify-item gap-2 mt-4">
           <button

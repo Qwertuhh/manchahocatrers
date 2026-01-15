@@ -26,6 +26,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "@/index.css";
 import App from "@/App.tsx";
 import { MenuPage } from "@/components/menu";
+import MenuSinglePage from "@/components/menuSinglePage";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -33,6 +34,7 @@ createRoot(document.getElementById("root")!).render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/menu" element={<MenuPage />} />
+        <Route path="/menu/single" element={<MenuSinglePage />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
