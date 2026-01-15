@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import {
   menuItemsWithId,
   menuCategories,
@@ -10,7 +10,11 @@ import {
   EmptyState,
 } from "@/components/menu";
 import type { MenuSubCategory } from "@/types";
-import { useMenuFilter, useNavigation, usePagination } from "@/components/hooks";
+import {
+  useMenuFilter,
+  useNavigation,
+  usePagination,
+} from "@/components/hooks";
 
 const ITEMS_PER_PAGE = 18;
 
@@ -33,6 +37,12 @@ function MenuPreview() {
 
   const availableSubCategories = getSubCategoriesForCategory(selectedCategory);
 
+  // Create stable dependencies array to prevent pagination resets
+  const paginationDependencies = useMemo(
+    () => [searchTerm, selectedCategory, selectedSubCategory],
+    [searchTerm, selectedCategory, selectedSubCategory]
+  );
+
   // Use custom hooks
   const { filteredItems } = useMenuFilter({
     items: menuItemsWithId,
@@ -51,7 +61,7 @@ function MenuPreview() {
   } = usePagination({
     items: filteredItems,
     itemsPerPage: ITEMS_PER_PAGE,
-    dependencies: [searchTerm, selectedCategory, selectedSubCategory],
+    dependencies: paginationDependencies,
   });
 
   const { handleTouchStart } = useNavigation({

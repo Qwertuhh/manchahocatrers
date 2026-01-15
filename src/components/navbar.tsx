@@ -33,7 +33,7 @@ interface Links {
 const links: Links[] = [
   {
     name: "highlights",
-    link: "#highlights",
+    link: "/#highlights",
   },
   {
     name: "menu",
@@ -41,7 +41,7 @@ const links: Links[] = [
   },
   {
     name: "contact",
-    link: "#contact",
+    link: "/#contact",
   },
 ];
 

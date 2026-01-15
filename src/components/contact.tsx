@@ -46,7 +46,7 @@ const ContactArea: React.FC<ContactAreaProps> = ({ email, phoneNumber }) => {
             <h3 className="ibm-plex-mono-bold text-xl font-semibold text-white flex items-center justify-center">
               Email Us
             </h3>
-            <div className="bg-neutral-900 -rotate-2 w-full flex flex-col items-start px-2 my-4 border border-neutral-50">
+            <div className="bg-neutral-900 -rotate-2 hover:rotate-0 transition-all duration-300 cursor-pointer w-full flex flex-col items-start px-2 my-4 border border-neutral-50">
               <p className="ibm-plex-mono-regular text-base text-neutral-400">
                 For general inquiries and support.
               </p>
@@ -64,7 +64,7 @@ const ContactArea: React.FC<ContactAreaProps> = ({ email, phoneNumber }) => {
             <h3 className="ibm-plex-mono-bold text-xl font-semibold text-white flex items-center justify-center">
               Call Us
             </h3>
-            <div className="bg-neutral-900 -rotate-2 w-full flex flex-col items-start px-2 my-4 border border-neutral-50">
+            <div className="bg-neutral-900 -rotate-2 hover:rotate-0 transition-all duration-300 cursor-pointer w-full flex flex-col items-start px-2 my-4 border border-neutral-50">
               <p className="ibm-plex-mono-regular text-base text-neutral-400">
                 For immediate assistance or questions.
               </p>
