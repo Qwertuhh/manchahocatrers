@@ -31,6 +31,7 @@ import {
 import type { MenuSubCategory } from "@/types";
 import clsx from "clsx";
 import SectionMarker from "../ui/sectionMarker";
+import { Food } from "@/assets";
 
 // Custom fuzzy search function for better Hindi text matching
 const fuzzySearch = (text: string, query: string): boolean => {
@@ -82,11 +83,17 @@ function MenuPage() {
         fuzzySearch(item.description || "", searchTerm) ||
         fuzzySearch(item.hindiName || "", searchTerm) ||
         fuzzySearch(item.hindiDescription || "", searchTerm);
+
+      // Find the subcategory object that matches the category name
+      const subCategoryObj = menuSubCategories.find(
+        (sub) => sub.name === item.category
+      );
+      const parentCategoryName = subCategoryObj?.parentCategory.name;
+
       const matchesCategory =
-        selectedCategory === "All" ||
-        item.category.parentCategory.name === selectedCategory;
+        selectedCategory === "All" || parentCategoryName === selectedCategory;
       const matchesSubCategory =
-        !selectedSubCategory || item.category.id === selectedSubCategory;
+        !selectedSubCategory || subCategoryObj?.id === selectedSubCategory;
       return matchesSearch && matchesCategory && matchesSubCategory;
     });
   }, [searchTerm, selectedCategory, selectedSubCategory]);
@@ -177,7 +184,12 @@ function MenuPage() {
           </div>
 
           {/* Menu Items Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4 border-t border-neutral-300 pt-6">
+          <div
+            className={clsx(
+              "grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4 rounded-lg border border-neutral-300 p-4",
+              filteredItems.length === 0 && "hidden"
+            )}
+          >
             {filteredItems.map((item) => (
               <div
                 key={item.id}
@@ -216,14 +228,17 @@ function MenuPage() {
                     {item.hindiDescription}
                   </p>
 
-                  <div className="flex items-center gap-4 text-sm text-neutral-500 pt-2 border-t border-neutral-200"></div>
-
                   <div className="pt-2 font-mono flex justify-between">
                     <span className="capitalize inline-block bg-neutral-100 text-neutral-700 px-3 my-1 py-1 rounded-md text-sm mr-2">
-                      {item.category.parentCategory.name}
+                      {(() => {
+                        const subCategoryObj = menuSubCategories.find(
+                          (sub) => sub.name === item.category
+                        );
+                        return subCategoryObj?.parentCategory.name || "Unknown";
+                      })()}
                     </span>
                     <span className="capitalize inline-block bg-neutral-200 text-neutral-700 px-3 my-1 py-1 rounded-md text-sm">
-                      {item.category.name}
+                      {item.category}
                     </span>
                   </div>
                 </div>
@@ -232,7 +247,9 @@ function MenuPage() {
           </div>
 
           {filteredItems.length === 0 && (
-            <div className="text-center pb-16 pt-12 border-b border-neutral-300">
+            <div className="text-center pb-16 flex flex-col items-center justify-center pt-12 border rounded-md border-neutral-300">
+              <img src={Food} alt="Food" className="w-24 h-24" />
+
               <p className="font-mono text-neutral-500 text-lg">
                 No menu items found matching your criteria.
               </p>

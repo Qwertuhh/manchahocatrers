@@ -23,15 +23,15 @@ interface MenuSubCategory extends MenuSubCategoryItem {
   id: string;
 }
 
+
 interface MenuItem {
   name: string;
   hindiName?: string;
   imageSrc?: string;
   description?: string;
   hindiDescription?: string;
-  // ? For filtering and grouping
-  // ? By subcategory primary category can be easily accessed
-  category: MenuSubCategory;
+  // ? For filtering and grouping - using subcategory name as string
+  category: string;
   popular?: boolean;
   hindiCategory?: string;
 }
@@ -43,4 +43,4 @@ export type {
   MenuItemWithId,
   MenuCategory,
   MenuSubCategory,
-};
+}

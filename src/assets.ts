@@ -24,5 +24,6 @@ import InstagramNeutral from "@/assets/instagram-neutral.svg";
 import FacebookNeutral from "@/assets/facebook-neutral.svg";
 import Instagram from "@/assets/instagram.svg";
 import Facebook from "@/assets/facebook.svg";
+import Food from "@/assets/food.svg";
 
-export { InstagramNeutral, FacebookNeutral, Instagram, Facebook };
+export { InstagramNeutral, FacebookNeutral, Instagram, Facebook, Food };
