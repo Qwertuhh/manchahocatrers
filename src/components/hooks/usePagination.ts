@@ -26,15 +26,23 @@ function usePagination({
   // Calculate pagination values
   const paginationValues = useMemo(() => {
     const totalPages = Math.ceil(items.length / itemsPerPage);
-    const startIndex = currentPage * itemsPerPage;
+    const safeTotalPages = Math.max(totalPages, 0);
+
+    // Ensure currentPage is always in range [0, safeTotalPages - 1]
+    const normalizedPage = safeTotalPages
+      ? ((currentPage % safeTotalPages) + safeTotalPages) % safeTotalPages
+      : 0;
+
+    const startIndex = normalizedPage * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const currentItems = items.slice(startIndex, endIndex);
 
     return {
-      totalPages,
+      totalPages: safeTotalPages,
       currentItems,
       startIndex,
       endIndex,
+      normalizedPage,
     };
   }, [items, currentPage, itemsPerPage]);
 
@@ -43,30 +51,35 @@ function usePagination({
     setCurrentPage(0);
   }, [items, dependencies]);
 
-  // Navigation functions
+  // Navigation functions (looped / wrap-around)
   const goToNextPage = useCallback(() => {
-    if (currentPage < paginationValues.totalPages - 1) {
-      setCurrentPage(currentPage + 1);
-    }
-  }, [currentPage, paginationValues.totalPages]);
+    const total = paginationValues.totalPages;
+    if (!total) return;
+
+    setCurrentPage((prev) => (((prev + 1) % total) + total) % total);
+  }, [paginationValues.totalPages]);
 
   const goToPreviousPage = useCallback(() => {
-    if (currentPage > 0) {
-      setCurrentPage(currentPage - 1);
-    }
-  }, [currentPage]);
+    const total = paginationValues.totalPages;
+    if (!total) return;
+
+    setCurrentPage((prev) => (((prev - 1) % total) + total) % total);
+  }, [paginationValues.totalPages]);
 
   const goToPage = useCallback(
     (page: number) => {
-      if (page >= 0 && page < paginationValues.totalPages) {
-        setCurrentPage(page);
-      }
+      const total = paginationValues.totalPages;
+      if (!total) return;
+
+      // Wrap any page index into the valid range using modulo
+      const target = ((page % total) + total) % total;
+      setCurrentPage(target);
     },
     [paginationValues.totalPages]
   );
 
   return {
-    currentPage,
+    currentPage: paginationValues.normalizedPage,
     totalPages: paginationValues.totalPages,
     currentItems: paginationValues.currentItems,
     goToNextPage,

@@ -73,12 +73,9 @@ function ScrollPagination({
         <div className="flex justify-between items-center bg-white shadow-lg border-t border-neutral-200 px-4 py-3 gap-4 md:bg-white md:rounded-lg md:border md:border-neutral-200 md:px-4 md:py-3">
           <button
             onClick={onPreviousPage}
-            disabled={currentPage === 0}
             className={clsx(
               "ibm-plex-mono-bold flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-200 text-sm md:px-4",
-              currentPage === 0
-                ? "bg-neutral-200 text-neutral-400 cursor-not-allowed"
-                : "bg-neutral-800 text-white hover:bg-neutral-700 cursor-pointer"
+              "bg-neutral-800 text-white hover:bg-neutral-700 cursor-pointer"
             )}
           >
             <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
@@ -93,12 +90,9 @@ function ScrollPagination({
 
           <button
             onClick={onNextPage}
-            disabled={currentPage >= totalPages - 1}
             className={clsx(
               "ibm-plex-mono-bold flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-200 text-sm md:px-4",
-              currentPage >= totalPages - 1
-                ? "bg-neutral-200 text-neutral-400 cursor-not-allowed"
-                : "bg-neutral-800 text-white hover:bg-neutral-700 cursor-pointer"
+              "bg-neutral-800 text-white hover:bg-neutral-700 cursor-pointer"
             )}
           >
             <span className="hidden md:inline">Next</span>

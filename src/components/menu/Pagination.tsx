@@ -20,12 +20,9 @@ function Pagination({
     <div className="flex justify-between items-center mt-6">
       <button
         onClick={onPreviousPage}
-        disabled={currentPage === 0}
         className={clsx(
           "flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200",
-          currentPage === 0
-            ? "bg-neutral-200 text-neutral-400 cursor-not-allowed"
-            : "bg-neutral-800 text-white hover:bg-neutral-700 cursor-pointer"
+          "bg-neutral-800 text-white hover:bg-neutral-700 cursor-pointer"
         )}
       >
         <ChevronLeft className="w-5 h-5" />
@@ -40,12 +37,9 @@ function Pagination({
 
       <button
         onClick={onNextPage}
-        disabled={currentPage >= totalPages - 1}
         className={clsx(
           "flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200",
-          currentPage >= totalPages - 1
-            ? "bg-neutral-200 text-neutral-400 cursor-not-allowed"
-            : "bg-neutral-800 text-white hover:bg-neutral-700 cursor-pointer"
+          "bg-neutral-800 text-white hover:bg-neutral-700 cursor-pointer"
         )}
       >
         Next
