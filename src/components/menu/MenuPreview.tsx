@@ -6,7 +6,7 @@ import {
   MenuHeader,
   SearchAndFilter,
   MenuItemCard,
-  Pagination,
+  ScrollPagination,
   EmptyState,
 } from "@/components/menu";
 import type { MenuSubCategory } from "@/types";
@@ -87,42 +87,42 @@ function MenuPreview() {
           availableSubCategories={availableSubCategories}
         />
 
-        {/* Menu Items Grid */}
-        <div
-          className={`grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4 rounded-lg border border-neutral-300 p-4 transition-all duration-300 ${
-            filteredItems.length === 0 ? "hidden" : ""
-          }`}
-          onTouchStart={handleTouchStart}
-        >
-          {currentItems.map((item) => (
-            <MenuItemCard
-              key={item.id}
-              item={item}
-              menuSubCategories={menuSubCategories}
-            />
-          ))}
-        </div>
-
         {filteredItems.length === 0 ? (
           <EmptyState />
         ) : (
-          <Pagination
+          <ScrollPagination
             currentPage={currentPage}
             totalPages={totalPages}
-            totalItems={filteredItems.length}
             onPreviousPage={goToPreviousPage}
             onNextPage={goToNextPage}
-          />
+          >
+            {/* Menu Items Grid */}
+            <div
+              className={`grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4 rounded-lg border border-neutral-300 p-4 transition-all duration-300 ${
+                filteredItems.length === 0 ? "hidden" : ""
+              }`}
+              onTouchStart={handleTouchStart}
+            >
+              {currentItems.map((item) => (
+                <MenuItemCard
+                  key={item.id}
+                  item={item}
+                  menuSubCategories={menuSubCategories}
+                />
+              ))}
+            </div>
+          </ScrollPagination>
         )}
 
         {/* Contact Info */}
-        <div className="mt-16 text-center bg-neutral-800 text-white rounded-md p-8 flex flex-col sm:flex-row justify-around items-center gap-4 sm:gap-8">
+        <div className="mt-16 text-center bg-neutral-800 text-white rounded-md p-12 flex flex-col sm:flex-row justify-around items-center gap-4 sm:gap-8">
           <div className="text-left">
             <h2 className="wix-madefor-display-bold text-2xl font-bold mb-4">
               Ready to Order?
             </h2>
-            <p className="noto-serif-regular mb-6">
-              Call us to place your order or inquire about our catering services
+            <p className="noto-serif-regular mb-6 w-1/2">
+              Email or call us to place your order or inquire about our catering
+              services.
             </p>
           </div>
           <div className="flex flex-col justify-center gap-4">

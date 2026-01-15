@@ -4,7 +4,6 @@ import clsx from "clsx";
 interface PaginationProps {
   currentPage: number;
   totalPages: number;
-  totalItems: number;
   onPreviousPage: () => void;
   onNextPage: () => void;
 }
@@ -12,7 +11,6 @@ interface PaginationProps {
 function Pagination({
   currentPage,
   totalPages,
-  totalItems,
   onPreviousPage,
   onNextPage,
 }: PaginationProps) {
@@ -35,11 +33,8 @@ function Pagination({
       </button>
 
       <div className="text-center">
-        <span className="text-neutral-600 font-mono">
-          Page {currentPage + 1} of {totalPages}
-        </span>
-        <span className="text-neutral-500 text-sm ml-2">
-          ({totalItems} items total)
+        <span className="ibm-plex-mono-bold text-neutral-600">
+          {currentPage + 1} of {totalPages}
         </span>
       </div>
 
