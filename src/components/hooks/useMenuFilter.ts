@@ -41,16 +41,27 @@ function useMenuFilter({
 
     // Apply category and subcategory filters
     return filteredItems.filter((item) => {
-      // Find subcategory object that matches category name
+      // Find subcategory object that matches this item's category name
       const subCategoryObj = menuSubCategories.find(
         (sub) => sub.name === item.category
       );
-      const parentCategoryName = subCategoryObj?.parentCategory.name;
+
+      // Derive the effective main category for this item:
+      // - Prefer the parentCategory of the matching subcategory (when it exists)
+      // - Fall back to the item's own category name when there's no subcategory mapping
+      const effectiveCategoryName =
+        subCategoryObj?.parentCategory.name ?? item.category;
 
       const matchesCategory =
-        selectedCategory === "All" || parentCategoryName === selectedCategory;
+        selectedCategory === "All" ||
+        effectiveCategoryName === selectedCategory;
+
+      // Subcategory filter:
+      // - When no subcategory is selected ("All Subcategories"), allow all items
+      // - Otherwise, the item's subcategory id must match the selectedSubCategory
       const matchesSubCategory =
         !selectedSubCategory || subCategoryObj?.id === selectedSubCategory;
+
       return matchesCategory && matchesSubCategory;
     });
   }, [

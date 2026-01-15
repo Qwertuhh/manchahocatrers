@@ -126,8 +126,8 @@ function Footer() {
 
       {/* Copyright */}
       <div className="ibm-plex-mono-regular text-center text-neutral-300 mt-8 mx-0 w-full flex justify-center">
-        <p className="text-justify cursor-pointer text-sm lg:text-base ">
-          <p>Copyright © 2025 Arihant Jain,Qwertuhh</p>
+        <div className="text-justify cursor-pointer text-sm lg:text-base ">
+          <p>Copyright &copy; 2025 Arihant Jain,Qwertuhh</p>
           <p>
             Distributed under the{" "}
             <a
@@ -138,7 +138,7 @@ function Footer() {
             </a>
             . THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
           </p>
-        </p>
+        </div>
       </div>
     </footer>
   );

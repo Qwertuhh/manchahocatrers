@@ -11,11 +11,16 @@ const menuCategoriesItems: MenuCategoryItem[] = [
   { name: "All", hindiName: "सभी" },
   { name: "Sweets", hindiName: "मिठाई" },
   { name: "Namkeen", hindiName: "नमकीन" },
+
   { name: "Vegetables", hindiName: "सब्ज़ी" },
   { name: "Breads, Rice & Dal", hindiName: "रोटी, चावल और दाल" },
   { name: "Rajasthani Cuisine", hindiName: "राजस्थानी व्यंजन" },
+
   { name: "Floating/Snacks & Stalls", hindiName: "फ्लोटिंग/स्नैक्स और स्टॉल" },
   { name: "Accompaniments", hindiName: "साथ में दिए जाने वाले खाने" },
+  { name: "Appetizers", hindiName: "अपेटाइजर्स" },
+
+  { name: "Drinks", hindiName: "द्राइंक्स" },
 ];
 
 const menuCategories: MenuCategory[] = menuCategoriesItems.map(
@@ -181,6 +186,23 @@ const menuSubCategoriesItems: MenuSubCategoryItem[] = [
     hindiName: "चटनी और अचार",
     parentCategory: menuCategories[7],
   },
+
+  // * Drinks
+  {
+    name: "Shake",
+    hindiName: "शैक",
+    parentCategory: menuCategories[9],
+  },
+  {
+    name: "Juice",
+    hindiName: "जुइस",
+    parentCategory: menuCategories[9],
+  },
+  {
+    name: "Mojito",
+    hindiName: "मोहिटो",
+    parentCategory: menuCategories[9],
+  }
 ];
 
 const menuSubCategories: MenuSubCategory[] = menuSubCategoriesItems.map(
@@ -195,6 +217,13 @@ const sweetsItems: MenuItem[] = [
   {
     name: "Stuff Rasgulla",
     hindiName: "स्टफ रसगुल्ला",
+    category: "Popular Sweets",
+    hindiCategory: "लोकप्रिय मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Malai Goli",
+    hindiName: "मलाई गोरी",
     category: "Popular Sweets",
     hindiCategory: "लोकप्रिय मिठाइयाँ",
     popular: false,
@@ -871,6 +900,62 @@ const sweetsItems: MenuItem[] = [
     category: "Traditional and Other Sweets",
     hindiCategory: "परंपरागत और अन्य मिठाइयाँ",
   },
+  {
+    name: "Fried Kaju",
+    hindiName: "फ्राईड काजू",
+    category: "Traditional and Other Sweets",
+    hindiCategory: "परंपरागत और अन्य मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Fried Badam",
+    hindiName: "फ्राईड बादाम",
+    category: "Traditional and Other Sweets",
+    hindiCategory: "परंपरागत और अन्य मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Chenna Balls",
+    hindiName: "छैना बॉल्स",
+    category: "Traditional and Other Sweets",
+    hindiCategory: "परंपरागत और अन्य मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Kesar Barfi",
+    hindiName: "केसर बर्फी",
+    category: "Traditional and Other Sweets",
+    hindiCategory: "परंपरागत और अन्य मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Sandesh Lychee",
+    hindiName: "संदेश लीची",
+    category: "Traditional and Other Sweets",
+    hindiCategory: "परंपरागत और अन्य मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Sandesh Strawberry",
+    hindiName: "संदेश स्ट्रॉबेरी",
+    category: "Traditional and Other Sweets",
+    hindiCategory: "परंपरागत और अन्य मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Pista Loch",
+    hindiName: "पिस्ता लोच",
+    category: "Traditional and Other Sweets",
+    hindiCategory: "परंपरागत और अन्य मिठाइयाँ",
+    popular: false,
+  },
+  {
+    name: "Malai Paan",
+    hindiName: "मलाई पान",
+    category: "Traditional and Other Sweets",
+    hindiCategory: "परंपरागत और अन्य मिठाइयाँ",
+    popular: true,
+  },
 ];
 
 const namkeenItems: MenuItem[] = [
@@ -1250,10 +1335,741 @@ const vegetableItems: MenuItem[] = [
   },
 ];
 
+const tandoorItems = [
+  // --- Tandoor & Roti ---
+  {
+    name: "Tawa Chapati",
+    hindiName: "तवा चपाती",
+    category: "Tandoor & Roti",
+    hindiCategory: "तंदूर और रोटी",
+    popular: false,
+  },
+  {
+    name: "Rumali Roti",
+    hindiName: "रुमाली रोटी",
+    category: "Tandoor & Roti",
+    hindiCategory: "तंदूर और रोटी",
+    popular: false,
+  },
+  {
+    name: "Tandoori Roti",
+    hindiName: "तन्दूरी रोटी",
+    category: "Tandoor & Roti",
+    hindiCategory: "तंदूर और रोटी",
+    popular: false,
+  },
+  {
+    name: "Missi Roti",
+    hindiName: "मिस्सी रोटी",
+    category: "Tandoor & Roti",
+    hindiCategory: "तंदूर और रोटी",
+    popular: false,
+  },
+  {
+    name: "Baby Naan",
+    hindiName: "बेबी नान",
+    category: "Tandoor & Roti",
+    hindiCategory: "तंदूर और रोटी",
+    popular: false,
+  },
+  {
+    name: "Family Naan",
+    hindiName: "फैमिली नान",
+    category: "Tandoor & Roti",
+    hindiCategory: "तंदूर और रोटी",
+    popular: false,
+  },
+  {
+    name: "Podana Naan",
+    hindiName: "पोदाना नान",
+    category: "Tandoor & Roti",
+    hindiCategory: "तंदूर और रोटी",
+    popular: false,
+  },
+  {
+    name: "Stuff Naan",
+    hindiName: "स्टफ नान",
+    category: "Tandoor & Roti",
+    hindiCategory: "तंदूर और रोटी",
+    popular: false,
+  },
+  {
+    name: "Kandhari Naan",
+    hindiName: "कन्धारी नान",
+    category: "Tandoor & Roti",
+    hindiCategory: "तंदूर और रोटी",
+    popular: false,
+  },
+  {
+    name: "Biscuit Naan",
+    hindiName: "बिस्कुट नान",
+    category: "Tandoor & Roti",
+    hindiCategory: "तंदूर और रोटी",
+    popular: false,
+  },
+  {
+    name: "Lachha Paratha",
+    hindiName: "लच्छा परांठा",
+    category: "Tandoor & Roti",
+    hindiCategory: "तंदूर और रोटी",
+    popular: false,
+  },
+  {
+    name: "Stuff Kulcha",
+    hindiName: "स्टफ कुलचा",
+    category: "Tandoor & Roti",
+    hindiCategory: "तंदूर और रोटी",
+    popular: false,
+  },
+  {
+    name: "Paneer Paratha",
+    hindiName: "पनीर परांठा",
+    category: "Tandoor & Roti",
+    hindiCategory: "तंदूर और रोटी",
+    popular: false,
+  },
+  {
+    name: "Dal Paratha",
+    hindiName: "दाल परांठा",
+    category: "Tandoor & Roti",
+    hindiCategory: "तंदूर और रोटी",
+    popular: false,
+  },
+  {
+    name: "Methi Paratha",
+    hindiName: "मेथी परांठा",
+    category: "Tandoor & Roti",
+    hindiCategory: "तंदूर और रोटी",
+    popular: false,
+  },
+  {
+    name: "Aloo Paratha",
+    hindiName: "आलू पराठा",
+    category: "Tandoor & Roti",
+    hindiCategory: "तंदूर और रोटी",
+    popular: false,
+  },
+  {
+    name: "Gobhi Paratha",
+    hindiName: "गोभी परांठा",
+    category: "Tandoor & Roti",
+    hindiCategory: "तंदूर और रोटी",
+    popular: false,
+  },
+
+  // --- Rice/Pulao ---
+  {
+    name: "Plain Rice",
+    hindiName: "प्लेन राईस",
+    category: "Breads",
+    hindiCategory: "रोटी",
+    popular: false,
+  },
+  {
+    name: "Jeera Rice",
+    hindiName: "जीरा राईस",
+    category: "Breads",
+    hindiCategory: "रोटी",
+    popular: false,
+  },
+  {
+    name: "Kesar Rice",
+    hindiName: "केसर राईस",
+    category: "Breads",
+    hindiCategory: "रोटी",
+    popular: false,
+  },
+  {
+    name: "Gatta Pulao",
+    hindiName: "गट्टा पुलाव",
+    category: "Breads",
+    hindiCategory: "रोटी",
+    popular: false,
+  },
+  {
+    name: "Corn Peas Pulao",
+    hindiName: "कॉर्न पीज पुलाव",
+    category: "Breads",
+    hindiCategory: "रोटी",
+    popular: false,
+  },
+  {
+    name: "Kashmiri Pulao",
+    hindiName: "कश्मीरी पुलाव",
+    category: "Breads",
+    hindiCategory: "रोटी",
+    popular: false,
+  },
+  {
+    name: "Hyderabadi Biryani with Raita",
+    hindiName: "हैदराबादी बिरयानी विद् रायता",
+    category: "Breads",
+    hindiCategory: "रोटी",
+    popular: true,
+  },
+  {
+    name: "Lemon Coriander Rice",
+    hindiName: "लेमन कॉरिऐन्डर राईस",
+    category: "Breads",
+    hindiCategory: "रोटी",
+    popular: false,
+  },
+  {
+    name: "Matar/Shahi Pulao",
+    hindiName: "मटर/शाही पुलाव",
+    category: "Breads",
+    hindiCategory: "रोटी",
+    popular: false,
+  },
+  {
+    name: "Kabuli Pulao",
+    hindiName: "काबुली पुलाव",
+    category: "Breads",
+    hindiCategory: "रोटी",
+    popular: false,
+  },
+  {
+    name: "Veg Biryani",
+    hindiName: "वेज बिरयानी",
+    category: "Breads",
+    hindiCategory: "रोटी",
+    popular: false,
+  },
+  {
+    name: "Hara Bhara Rice",
+    hindiName: "हरा भरा राईस",
+    category: "Breads",
+    hindiCategory: "रोटी",
+    popular: false,
+  },
+];
+
+const saladItems = [
+  // --- Salad ---
+  {
+    name: "Green Salad",
+    hindiName: "ग्रीन सलाद",
+    category: "Salad",
+    hindiCategory: "सलाड",
+    popular: false,
+  },
+  {
+    name: "Sprouted Salad",
+    hindiName: "अंकुरित सलाद",
+    category: "Salad",
+    hindiCategory: "सलाड",
+    popular: false,
+  },
+  {
+    name: "Kachumber Salad",
+    hindiName: "कचूम्बर सलाद",
+    category: "Salad",
+    hindiCategory: "सलाड",
+    popular: false,
+  },
+  {
+    name: "Macaroni Salad",
+    hindiName: "मैकरॉनी सलाद",
+    category: "Salad",
+    hindiCategory: "सलाड",
+    popular: false,
+  },
+  {
+    name: "Hawaiian Salad",
+    hindiName: "हवाईन सलाद",
+    category: "Salad",
+    hindiCategory: "सलाड",
+    popular: false,
+  },
+  {
+    name: "Podina Aloo Chaat",
+    hindiName: "पोदीना आलू चाट",
+    category: "Salad",
+    hindiCategory: "सलाड",
+    popular: false,
+  },
+  {
+    name: "Rajma Salad",
+    hindiName: "राजमा सलाद",
+    category: "Salad",
+    hindiCategory: "सलाड",
+    popular: false,
+  },
+  {
+    name: "Peanut Salad",
+    hindiName: "मूंगफली सलाद",
+    category: "Salad",
+    hindiCategory: "सलाड",
+    popular: false,
+  },
+  {
+    name: "Paneer Pineapple Salad",
+    hindiName: "पनीर पाईनएप्पल सलाद",
+    category: "Salad",
+    hindiCategory: "सलाड",
+    popular: false,
+  },
+  {
+    name: "Russian Salad",
+    hindiName: "रशियन सलाद",
+    category: "Salad",
+    hindiCategory: "सलाड",
+    popular: false,
+  },
+];
+
+const rajasthanItems = [
+  // --- Rajasthan Food (Kachhi Rasoi & Bati) ---
+  {
+    name: "Rajasthani Kadhi",
+    hindiName: "राजस्थानी कढ़ी",
+    category: "Kachhi Rasoi",
+    hindiCategory: "कच्ची रसोई (राजस्थानी)",
+    popular: true,
+  },
+  {
+    name: "Gatta",
+    hindiName: "गट्टा",
+    category: "Kachhi Rasoi",
+    hindiCategory: "कच्ची रसोई (राजस्थानी)",
+    popular: false,
+  },
+  {
+    name: "Papad Choori",
+    hindiName: "पापड़ चूरी",
+    category: "Kachhi Rasoi",
+    hindiCategory: "कच्ची रसोई (राजस्थानी)",
+    popular: false,
+  },
+  {
+    name: "Lehsun ki Chutney",
+    hindiName: "लहसुन की चटनी",
+    category: "Kachhi Rasoi",
+    hindiCategory: "कच्ची रसोई (राजस्थानी)",
+    popular: true,
+  },
+  {
+    name: "Sada Bati",
+    hindiName: "सादा बाटी",
+    category: "Bati",
+    hindiCategory: "बाटी",
+    popular: false,
+  },
+  {
+    name: "Bafla Bati",
+    hindiName: "बाफला बाटी",
+    category: "Bati",
+    hindiCategory: "बाटी",
+    popular: true,
+  },
+  {
+    name: "Masala Bati",
+    hindiName: "मसाला बाटी",
+    category: "Bati",
+    hindiCategory: "बाटी",
+    popular: false,
+  },
+  {
+    name: "Aloo Matar Bati",
+    hindiName: "आलू मटर बाटी",
+    category: "Bati",
+    hindiCategory: "बाटी",
+    popular: false,
+  },
+  {
+    name: "Paneer Bati",
+    hindiName: "पनीर वाटी",
+    category: "Bati",
+    hindiCategory: "बाटी",
+    popular: false,
+  },
+  {
+    name: "Mewa Bati",
+    hindiName: "मेवा बाटी",
+    category: "Bati",
+    hindiCategory: "बाटी",
+    popular: false,
+  },
+  {
+    name: "Fruit Bati",
+    hindiName: "फ्रूट बाटी",
+    category: "Bati",
+    hindiCategory: "बाटी",
+    popular: false,
+  },
+  {
+    name: "Chach",
+    hindiName: "छाछ",
+    category: "Other Rajasthani Accompaniments",
+    hindiCategory: "अन्य राजस्थानी संगत",
+    popular: true,
+  },
+  {
+    name: "Rabri (Drink)",
+    hindiName: "राबड़ी",
+    category: "Other Rajasthani Accompaniments",
+    hindiCategory: "अन्य राजस्थानी संगत",
+    popular: false,
+  },
+  {
+    name: "Lemon",
+    hindiName: "नींबू",
+    category: "Other Rajasthani Accompaniments",
+    hindiCategory: "अन्य राजस्थानी संगत",
+    popular: false,
+  },
+];
+
+const raitaItems = [
+  // --- Raita ---
+  {
+    name: "Plain Curd",
+    hindiName: "प्लेन दही",
+    category: "Raita",
+    hindiCategory: "रेता",
+    popular: false,
+  },
+  {
+    name: "Kesar Curd",
+    hindiName: "केसर दही",
+    category: "Raita",
+    hindiCategory: "रेता",
+    popular: false,
+  },
+  {
+    name: "Boondi/Aloo Raita",
+    hindiName: "बूंदी/आलू रायता",
+    category: "Raita",
+    hindiCategory: "रेता",
+    popular: true,
+  },
+  {
+    name: "Kheer Raita",
+    hindiName: "खीर रायता",
+    category: "Raita",
+    hindiCategory: "रेता",
+    popular: false,
+  },
+  {
+    name: "Vegetable Raita",
+    hindiName: "वेजीटेबल रायता",
+    category: "Raita",
+    hindiCategory: "रेता",
+    popular: false,
+  },
+  {
+    name: "Fruit Raita",
+    hindiName: "फ्रूट रायता",
+    category: "Raita",
+    hindiCategory: "रेता",
+    popular: false,
+  },
+];
+const pickleItems = [
+  // --- Pickle & Chutney ---
+  {
+    name: "Kairi Achar",
+    hindiName: "कैरी आचार",
+    category: "Chutney & Achar",
+    hindiCategory: "चटनी और अचार",
+    popular: false,
+  },
+  {
+    name: "Nimbu Achar",
+    hindiName: "नींबू आचार",
+    category: "Chutney & Achar",
+    hindiCategory: "चटनी और अचार",
+    popular: false,
+  },
+  {
+    name: "Mix Achar",
+    hindiName: "मिक्स अचार",
+    category: "Chutney & Achar",
+    hindiCategory: "चटनी और अचार",
+    popular: false,
+  },
+  {
+    name: "Hari Chutney",
+    hindiName: "हरी चटनी",
+    category: "Chutney & Achar",
+    hindiCategory: "चटनी और अचार",
+    popular: false,
+  },
+  {
+    name: "Meethi Chutney",
+    hindiName: "मीठी चटनी",
+    category: "Chutney & Achar",
+    hindiCategory: "चटनी और अचार",
+    popular: false,
+  },
+  {
+    name: "Lehsun Chutney",
+    hindiName: "लहसुन चटनी",
+    category: "Chutney & Achar",
+    hindiCategory: "चटनी और अचार",
+    popular: false,
+  },
+];
+
+const stallItems = [
+  {
+    name: "Masala Dosa",
+    hindiName: "मसाला डोसा",
+    category: "South Indian",
+    hindiCategory: "साउथ इंडियन",
+    popular: true,
+  },
+  {
+    name: "Idli",
+    hindiName: "इडली",
+    category: "South Indian",
+    hindiCategory: "साउथ इंडियन",
+    popular: false,
+  },
+  {
+    name: "Sambhar Vada",
+    hindiName: "सांभर वडा",
+    category: "South Indian",
+    hindiCategory: "साउथ इंडियन",
+    popular: false,
+  },
+  {
+    name: "Uttapam",
+    hindiName: "उत्तपम",
+    category: "South Indian",
+    hindiCategory: "साउथ इंडियन",
+    popular: false,
+  },
+  {
+    name: "Gol Gappa",
+    hindiName: "गोल गप्पा",
+    category: "Chaat/Stalls",
+    hindiCategory: "चाट/स्टॉल्स",
+    popular: true,
+  },
+  {
+    name: "Aloo Tikia",
+    hindiName: "आलू टिकिया",
+    category: "Chaat/Stalls",
+    hindiCategory: "चाट/स्टॉल्स",
+    popular: false,
+  },
+  {
+    name: "Pav Bhaji",
+    hindiName: "पाव-भाजी",
+    category: "Chaat/Stalls",
+    hindiCategory: "चाट/स्टॉल्स",
+    popular: true,
+  },
+  {
+    name: "Chola Bhatura",
+    hindiName: "छोला भटूरा",
+    category: "Chaat/Stalls",
+    hindiCategory: "चाट/स्टॉल्स",
+    popular: true,
+  },
+  {
+    name: "Fruit Chaat",
+    hindiName: "फ्रूट चाट",
+    category: "Chaat/Stalls",
+    hindiCategory: "चाट/स्टॉल्स",
+    popular: false,
+  },
+];
+
+const appetizerItems = [
+  // --- Appetizers (Hot Namkeen / Snacks) ---
+  {
+    name: "French Fries",
+    hindiName: "फ्रेंच फ्राईज",
+    category: "Appetizers",
+    hindiCategory: "गरम नमकीन",
+    popular: false,
+  },
+  {
+    name: "Spring Roll",
+    hindiName: "स्प्रिंग रोल",
+    category: "Appetizers",
+    hindiCategory: "गरम नमकीन",
+    popular: true,
+  },
+  {
+    name: "Veg Cutlet",
+    hindiName: "वेजीटेबल कटलेट",
+    category: "Appetizers",
+    hindiCategory: "गरम नमकीन",
+    popular: false,
+  },
+  {
+    name: "Paneer Tikka",
+    hindiName: "पनीर टिक्का",
+    category: "Appetizers",
+    hindiCategory: "गरम नमकीन",
+    popular: true,
+  },
+  {
+    name: "Cheese Ball",
+    hindiName: "चीज बॉल",
+    category: "Appetizers",
+    hindiCategory: "गरम नमकीन",
+    popular: false,
+  },
+  {
+    name: "Dry Manchurian",
+    hindiName: "ड्राई मन्चूरियन",
+    category: "Appetizers",
+    hindiCategory: "गरम नमकीन",
+    popular: true,
+  },
+  {
+    name: "Chilli Paneer",
+    hindiName: "चिली पनीर",
+    category: "Appetizers",
+    hindiCategory: "गरम नमकीन",
+    popular: true,
+  },
+  {
+    name: "Paneer 65",
+    hindiName: "पनीर 65",
+    category: "Appetizers",
+    hindiCategory: "गरम नमकीन",
+    popular: false,
+  },
+];
+
+
+const drinksItems = [
+  // --- Shakes ---
+  {
+    name: "Vanilla Shake",
+    hindiName: "वेनिला शेक",
+    category: "Shake",
+    hindiCategory: "शैक",
+    popular: false,
+  },
+  {
+    name: "Chocolate Shake",
+    hindiName: "चॉकलेट शेक",
+    category: "Shake",
+    hindiCategory: "शैक",
+    popular: true,
+  },
+  {
+    name: "Strawberry Shake",
+    hindiName: "स्ट्रॉबेरी शेक",
+    category: "Shake",
+    hindiCategory: "शैक",
+    popular: false,
+  },
+  {
+    name: "Mango Shake",
+    hindiName: "मैंगो शेक",
+    category: "Shake",
+    hindiCategory: "शैक",
+    popular: true,
+  },
+  {
+    name: "Cold Coffee with Ice Cream",
+    hindiName: "कोल्ड कॉफी विद आइसक्रीम",
+    category: "Shake",
+    hindiCategory: "शैक",
+    popular: true,
+  },
+  {
+    name: "Butterscotch Shake",
+    hindiName: "बटरस्कॉच शेक",
+    category: "Shake",
+    hindiCategory: "शैक",
+    popular: false,
+  },
+
+  // --- Juices ---
+  {
+    name: "Mixed Fruit Juice",
+    hindiName: "मिक्स फ्रूट जूस",
+    category: "Juice",
+    hindiCategory: "जुइस",
+    popular: true,
+  },
+  {
+    name: "Pineapple Juice",
+    hindiName: "पाइनएप्पल जूस",
+    category: "Juice",
+    hindiCategory: "जुइस",
+    popular: false,
+  },
+  {
+    name: "Orange Juice",
+    hindiName: "ऑरेंज जूस",
+    category: "Juice",
+    hindiCategory: "जुइस",
+    popular: false,
+  },
+  {
+    name: "Watermelon Juice",
+    hindiName: "तरबूज का जूस",
+    category: "Juice",
+    hindiCategory: "जुइस",
+    popular: false,
+  },
+  {
+    name: "Ganga Jamuna Juice",
+    hindiName: "गंगा जमुना जूस",
+    category: "Juice",
+    hindiCategory: "जुइस",
+    popular: false,
+  },
+
+  // --- Mohito & Refreshments ---
+  {
+    name: "Virgin Mojito",
+    hindiName: "वर्जिन मोहिटो",
+    category: "Mojito",
+    hindiCategory: "मोहिटो",
+    popular: true,
+  },
+  {
+    name: "Green Apple Mojito",
+    hindiName: "ग्रीन एप्पल मोहिटो",
+    category: "Mojito",
+    hindiCategory: "मोहिटो",
+    popular: false,
+  },
+  {
+    name: "Blue Lagoon",
+    hindiName: "ब्लू लगून",
+    category: "Mojito",
+    hindiCategory: "मोहिटो",
+    popular: true,
+  },
+  {
+    name: "Mint Lemonade",
+    hindiName: "मिंट लेमोनेड",
+    category: "Mojito",
+    hindiCategory: "मोहिटो",
+    popular: false,
+  },
+  {
+    name: "Fresh Lime Soda",
+    hindiName: "फ्रेश लाइम सोडा",
+    category: "Mojito",
+    hindiCategory: "मोहिटो",
+    popular: false,
+  },
+];
+
 const menuItems: MenuItem[] = [
   ...sweetsItems,
   ...namkeenItems,
   ...vegetableItems,
+  ...tandoorItems,
+  ...saladItems,
+  ...rajasthanItems,
+  ...raitaItems,
+  ...pickleItems,
+  ...stallItems,
+  ...appetizerItems,
+  ...drinksItems,
 ];
 
 const menuItemsWithId: MenuItemWithId[] = menuItems.map((item, index) => ({
