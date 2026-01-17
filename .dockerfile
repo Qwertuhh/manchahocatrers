@@ -6,7 +6,7 @@ COPY package.json ./
 RUN bun install --frozen-lockfile || bun install
 
 COPY . .
-RUN bun run build
+RUN rm -rf node_modules/.cache && bun run build
 
 FROM nginx:alpine
 
