@@ -54,7 +54,7 @@ function SubHeroSection() {
       </div>
       {/* Menu Button */}
       <a
-        href="/manchaho_catrers_menu.pdf"
+        href="/menu"
         className={clsx(
           "ibm-plex-mono-bold inline-flex items-center justify-center px-8 py-3",
           "text-base font-medium rounded-full shadow-lg transform transition-all duration-300 ease-in-out",

@@ -23,6 +23,7 @@
 import clsx from "clsx";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 interface Links {
   name: string;
@@ -32,15 +33,15 @@ interface Links {
 const links: Links[] = [
   {
     name: "highlights",
-    link: "#highlights",
+    link: "/#highlights",
   },
   {
     name: "menu",
-    link: "/manchaho_catrers_menu.pdf",
+    link: "/menu",
   },
   {
     name: "contact",
-    link: "#contact",
+    link: "/#contact",
   },
 ];
 
@@ -167,7 +168,7 @@ function Navbar() {
   return (
     <nav
       className={clsx(
-        "bg-stone-800/80 py-4 questrial-regular px-4 rounded-2xl fixed top-0 left-0 right-0 z-50 m-4 transition-transform duration-300 ease-in-out",
+        "bg-stone-800/80 py-4 questrial-regular px-4 rounded-md fixed top-0 left-0 right-0 z-50 m-4 transition-transform duration-300 ease-in-out",
         shouldShow
           ? "translate-y-0"
           : "-translate-y-full border border-neutral-100/40"
@@ -189,7 +190,7 @@ function Navbar() {
         {/* Menu (hidden on mobile unless open) */}
         <ul
           className={clsx(
-            "ibm-plex-mono-medium absolute md:static top-full left-0 w-full md:w-auto md:flex gap-4 md:gap-10 px-6 py-4 md:p-0 rounded-2xl transition-all duration-300 ease-in-out not-md:bg-stone-800/80",
+            "ibm-plex-mono-medium absolute md:static top-full left-0 w-full md:w-auto md:flex gap-4 md:gap-10 px-6 py-4 md:p-0 rounded-md transition-all duration-300 ease-in-out not-md:bg-stone-800/80",
             menuOpen ? "flex flex-col" : "hidden",
             menuOpen ? "mt-4" : "mt-0"
           )}
@@ -199,17 +200,32 @@ function Navbar() {
               key={name}
               className="flex items-center gap-2 text-white py-2 md:py-0 cursor-selectable"
             >
-              <a
-                href={link}
-                className="capitalize hover:underline underline-offset-2 hover:underline-offset-4 transition-all duration-300"
-                onClick={
-                  link.startsWith("#")
-                    ? (e) => scrollToSection(e, link)
-                    : undefined
-                }
-              >
-                {name}
-              </a>
+              {link.startsWith("#") ? (
+                <a
+                  href={link}
+                  className="capitalize hover:underline underline-offset-2 hover:underline-offset-4 transition-all duration-300"
+                  onClick={(e) => scrollToSection(e, link)}
+                >
+                  {name}
+                </a>
+              ) : link.startsWith("http") || link.endsWith(".pdf") ? (
+                <a
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="capitalize hover:underline underline-offset-2 hover:underline-offset-4 transition-all duration-300"
+                >
+                  {name}
+                </a>
+              ) : (
+                <Link
+                  to={link}
+                  className="capitalize hover:underline underline-offset-2 hover:underline-offset-4 transition-all duration-300"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {name}
+                </Link>
+              )}
             </li>
           ))}
         </ul>

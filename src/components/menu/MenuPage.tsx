@@ -20,10 +20,18 @@
  * SOFTWARE.
  */
 
-import InstagramNeutral from "@/assets/instagram-neutral.svg";
-import FacebookNeutral from "@/assets/facebook-neutral.svg";
-import Instagram from "@/assets/instagram.svg";
-import Facebook from "@/assets/facebook.svg";
-import Food from "@/assets/food.svg";
+import Footer from "@/components/footer";
+import { MenuPreview } from "@/components/menu";
+import Navbar from "@/components/navbar";
 
-export { InstagramNeutral, FacebookNeutral, Instagram, Facebook, Food };
+function MenuPage() {
+  return (
+    <>
+      <Navbar />
+      <MenuPreview />
+      <Footer />
+    </>
+  );
+}
+
+export { MenuPage };
