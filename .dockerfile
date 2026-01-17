@@ -2,11 +2,8 @@ FROM oven/bun:1.1 AS builder
 
 WORKDIR /app
 
-COPY package.json ./
-RUN bun install --frozen-lockfile || bun install
-
 COPY . .
-RUN rm -rf node_modules/.cache && bun run build
+RUN bun install && bun run build
 
 FROM nginx:alpine
 

@@ -20,218 +20,228 @@
  * SOFTWARE.
  */
 
-import clsx from "clsx";
-import { Menu, X } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import clsx from 'clsx';
+import { Menu, X } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 interface Links {
-  name: string;
-  link: string;
+    name: string;
+    link: string;
 }
 
 const links: Links[] = [
-  {
-    name: "highlights",
-    link: "/#highlights",
-  },
-  {
-    name: "menu",
-    link: "/menu",
-  },
-  {
-    name: "contact",
-    link: "/#contact",
-  },
+    {
+        name: 'highlights',
+        link: '/#highlights',
+    },
+    {
+        name: 'menu',
+        link: '/menu',
+    },
+    {
+        name: 'contact',
+        link: '/#contact',
+    },
 ];
 
 function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const [isHoveringTop, setIsHoveringTop] = useState(false);
-  const navbarRef = useRef<HTMLElement>(null);
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [isVisible, setIsVisible] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
+    const [isHoveringTop, setIsHoveringTop] = useState(false);
+    const navbarRef = useRef<HTMLElement>(null);
 
-  const scrollToSection = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    targetId: string
-  ) => {
-    e.preventDefault();
+    const scrollToSection = (
+        e: React.MouseEvent<HTMLAnchorElement>,
+        targetId: string
+    ) => {
+        e.preventDefault();
 
-    const targetElement = document.getElementById(targetId.replace("#", ""));
-    if (!targetElement) return;
+        const targetElement = document.getElementById(
+            targetId.replace('#', '')
+        );
+        if (!targetElement) return;
 
-    const navbarHeight = navbarRef.current?.offsetHeight || 0;
-    const viewportHeight = window.innerHeight;
-    const targetHeight = targetElement.offsetHeight;
+        const navbarHeight = navbarRef.current?.offsetHeight || 0;
+        const viewportHeight = window.innerHeight;
+        const targetHeight = targetElement.offsetHeight;
 
-    // Calculate scroll position to center the element
-    const targetRect = targetElement.getBoundingClientRect();
-    const currentScrollY = window.pageYOffset;
-    const targetCenterPosition =
-      targetRect.top + currentScrollY + targetHeight / 2 - viewportHeight / 2;
+        // Calculate scroll position to center the element
+        const targetRect = targetElement.getBoundingClientRect();
+        const currentScrollY = window.pageYOffset;
+        const targetCenterPosition =
+            targetRect.top +
+            currentScrollY +
+            targetHeight / 2 -
+            viewportHeight / 2;
 
-    // Add navbar offset to ensure it's not covered
-    const finalScrollPosition = Math.max(
-      0,
-      targetCenterPosition - navbarHeight
+        // Add navbar offset to ensure it's not covered
+        const finalScrollPosition = Math.max(
+            0,
+            targetCenterPosition - navbarHeight
+        );
+
+        window.scrollTo({
+            top: finalScrollPosition,
+            behavior: 'smooth',
+        });
+
+        // Close mobile menu after navigation
+        setMenuOpen(false);
+    };
+
+    // Handle initial hash-based scrolling on page load
+    useEffect(() => {
+        const handleHashScroll = () => {
+            const hash = window.location.hash;
+            if (hash) {
+                // Small delay to ensure DOM is ready
+                setTimeout(() => {
+                    const targetElement = document.getElementById(
+                        hash.replace('#', '')
+                    );
+                    if (targetElement) {
+                        const navbarHeight =
+                            navbarRef.current?.offsetHeight || 0;
+                        const viewportHeight = window.innerHeight;
+                        const targetHeight = targetElement.offsetHeight;
+
+                        const targetRect =
+                            targetElement.getBoundingClientRect();
+                        const currentScrollY = window.pageYOffset;
+                        const targetCenterPosition =
+                            targetRect.top +
+                            currentScrollY +
+                            targetHeight / 2 -
+                            viewportHeight / 2;
+                        const finalScrollPosition = Math.max(
+                            0,
+                            targetCenterPosition - navbarHeight
+                        );
+
+                        window.scrollTo({
+                            top: finalScrollPosition,
+                            behavior: 'smooth',
+                        });
+                    }
+                }, 100);
+            }
+        };
+
+        // Handle initial load
+        handleHashScroll();
+
+        // Handle hash changes
+        window.addEventListener('hashchange', handleHashScroll);
+
+        return () => {
+            window.removeEventListener('hashchange', handleHashScroll);
+        };
+    }, []);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+
+            // Hide navbar when scrolling (both up and down) after 100px
+            if (currentScrollY > 100) {
+                setIsVisible(false);
+            } else {
+                setIsVisible(true);
+            }
+
+            setLastScrollY(currentScrollY);
+        };
+
+        const handleMouseMove = (e: MouseEvent) => {
+            // Show navbar when hovering at top of page
+            if (e.clientY <= 100) {
+                setIsHoveringTop(true);
+            } else {
+                setIsHoveringTop(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('mousemove', handleMouseMove);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('mousemove', handleMouseMove);
+        };
+    }, [lastScrollY]);
+
+    const shouldShow = isVisible || isHoveringTop || lastScrollY <= 100;
+
+    return (
+        <nav
+            className={clsx(
+                'bg-stone-800/80 py-4 questrial-regular px-4 rounded-md fixed top-0 left-0 right-0 z-50 m-4 transition-transform duration-300 ease-in-out',
+                shouldShow
+                    ? 'translate-y-0'
+                    : '-translate-y-full border border-neutral-100/40'
+            )}
+        >
+            <div className="flex justify-between items-center">
+                <div className="text-white text-xl font-bold wix-madefor-display-semibold">
+                    Manchaho Caterers
+                </div>
+
+                {/* Hamburger Icon for Mobile */}
+                <button
+                    onClick={() => setMenuOpen(!menuOpen)}
+                    className="md:hidden text-white text-2xl cursor-pointer"
+                >
+                    {menuOpen ? <X /> : <Menu />}
+                </button>
+
+                {/* Menu (hidden on mobile unless open) */}
+                <ul
+                    className={clsx(
+                        'ibm-plex-mono-medium absolute md:static top-full left-0 w-full md:w-auto md:flex gap-4 md:gap-10 px-6 py-4 md:p-0 rounded-md transition-all duration-300 ease-in-out not-md:bg-stone-800/80',
+                        menuOpen ? 'flex flex-col' : 'hidden',
+                        menuOpen ? 'mt-4' : 'mt-0'
+                    )}
+                >
+                    {links.map(({ name, link }) => (
+                        <li
+                            key={name}
+                            className="flex items-center gap-2 text-white py-2 md:py-0 cursor-selectable"
+                        >
+                            {link.startsWith('#') ? (
+                                <a
+                                    href={link}
+                                    className="capitalize hover:underline underline-offset-2 hover:underline-offset-4 transition-all duration-300"
+                                    onClick={(e) => scrollToSection(e, link)}
+                                >
+                                    {name}
+                                </a>
+                            ) : link.startsWith('http') ||
+                              link.endsWith('.pdf') ? (
+                                <a
+                                    href={link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="capitalize hover:underline underline-offset-2 hover:underline-offset-4 transition-all duration-300"
+                                >
+                                    {name}
+                                </a>
+                            ) : (
+                                <Link
+                                    to={link}
+                                    className="capitalize hover:underline underline-offset-2 hover:underline-offset-4 transition-all duration-300"
+                                    onClick={() => setMenuOpen(false)}
+                                >
+                                    {name}
+                                </Link>
+                            )}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </nav>
     );
-
-    window.scrollTo({
-      top: finalScrollPosition,
-      behavior: "smooth",
-    });
-
-    // Close mobile menu after navigation
-    setMenuOpen(false);
-  };
-
-  // Handle initial hash-based scrolling on page load
-  useEffect(() => {
-    const handleHashScroll = () => {
-      const hash = window.location.hash;
-      if (hash) {
-        // Small delay to ensure DOM is ready
-        setTimeout(() => {
-          const targetElement = document.getElementById(hash.replace("#", ""));
-          if (targetElement) {
-            const navbarHeight = navbarRef.current?.offsetHeight || 0;
-            const viewportHeight = window.innerHeight;
-            const targetHeight = targetElement.offsetHeight;
-
-            const targetRect = targetElement.getBoundingClientRect();
-            const currentScrollY = window.pageYOffset;
-            const targetCenterPosition =
-              targetRect.top +
-              currentScrollY +
-              targetHeight / 2 -
-              viewportHeight / 2;
-            const finalScrollPosition = Math.max(
-              0,
-              targetCenterPosition - navbarHeight
-            );
-
-            window.scrollTo({
-              top: finalScrollPosition,
-              behavior: "smooth",
-            });
-          }
-        }, 100);
-      }
-    };
-
-    // Handle initial load
-    handleHashScroll();
-
-    // Handle hash changes
-    window.addEventListener("hashchange", handleHashScroll);
-
-    return () => {
-      window.removeEventListener("hashchange", handleHashScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      // Hide navbar when scrolling (both up and down) after 100px
-      if (currentScrollY > 100) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
-      }
-
-      setLastScrollY(currentScrollY);
-    };
-
-    const handleMouseMove = (e: MouseEvent) => {
-      // Show navbar when hovering at top of page
-      if (e.clientY <= 100) {
-        setIsHoveringTop(true);
-      } else {
-        setIsHoveringTop(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, [lastScrollY]);
-
-  const shouldShow = isVisible || isHoveringTop || lastScrollY <= 100;
-
-  return (
-    <nav
-      className={clsx(
-        "bg-stone-800/80 py-4 questrial-regular px-4 rounded-md fixed top-0 left-0 right-0 z-50 m-4 transition-transform duration-300 ease-in-out",
-        shouldShow
-          ? "translate-y-0"
-          : "-translate-y-full border border-neutral-100/40"
-      )}
-    >
-      <div className="flex justify-between items-center">
-        <div className="text-white text-xl font-bold wix-madefor-display-semibold">
-          Manchaho Catrers
-        </div>
-
-        {/* Hamburger Icon for Mobile */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-white text-2xl cursor-pointer"
-        >
-          {menuOpen ? <X /> : <Menu />}
-        </button>
-
-        {/* Menu (hidden on mobile unless open) */}
-        <ul
-          className={clsx(
-            "ibm-plex-mono-medium absolute md:static top-full left-0 w-full md:w-auto md:flex gap-4 md:gap-10 px-6 py-4 md:p-0 rounded-md transition-all duration-300 ease-in-out not-md:bg-stone-800/80",
-            menuOpen ? "flex flex-col" : "hidden",
-            menuOpen ? "mt-4" : "mt-0"
-          )}
-        >
-          {links.map(({ name, link }) => (
-            <li
-              key={name}
-              className="flex items-center gap-2 text-white py-2 md:py-0 cursor-selectable"
-            >
-              {link.startsWith("#") ? (
-                <a
-                  href={link}
-                  className="capitalize hover:underline underline-offset-2 hover:underline-offset-4 transition-all duration-300"
-                  onClick={(e) => scrollToSection(e, link)}
-                >
-                  {name}
-                </a>
-              ) : link.startsWith("http") || link.endsWith(".pdf") ? (
-                <a
-                  href={link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="capitalize hover:underline underline-offset-2 hover:underline-offset-4 transition-all duration-300"
-                >
-                  {name}
-                </a>
-              ) : (
-                <Link
-                  to={link}
-                  className="capitalize hover:underline underline-offset-2 hover:underline-offset-4 transition-all duration-300"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {name}
-                </Link>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </nav>
-  );
 }
 
 export default Navbar;
