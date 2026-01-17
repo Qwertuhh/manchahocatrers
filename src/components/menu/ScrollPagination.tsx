@@ -54,13 +54,6 @@ function ScrollPagination({
     };
   }, [threshold]);
 
-  // Debugging: log pagination state
-  console.log(
-    "[ScrollPagination] currentPage, totalPages",
-    currentPage,
-    totalPages
-  );
-
   const hasMultiplePages = totalPages > 1;
 
   return (
