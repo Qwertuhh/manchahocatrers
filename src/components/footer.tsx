@@ -127,7 +127,7 @@ function Footer() {
             {/* Copyright */}
             <div className="ibm-plex-mono-regular text-center text-neutral-300 mt-8 mx-0 w-full flex justify-center">
                 <div className="text-justify cursor-pointer text-sm lg:text-base ">
-                    <p>Copyright &copy; 2025 Arihant Jain,Qwertuhh</p>
+                    <p>Copyright &copy; 2025 Manchaho Caterers, Mukesh Kumar Jain. All rights reserved.</p>
                     <p>
                         Distributed under the{' '}
                         <a
