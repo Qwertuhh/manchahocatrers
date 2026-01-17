@@ -9,7 +9,6 @@ import {
   ScrollPagination,
   EmptyState,
 } from "@/components/menu";
-import type { MenuSubCategory } from "@/types";
 import {
   useMenuFilter,
   useNavigation,
@@ -21,26 +20,11 @@ const ITEMS_PER_PAGE = 18;
 function MenuPreview() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(
-    null
-  );
-
-  // Get subcategories for selected main category
-  const getSubCategoriesForCategory = (
-    categoryName: string
-  ): MenuSubCategory[] => {
-    if (categoryName === "All") return [];
-    return menuSubCategories.filter(
-      (sub) => sub.parentCategory.name === categoryName
-    );
-  };
-
-  const availableSubCategories = getSubCategoriesForCategory(selectedCategory);
 
   // Create stable dependencies array to prevent pagination resets
   const paginationDependencies = useMemo(
-    () => [searchTerm, selectedCategory, selectedSubCategory],
-    [searchTerm, selectedCategory, selectedSubCategory]
+    () => [searchTerm, selectedCategory],
+    [searchTerm, selectedCategory]
   );
 
   // Use custom hooks
@@ -48,7 +32,6 @@ function MenuPreview() {
     items: menuItemsWithId,
     searchTerm,
     selectedCategory,
-    selectedSubCategory,
     menuSubCategories,
   });
 
@@ -58,6 +41,7 @@ function MenuPreview() {
     currentItems,
     goToNextPage,
     goToPreviousPage,
+    goToPage,
   } = usePagination({
     items: filteredItems,
     itemsPerPage: ITEMS_PER_PAGE,
@@ -81,12 +65,8 @@ function MenuPreview() {
           onSearchChange={setSearchTerm}
           selectedCategory={selectedCategory}
           onCategoryChange={setSelectedCategory}
-          selectedSubCategory={selectedSubCategory}
-          onSubCategoryChange={setSelectedSubCategory}
           categories={menuCategories}
-          availableSubCategories={availableSubCategories}
         />
-
         {filteredItems.length === 0 ? (
           <EmptyState />
         ) : (
@@ -95,6 +75,7 @@ function MenuPreview() {
             totalPages={totalPages}
             onPreviousPage={goToPreviousPage}
             onNextPage={goToNextPage}
+            onGoToPage={goToPage}
           >
             {/* Menu Items Grid */}
             <div

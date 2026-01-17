@@ -7,7 +7,6 @@ interface UseMenuFilterProps {
   items: MenuItemWithId[];
   searchTerm: string;
   selectedCategory: string;
-  selectedSubCategory: string | null;
   menuSubCategories: MenuSubCategory[];
 }
 
@@ -19,7 +18,6 @@ function useMenuFilter({
   items,
   searchTerm,
   selectedCategory,
-  selectedSubCategory,
   menuSubCategories,
 }: UseMenuFilterProps): UseMenuFilterReturn {
   const fuse = useMemo(() => {
@@ -39,39 +37,28 @@ function useMenuFilter({
       filteredItems = searchResults.map((result) => result.item);
     }
 
-    // Apply category and subcategory filters
+    // Apply category filter
     return filteredItems.filter((item) => {
-      // Find subcategory object that matches this item's category name
+      // If "All" is selected, include everything after search filter
+      if (selectedCategory === "All") {
+        return true;
+      }
+
+      // 1) Direct match: item's category string is exactly the selected main category
+      if (item.category === selectedCategory) {
+        return true;
+      }
+
+      // 2) Indirect match: item's category is a subcategory whose parent matches
       const subCategoryObj = menuSubCategories.find(
         (sub) => sub.name === item.category
       );
 
-      // Derive the effective main category for this item:
-      // - Prefer the parentCategory of the matching subcategory (when it exists)
-      // - Fall back to the item's own category name when there's no subcategory mapping
-      const effectiveCategoryName =
-        subCategoryObj?.parentCategory.name ?? item.category;
+      if (!subCategoryObj) return false;
 
-      const matchesCategory =
-        selectedCategory === "All" ||
-        effectiveCategoryName === selectedCategory;
-
-      // Subcategory filter:
-      // - When no subcategory is selected ("All Subcategories"), allow all items
-      // - Otherwise, the item's subcategory id must match the selectedSubCategory
-      const matchesSubCategory =
-        !selectedSubCategory || subCategoryObj?.id === selectedSubCategory;
-
-      return matchesCategory && matchesSubCategory;
+      return subCategoryObj.parentCategory.name === selectedCategory;
     });
-  }, [
-    items,
-    searchTerm,
-    selectedCategory,
-    selectedSubCategory,
-    menuSubCategories,
-    fuse,
-  ]);
+  }, [items, searchTerm, selectedCategory, menuSubCategories, fuse]);
 
   return { filteredItems };
 }
