@@ -4,18 +4,40 @@ import SectionMarker from "../ui/sectionMarker";
 interface SearchAndFilterProps {
   searchTerm: string;
   onSearchChange: (value: string) => void;
-  selectedCategory: string;
-  onCategoryChange: (category: string) => void;
-  categories: Array<{ id: string; name: string }>;
 }
 
 function SearchAndFilter({
   searchTerm,
   onSearchChange,
-  selectedCategory,
-  onCategoryChange,
-  categories,
 }: SearchAndFilterProps) {
+  const handleDownloadPdf = () => {
+    if (typeof window === "undefined") return;
+
+    const printUrl = "/menu/print";
+    const printWindow = window.open(printUrl, "_blank");
+
+    if (!printWindow) return;
+
+    // Try to trigger print once the print page has loaded
+    const onLoad = () => {
+      printWindow.focus();
+      printWindow.print();
+      printWindow.removeEventListener("load", onLoad);
+    };
+
+    // In some browsers, the load event may already have fired
+    try {
+      if (printWindow.document.readyState === "complete") {
+        printWindow.focus();
+        printWindow.print();
+      } else {
+        printWindow.addEventListener("load", onLoad);
+      }
+    } catch {
+      // If cross-origin or timing issues occur, the user can still print manually
+    }
+  };
+
   return (
     <div className="mb-8 space-y-4">
       {/* Search Bar */}
@@ -30,38 +52,27 @@ function SearchAndFilter({
             className="w-full pl-10 pr-4 py-3 rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:border-transparent"
           />
         </div>
-        <a
-          href="/menu/print"
-          className="text-md ibm-plex-mono-bold text-neutral-800 my-2 md:my-0 not-md:underline"
-        >
-          Single Page Menu
-        </a>
+        <div className="flex flex-col md:flex-row gap-2 items-center mt-3 md:mt-0">
+          <a
+            href="/menu/print"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-md ibm-plex-mono-bold text-neutral-800 not-md:underline"
+          >
+            Print Menu
+          </a>
+          <button
+            type="button"
+            onClick={handleDownloadPdf}
+            className="ibm-plex-mono-bold text-xs md:text-sm px-3 py-2 rounded-md border border-neutral-800 text-neutral-50 bg-neutral-800 hover:bg-neutral-900 transition-colors"
+          >
+            Download PDF
+          </button>
+        </div>
       </div>
 
       {/* Category Selector (dropdown) */}
-      <SectionMarker name="Category" />
-      <div className="inline-flex items-center gap-3">
-        <label className="ibm-plex-mono-regular text-sm text-neutral-700">
-          Select category
-        </label>
-        <select
-          value={selectedCategory}
-          onChange={(e) => {
-            const value = e.target.value;
-            onCategoryChange(value);
-            // Reset search when switching category to avoid "empty" states
-            onSearchChange("");
-          }}
-          aria-label="Select menu category"
-          className="ibm-plex-mono-regular px-3 py-2 rounded-md border border-neutral-300 bg-white text-sm text-neutral-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-neutral-800 focus:border-transparent"
-        >
-          {categories.map((category) => (
-            <option key={category.id} value={category.name}>
-              {category.name}
-            </option>
-          ))}
-        </select>
-      </div>
+      <SectionMarker name="Items" />
     </div>
   );
 }

@@ -41,7 +41,6 @@ function MenuPreview() {
     currentItems,
     goToNextPage,
     goToPreviousPage,
-    goToPage,
   } = usePagination({
     items: filteredItems,
     itemsPerPage: ITEMS_PER_PAGE,
@@ -63,9 +62,6 @@ function MenuPreview() {
         <SearchAndFilter
           searchTerm={searchTerm}
           onSearchChange={setSearchTerm}
-          selectedCategory={selectedCategory}
-          onCategoryChange={setSelectedCategory}
-          categories={menuCategories}
         />
         {filteredItems.length === 0 ? (
           <EmptyState />
@@ -75,7 +71,9 @@ function MenuPreview() {
             totalPages={totalPages}
             onPreviousPage={goToPreviousPage}
             onNextPage={goToNextPage}
-            onGoToPage={goToPage}
+            selectedCategory={selectedCategory}
+            onCategoryChange={setSelectedCategory}
+            categories={menuCategories}
           >
             {/* Menu Items Grid */}
             <div
