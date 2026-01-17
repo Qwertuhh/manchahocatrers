@@ -22,6 +22,7 @@
 
 @import "./styles/fonts.css";
 @import "./styles/tailwind.css";
+@import "./styles/print.css";
 
 :root {
   --accent-color: #9b8340;
@@ -46,16 +47,3 @@ html {
 body {
   font-family: "Montserrat", sans-serif;
 }
-
-@media print {
-  .print-avoid-break {
-    break-inside: avoid;
-    page-break-inside: avoid;
-  }
-
-  section {
-    page-break-before: auto;
-    page-break-after: auto;
-  }
-}
-

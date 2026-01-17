@@ -1,0 +1,12 @@
+
+@media print {
+  .print-avoid-break {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  section {
+    page-break-before: auto;
+    page-break-after: auto;
+  }
+}

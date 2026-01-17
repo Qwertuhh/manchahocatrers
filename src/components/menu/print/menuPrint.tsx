@@ -139,6 +139,11 @@ function MenuPrintPage() {
             ))}
           </div>
         ))}
+        <img
+          src="/menu/manchaho_catrers_menu_last_page.png"
+          alt="Manchaoh Caterers"
+          className="h-full"
+        />
       </div>
     </section>
   );
