@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Search } from "lucide-react";
 import SectionMarker from "../ui/sectionMarker";
 
@@ -6,10 +7,15 @@ interface SearchAndFilterProps {
   onSearchChange: (value: string) => void;
 }
 
-function SearchAndFilter({
-  searchTerm,
-  onSearchChange,
-}: SearchAndFilterProps) {
+function SearchAndFilter({ searchTerm, onSearchChange }: SearchAndFilterProps) {
+  const [canPrint, setCanPrint] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && typeof window.print === "function") {
+      setCanPrint(true);
+    }
+  }, []);
+
   const handleDownloadPdf = () => {
     if (typeof window === "undefined") return;
 
@@ -57,17 +63,20 @@ function SearchAndFilter({
             href="/menu/print"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={handleDownloadPdf}
             className="text-md ibm-plex-mono-bold text-neutral-800 not-md:underline"
           >
             Print Menu
           </a>
-          <button
-            type="button"
-            onClick={handleDownloadPdf}
-            className="ibm-plex-mono-bold text-xs md:text-sm px-3 py-2 rounded-md border border-neutral-800 text-neutral-50 bg-neutral-800 hover:bg-neutral-900 transition-colors"
-          >
-            Download PDF
-          </button>
+          {canPrint && (
+            <a
+              href="./manchaho_catrers_menu.pdf"
+              download="./manchaho_catrers_menu.pdf"
+              className="ibm-plex-mono-bold text-xs md:text-sm px-3 py-2 rounded-md border border-neutral-800 text-neutral-50 bg-neutral-800 hover:bg-neutral-900 transition-colors"
+            >
+              Download PDF
+            </a>
+          )}
         </div>
       </div>
 
