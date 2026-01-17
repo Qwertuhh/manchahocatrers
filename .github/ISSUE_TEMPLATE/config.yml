@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+    - name: Questions about the project
+      url: https://github.com/Qwertuhh/manchaocatrers/discussions
+      about: Please ask and answer questions in discussions
