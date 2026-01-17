@@ -78,8 +78,8 @@ function ScrollPagination({
             : "opacity-0 translate-y-4 pointer-events-none"
         )}
       >
-        <div className="flex justify-between items-center bg-white shadow-lg border-t border-neutral-200 px-4 py-3 gap-4 md:bg-white md:rounded-lg md:border md:border-neutral-200 md:px-4 md:py-3">
-          {hasMultiplePages ? (
+        <div className="flex items-center justify-center bg-white shadow-lg border-t border-neutral-200 px-4 py-3 gap-4 md:bg-white md:rounded-lg md:border md:border-neutral-200 md:px-4 md:py-3">
+          {hasMultiplePages && (
             <button
               onClick={onPreviousPage}
               className="ibm-plex-mono-bold flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-200 text-sm bg-neutral-800 text-white hover:bg-neutral-700 cursor-pointer"
@@ -87,12 +87,10 @@ function ScrollPagination({
               <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
               <span className="hidden md:inline">Previous</span>
             </button>
-          ) : (
-            <div className="w-[96px]" />
           )}
 
-          {/* Category dropdown in the center */}
-          <div className="flex items-center gap-2 w-full text-xs md:text-sm">
+          {/* Category dropdown and page indicator */}
+          <div className="flex items-center gap-2 text-xs md:text-sm mx-2">
             <span className="ibm-plex-mono-regular text-neutral-700 hidden md:inline">
               Category
             </span>
@@ -100,7 +98,7 @@ function ScrollPagination({
               value={selectedCategory}
               onChange={(e) => onCategoryChange(e.target.value)}
               aria-label="Select category"
-              className="ibm-plex-mono-regular px-2 py-1 rounded-md border border-neutral-300 bg-white text-xs md:text-sm text-neutral-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-neutral-800 focus:border-transparent max-w-[180px] truncate"
+              className="ibm-plex-mono-regular px-2 py-1 rounded-md border border-neutral-300 bg-white text-sm text-neutral-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-neutral-800 focus:border-transparent max-w-[180px] truncate"
             >
               {categories.map((category) => (
                 <option key={category.id} value={category.name}>
@@ -108,12 +106,12 @@ function ScrollPagination({
                 </option>
               ))}
             </select>
-            <span className="ibm-plex-mono-regular w-[40px] text-neutral-700">
+            <span className="ibm-plex-mono-regular w-[4rem] md:w-fit text-neutral-700">
               {currentPage + 1} / {totalPages}
             </span>
           </div>
 
-          {hasMultiplePages ? (
+          {hasMultiplePages && (
             <button
               onClick={onNextPage}
               className="ibm-plex-mono-bold flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-200 text-sm bg-neutral-800 text-white hover:bg-neutral-700 cursor-pointer"
@@ -121,8 +119,6 @@ function ScrollPagination({
               <span className="hidden md:inline">Next</span>
               <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
             </button>
-          ) : (
-            <div className="w-[96px]" />
           )}
         </div>
       </div>
