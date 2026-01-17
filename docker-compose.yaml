@@ -2,7 +2,7 @@ services:
   web:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: .dockerfile
     container_name: manchahocatrers
     ports:
       - "3000:80"
