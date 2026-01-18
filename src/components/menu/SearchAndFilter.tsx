@@ -95,8 +95,8 @@ function SearchAndFilter({ searchTerm, onSearchChange }: SearchAndFilterProps) {
                     </a>
                     {canPrint && (
                         <a
-                            href="./manchaho_caterers_menu.pdf"
-                            download="./manchaho_caterers_menu.pdf"
+                            href="./manchaho_catrers_menu.pdf"
+                            download="./manchaho_catrers_menu.pdf"
                             className="ibm-plex-mono-bold text-xs md:text-sm px-3 py-2 rounded-md border border-neutral-800 text-neutral-50 bg-neutral-800 hover:bg-neutral-900 transition-colors"
                         >
                             Download PDF
