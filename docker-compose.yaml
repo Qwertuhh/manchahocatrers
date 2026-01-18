@@ -27,3 +27,10 @@ services:
     ports:
       - "3000:80"
     restart: unless-stopped
+    develop:
+      watch:
+        - action: rebuild
+          path: Dockerfile
+        - action: sync
+          path: .
+          target: /usr/src/app

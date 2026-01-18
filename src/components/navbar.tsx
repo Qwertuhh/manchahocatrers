@@ -33,7 +33,7 @@ interface Links {
 const links: Links[] = [
     {
         name: 'highlights',
-        link: '/#highlights',
+        link: '#highlights',
     },
     {
         name: 'menu',
@@ -41,7 +41,7 @@ const links: Links[] = [
     },
     {
         name: 'contact',
-        link: '/#contact',
+        link: '#contact',
     },
 ];
 
@@ -58,9 +58,19 @@ function Navbar() {
     ) => {
         e.preventDefault();
 
-        const targetElement = document.getElementById(
-            targetId.replace('#', '')
-        );
+        // Extract hash part from link (handles both '#highlights' and '/#highlights')
+        const hash = targetId.includes('#')
+            ? targetId.split('#').pop() || targetId.replace('#', '')
+            : targetId.replace('#', '');
+
+        // Check if we're not on the home page
+        if (window.location.pathname !== '/') {
+            // Navigate to home page first, then scroll to section
+            window.location.href = '/' + targetId;
+            return;
+        }
+
+        const targetElement = document.getElementById(hash);
         if (!targetElement) return;
 
         const navbarHeight = navbarRef.current?.offsetHeight || 0;
@@ -184,9 +194,11 @@ function Navbar() {
             )}
         >
             <div className="flex justify-between items-center">
-                <div className="text-white text-xl font-bold wix-madefor-display-semibold">
-                    Manchaho Caterers
-                </div>
+                <a href="/">
+                    <div className="text-white text-xl font-bold wix-madefor-display-semibold">
+                        Manchaho Catrers
+                    </div>
+                </a>
 
                 {/* Hamburger Icon for Mobile */}
                 <button
@@ -209,7 +221,7 @@ function Navbar() {
                             key={name}
                             className="flex items-center gap-2 text-white py-2 md:py-0 cursor-selectable"
                         >
-                            {link.startsWith('#') ? (
+                            {link.startsWith('#') || link.includes('#') ? (
                                 <a
                                     href={link}
                                     className="capitalize hover:underline underline-offset-2 hover:underline-offset-4 transition-all duration-300"
