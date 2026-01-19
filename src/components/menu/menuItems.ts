@@ -388,7 +388,7 @@ const sweetsItems: MenuItem[] = [
     },
     {
         name: 'Kesar Rasmalai',
-        hindiName: 'केसर ररामालाई',
+        hindiName: 'केसर रसमालाई',
         category: 'Popular Sweets',
         hindiCategory: 'लोकप्रिय मिठाइयाँ',
         popular: false,

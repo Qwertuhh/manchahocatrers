@@ -84,19 +84,15 @@ function SearchAndFilter({ searchTerm, onSearchChange }: SearchAndFilterProps) {
                     />
                 </div>
                 <div className="flex flex-col md:flex-row gap-2 items-center mt-3 md:mt-0">
-                    <a
-                        href="/menu/print"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={handleDownloadPdf}
-                        className="text-md ibm-plex-mono-bold text-neutral-800 not-md:underline"
-                    >
-                        Print Menu
+                    <a className="text-md ibm-plex-mono-bold text-neutral-800 not-md:underline">
+                        Single Menu
                     </a>
                     {canPrint && (
                         <a
-                            href="./manchaho_catrers_menu.pdf"
-                            download="./manchaho_catrers_menu.pdf"
+                            href="/menu/print"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={handleDownloadPdf}
                             className="ibm-plex-mono-bold text-xs md:text-sm px-3 py-2 rounded-md border border-neutral-800 text-neutral-50 bg-neutral-800 hover:bg-neutral-900 transition-colors"
                         >
                             Download PDF

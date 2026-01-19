@@ -20,22 +20,24 @@
  * SOFTWARE.
  */
 
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "@/index.css";
-import App from "@/App.tsx";
-import { MenuPage } from "@/components/menu";
-import MenuPrintPage from "@/components/menu/print/menuPrint";
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import '@/index.css';
+import App from '@/App.tsx';
+import { MenuPage } from '@/components/menu';
+import MenuPrintPage from '@/components/menu/print/MenuPrint';
+import SingleMenuPage from '@/components/menu/menuSiglePage';
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/menu" element={<MenuPage />} />
-        <Route path="/menu/print" element={<MenuPrintPage />} />
-      </Routes>
-    </BrowserRouter>
-  </StrictMode>
+createRoot(document.getElementById('root')!).render(
+    <StrictMode>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<App />} />
+                <Route path="/menu" element={<MenuPage />} />
+                <Route path="/menu/print" element={<MenuPrintPage />} />
+                <Route path="/menu/single" element={<SingleMenuPage />} />
+            </Routes>
+        </BrowserRouter>
+    </StrictMode>
 );

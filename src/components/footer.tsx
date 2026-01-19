@@ -107,7 +107,7 @@ function Footer() {
                             />
                         </a>
                         <a
-                            href="https://www.instagram.com/manchahocaterers"
+                            href="https://www.instagram.com/manchahocatrers?igsh=MTJubXd3bnh4MWh6cQ=="
                             aria-label="Instagram"
                             className="text-stone-400 hover:text-stone-100 transition-colors duration-200"
                         >
@@ -127,7 +127,10 @@ function Footer() {
             {/* Copyright */}
             <div className="ibm-plex-mono-regular text-center text-neutral-300 mt-8 mx-0 w-full flex justify-center">
                 <div className="text-justify cursor-pointer text-sm lg:text-base ">
-                    <p>Copyright &copy; 2025 Manchaho Caterers, Mukesh Kumar Jain. All rights reserved.</p>
+                    <p>
+                        Copyright &copy; 2025 Manchaho Caterers, Mukesh Kumar
+                        Jain. All rights reserved.
+                    </p>
                     <p>
                         Distributed under the{' '}
                         <a
