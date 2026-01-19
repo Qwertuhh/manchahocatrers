@@ -31,6 +31,7 @@ import {
 } from '@/components/menu';
 import type { MenuItemWithId, MenuCategory, MenuSubCategory } from '@/types';
 import Footer from '@/components/footer';
+import { ArrowLeft } from 'lucide-react';
 
 interface FlattenedItem {
     type: 'category-header' | 'subcategory-header' | 'item';
@@ -250,7 +251,14 @@ function SingleMenuPreview() {
                     title="Complete Menu"
                     subtitle="Explore our full range of authentic culinary offerings"
                 />
-
+                <a
+                    className="text-md ibm-plex-mono-bold text-neutral-800 not-md:underline"
+                    href="/menu"
+                >
+                    <ArrowLeft className="inline mr-2" />
+                    Back to Menu
+                </a>
+                <hr className="my-8 h-[2px] bg-neutral-400" />
                 {/* Menu Items Grid with Headers */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
                     {visibleItems.map((item) => renderContent(item))}

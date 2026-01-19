@@ -84,7 +84,10 @@ function SearchAndFilter({ searchTerm, onSearchChange }: SearchAndFilterProps) {
                     />
                 </div>
                 <div className="flex flex-col md:flex-row gap-2 items-center mt-3 md:mt-0">
-                    <a className="text-md ibm-plex-mono-bold text-neutral-800 not-md:underline">
+                    <a
+                        className="text-md ibm-plex-mono-bold text-neutral-800 not-md:underline"
+                        href="/menu/single"
+                    >
                         Single Menu
                     </a>
                     {canPrint && (
