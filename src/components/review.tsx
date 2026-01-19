@@ -21,7 +21,7 @@
  */
 
 import clsx from 'clsx';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface Review {
     name: string;
@@ -53,13 +53,14 @@ const reviews: Review[] = [
 
 function ReviewList() {
     const scrollRef = useRef<HTMLDivElement>(null);
+    const [isPaused, setIsPaused] = useState(false);
 
     useEffect(() => {
         const container = scrollRef.current;
         let animationFrameId: number;
 
         const animateScroll = () => {
-            if (container) {
+            if (container && !isPaused) {
                 container.scrollLeft += 0.75;
 
                 if (container.scrollLeft >= container.scrollWidth / 2) {
@@ -72,7 +73,7 @@ function ReviewList() {
         animationFrameId = requestAnimationFrame(animateScroll);
 
         return () => cancelAnimationFrame(animationFrameId);
-    }, []);
+    }, [isPaused]);
 
     return (
         <section
@@ -92,6 +93,10 @@ function ReviewList() {
                     'relative z-10 flex w-full  overflow-x-scroll no-scrollbar space-x-6 md:space-x-8 py-6 cursor-grab active:cursor-grabbing',
                     '[mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] [--webkit-mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]'
                 )}
+                onMouseEnter={() => setIsPaused(true)}
+                onMouseLeave={() => setIsPaused(false)}
+                onTouchStart={() => setIsPaused(true)}
+                onTouchEnd={() => setIsPaused(false)}
             >
                 {[...reviews, ...reviews].map(
                     (review: Review, index: number) => (
