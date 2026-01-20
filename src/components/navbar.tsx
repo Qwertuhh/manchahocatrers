@@ -25,11 +25,19 @@ import { Menu, X } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
+/**
+ * Interface for navigation links
+ */
 interface Links {
+    /** Display name of the navigation link */
     name: string;
+    /** URL path or hash fragment for the link */
     link: string;
 }
 
+/**
+ * Navigation configuration array containing all main navigation links
+ */
 const links: Links[] = [
     {
         name: 'highlights',
@@ -45,6 +53,16 @@ const links: Links[] = [
     },
 ];
 
+/**
+ * Navbar component with responsive design, scroll-based visibility, and smooth scrolling.
+ * Features include:
+ * - Auto-hide on scroll (shows when hovering at top)
+ * - Mobile hamburger menu
+ * - Smooth scrolling to page sections
+ * - Support for both hash anchors and route navigation
+ *
+ * @returns JSX element for the navigation bar
+ */
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
@@ -52,6 +70,14 @@ function Navbar() {
     const [isHoveringTop, setIsHoveringTop] = useState(false);
     const navbarRef = useRef<HTMLElement>(null);
 
+    /**
+     * Handles smooth scrolling to a specific section on the page.
+     * Centers the target element in the viewport and accounts for navbar height.
+     * Navigates to home page first if not currently on the home route.
+     *
+     * @param e - Click event from the anchor element
+     * @param targetId - The target section ID or link to scroll to
+     */
     const scrollToSection = (
         e: React.MouseEvent<HTMLAnchorElement>,
         targetId: string

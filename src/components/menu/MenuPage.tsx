@@ -20,18 +20,24 @@
  * SOFTWARE.
  */
 
-import Footer from "@/components/footer";
-import { MenuPreview } from "@/components/menu";
-import Navbar from "@/components/navbar";
+import Footer from '@/components/footer';
+import { MenuPreview } from '@/components/menu';
+import Navbar from '@/components/navbar';
 
+/**
+ * Complete menu page component that combines navbar, menu preview, and footer.
+ * Serves as the main menu layout wrapper for the application.
+ *
+ * @returns JSX element containing the complete menu page layout
+ */
 function MenuPage() {
-  return (
-    <>
-      <Navbar />
-      <MenuPreview />
-      <Footer />
-    </>
-  );
+    return (
+        <>
+            <Navbar />
+            <MenuPreview />
+            <Footer />
+        </>
+    );
 }
 
 export { MenuPage };

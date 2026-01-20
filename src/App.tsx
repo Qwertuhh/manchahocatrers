@@ -32,6 +32,13 @@ import SubHeroSection from '@/components/subHero';
 import clsx from 'clsx';
 import Loader from '@/components/ui/loader';
 
+/**
+ * Main application component that renders the complete layout.
+ * Features lazy loading for performance, responsive design with dot pattern background,
+ * and includes all major sections: hero, sub-hero, reviews, gallery, contact, and footer.
+ *
+ * @returns JSX element representing the complete application layout
+ */
 function App() {
     return (
         <>

@@ -25,17 +25,46 @@ import Fuse from 'fuse.js';
 import type { MenuItemWithId } from '@/types';
 import type { MenuSubCategory } from '@/types';
 
+/**
+ * Props for the useMenuFilter hook
+ */
 interface UseMenuFilterProps {
+    /** Array of menu items to filter */
     items: MenuItemWithId[];
+    /** Search term to filter menu items by */
     searchTerm: string;
+    /** Currently selected category for filtering */
     selectedCategory: string;
+    /** Array of menu subcategories with hierarchy information */
     menuSubCategories: MenuSubCategory[];
 }
 
+/**
+ * Return value for the useMenuFilter hook
+ */
 interface UseMenuFilterReturn {
+    /** Array of filtered menu items based on search and category filters */
     filteredItems: MenuItemWithId[];
 }
 
+/**
+ * Custom hook for filtering menu items based on search term and category selection.
+ * Uses Fuse.js for fuzzy search across multiple fields including name, description,
+ * category hierarchy, and Hindi text fields.
+ *
+ * @param props - The filter configuration object
+ * @returns Object containing the filtered menu items
+ *
+ * @example
+ * ```tsx
+ * const { filteredItems } = useMenuFilter({
+ *   items: menuItems,
+ *   searchTerm: 'butter chicken',
+ *   selectedCategory: 'Main Course',
+ *   menuSubCategories: subCategories
+ * });
+ * ```
+ */
 function useMenuFilter({
     items,
     searchTerm,

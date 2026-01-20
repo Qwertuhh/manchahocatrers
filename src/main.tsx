@@ -20,6 +20,12 @@
  * SOFTWARE.
  */
 
+/**
+ * Application entry point that initializes and renders the React application.
+ * Sets up React Router with routes for home, menu, print menu, and single menu pages.
+ * Uses StrictMode for development and renders the application to the DOM root element.
+ */
+
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -29,6 +35,7 @@ import { MenuPage } from '@/components/menu';
 import MenuPrintPage from '@/components/menu/print/MenuPrint';
 import SingleMenuPage from '@/components/menu/menuSiglePage';
 
+// Initialize and render the React application
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
         <BrowserRouter>

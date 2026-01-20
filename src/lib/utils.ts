@@ -20,9 +20,22 @@
  * SOFTWARE.
  */
 
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { clsx, type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
+/**
+ * Combines class names using clsx and tailwind-merge for optimal CSS class handling.
+ * Merges Tailwind CSS classes intelligently to avoid conflicts and duplicates.
+ *
+ * @param inputs - Class values to combine (strings, objects, arrays, etc.)
+ * @returns Merged class name string
+ *
+ * @example
+ * ```tsx
+ * cn('px-2 py-1', 'px-4') // Returns 'py-1 px-4'
+ * cn('text-sm', { 'font-bold': isActive }) // Returns 'text-sm font-bold' when isActive is true
+ * ```
+ */
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+    return twMerge(clsx(inputs));
 }

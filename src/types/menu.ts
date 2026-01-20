@@ -22,47 +22,86 @@
 
 // * Base interfaces
 // ? User can easily enter the details then indexed with Id by computer
+/**
+ * Base interface for menu category items without ID.
+ * Represents the basic structure of a menu category.
+ */
 interface MenuCategoryItem {
-  name: string;
-  hindiName?: string;
+    /** Name of the category in English */
+    name: string;
+    /** Optional name of the category in Hindi */
+    hindiName?: string;
 }
 
+/**
+ * Base interface for menu subcategory items without ID.
+ * Links to a parent category for hierarchical organization.
+ */
 interface MenuSubCategoryItem {
-  name: string;
-  hindiName?: string;
-  parentCategory: MenuCategory;
+    /** Name of the subcategory in English */
+    name: string;
+    /** Optional name of the subcategory in Hindi */
+    hindiName?: string;
+    /** Reference to the parent category */
+    parentCategory: MenuCategory;
 }
 
-// * Indexing by Id
+/**
+ * Menu item interface with computer-generated ID.
+ * Extends the base MenuItem with an identifier for database/storage purposes.
+ */
 interface MenuItemWithId extends MenuItem {
-  id: string;
+    /** Unique identifier for the menu item */
+    id: string;
 }
+
+/**
+ * Menu category interface with ID.
+ * Represents a complete category with unique identifier.
+ */
 interface MenuCategory extends MenuCategoryItem {
-  id: string;
+    /** Unique identifier for the category */
+    id: string;
 }
 
+/**
+ * Menu subcategory interface with ID.
+ * Represents a complete subcategory with unique identifier and parent reference.
+ */
 interface MenuSubCategory extends MenuSubCategoryItem {
-  id: string;
+    /** Unique identifier for the subcategory */
+    id: string;
 }
 
-
+/**
+ * Base interface for menu items.
+ * Contains all essential information about a menu item including
+ * bilingual support, images, descriptions, and categorization.
+ */
 interface MenuItem {
-  name: string;
-  hindiName?: string;
-  imageSrc?: string;
-  description?: string;
-  hindiDescription?: string;
-  // ? For filtering and grouping - using subcategory name as string
-  category: string;
-  popular?: boolean;
-  hindiCategory?: string;
+    /** Name of the menu item in English */
+    name: string;
+    /** Optional name of the menu item in Hindi */
+    hindiName?: string;
+    /** Optional image source URL for the menu item */
+    imageSrc?: string;
+    /** Optional description of the menu item in English */
+    description?: string;
+    /** Optional description of the menu item in Hindi */
+    hindiDescription?: string;
+    /** Category name used for filtering and grouping (subcategory name) */
+    category: string;
+    /** Optional flag indicating if the item is popular/featured */
+    popular?: boolean;
+    /** Optional category name in Hindi */
+    hindiCategory?: string;
 }
 
 export type {
-  MenuItem,
-  MenuCategoryItem,
-  MenuSubCategoryItem,
-  MenuItemWithId,
-  MenuCategory,
-  MenuSubCategory,
-}
+    MenuItem,
+    MenuCategoryItem,
+    MenuSubCategoryItem,
+    MenuItemWithId,
+    MenuCategory,
+    MenuSubCategory,
+};

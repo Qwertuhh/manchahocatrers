@@ -23,6 +23,13 @@
 import SocialMediaFollow from '@/components/socialMediaFollow'; // Assuming SocialMediaFollow is in your components folder
 import clsx from 'clsx';
 
+/**
+ * Hero section component displaying the main landing page content.
+ * Features the company logo, name, description, and social media links.
+ * Uses responsive design with full viewport height and centered content.
+ *
+ * @returns JSX element for the hero section
+ */
 function HeroSection() {
     // Define your social media links here, as the SocialMediaFollow component expects them
 
@@ -36,7 +43,7 @@ function HeroSection() {
             <div className="flex flex-col items-center justify-center">
                 {/* Content of your hero section */}
                 <img
-          src="/manchaho_catrers_logo.svg" // Make sure this path is correct
+                    src="/manchaho_catrers_logo.svg" // Make sure this path is correct
                     alt="Manchaho Catrers Logo"
                     className="mb-6 w-32 h-32 md:w-40 md:h-40 rounded-full shadow-xl object-cover z-10" // Increased size, added shadow, z-index
                 />
