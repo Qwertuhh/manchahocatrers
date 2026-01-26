@@ -32,7 +32,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import '@/index.css';
 import App from '@/App.tsx';
 import { MenuPage } from '@/components/menu';
-import MenuPrintPage from '@/components/menu/print/MenuPrint';
+import MenuPrintPage from '@/components/menu/print/menuPrint';
 import SingleMenuPage from '@/components/menu/menuSiglePage';
 
 // Initialize and render the React application

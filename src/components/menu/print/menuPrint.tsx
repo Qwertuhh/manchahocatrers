@@ -22,7 +22,7 @@
 
 import { useMemo } from 'react';
 import { menuItemsWithId, menuSubCategories } from '../menuItems';
-import PrintSubcategoryTable from '@/components/menu/print/PrintSubcategoryTable';
+import PrintSubcategoryTable from '@/components/menu/print/printSubcategoryTable';
 
 function MenuPrintPage() {
     const groupedMenu = useMemo(() => {
